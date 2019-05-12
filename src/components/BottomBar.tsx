@@ -2,6 +2,7 @@ import React from "react"
 import styled from "../application/theme"
 import { Image, TouchableOpacity } from "react-native"
 import useAppContext from "../lib/hooks/useAppContext"
+import Text from "../components/styled/Text"
 
 function BottomBar() {
   const { route, setRoute } = useAppContext()
@@ -45,7 +46,7 @@ const StyledTab = styled.View`
   ${p => p.theme.flexCenter};
 `
 
-const StyledTabText = styled.Text<{ active: boolean }>`
+const StyledTabText = styled(Text)<{ active: boolean }>`
   color: ${p => (p.active ? p.theme.colorBlue : p.theme.colorText)};
 `
 

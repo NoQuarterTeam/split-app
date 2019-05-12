@@ -1,10 +1,12 @@
 import React, { memo } from "react"
 import { UserFragment } from "../lib/connector"
 
-import { round } from "../lib/helpers"
 import styled, { darken } from "../application/theme"
-import Avatar from "./Avatar"
+import { round } from "../lib/helpers"
 import useAppContext from "../lib/hooks/useAppContext"
+import Text from "../components/styled/Text"
+
+import Avatar from "./Avatar"
 
 interface HouseBalanceProps {
   users: UserFragment[]
@@ -57,7 +59,7 @@ const StyledUserGraph = styled.View`
   flex-direction: column;
 `
 
-const StyledSpacer = styled.Text`
+const StyledSpacer = styled(Text)`
   height: 30px;
   line-height: 30px;
 `

@@ -19,11 +19,10 @@ const theme: (isDark: boolean) => ThemeInterface = isDark => ({
   paddingXL: "40px",
   paddingXS: "3px",
   borderRadius: "5px",
-  textL: "20px",
+  textL: "18px",
   textM: "16px",
   textS: "12px",
   textXL: "26px",
-  textXS: "10px",
   boxShadow: {
     shadowColor: "#777",
     shadowOffset: { width: 0, height: 5 },
@@ -72,7 +71,6 @@ export interface ThemeInterface {
   textM: string
   textS: string
   textXL: string
-  textXS: string
   boxShadow: any
   flexCenter: string
   flexBetween: string

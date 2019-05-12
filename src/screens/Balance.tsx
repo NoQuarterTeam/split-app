@@ -1,10 +1,10 @@
 import React, { FC, Fragment } from "react"
-import { Text } from "react-native"
 
 import styled from "../application/theme"
 import useAppContext from "../lib/hooks/useAppContext"
 import { round } from "../lib/helpers"
 
+import Text from "../components/styled/Text"
 import Page from "../components/Page"
 import HouseName from "../components/HouseName"
 import HouseBalance from "../components/HouseBalance"
@@ -41,13 +41,11 @@ export default Balance
 
 const StyledHeader = styled.View`
   width: 100%;
-  display: flex;
-  padding: ${p => p.theme.paddingL};
-  margin-top: ${p => p.theme.paddingM};
+  padding: ${p => p.theme.paddingL} 0;
 `
 
-const HouseSummary = styled.Text`
+const HouseSummary = styled(Text)`
   font-size: ${p => p.theme.textM};
-  padding: ${p => p.theme.paddingM} 0;
+  padding-top: ${p => p.theme.paddingM};
   color: ${p => p.theme.colorLabel};
 `

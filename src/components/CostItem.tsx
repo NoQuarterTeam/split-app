@@ -4,6 +4,7 @@ import { CostFragment, PayerFragment } from "../lib/connector"
 
 import styled from "../application/theme"
 import { round, capitalize } from "../lib/helpers"
+import Text from "../components/styled/Text"
 
 // import IconRepeat from "../assets/images/icon-repeat.svg"
 // import IconClock from "../assets/images/icon-clock.svg"
@@ -59,12 +60,11 @@ const StyledCost = styled.View`
   border-radius: ${p => p.theme.borderRadius};
   ${p => p.theme.flexBetween};
 `
-const StyledValue = styled.Text`
+const StyledValue = styled(Text)`
   display: flex;
   align-items: center;
   justify-content: flex-start;
   font-size: ${p => p.theme.textS};
-  color: ${p => p.theme.colorText};
 `
 
 // const StyledInfoIcon = styled.img`
@@ -73,11 +73,10 @@ const StyledValue = styled.Text`
 //   display: grid;
 // `
 
-const StyledCostName = styled.Text`
+const StyledCostName = styled(Text)`
   font-size: ${p => p.theme.textS};
-  color: ${p => p.theme.colorText};
 `
-const StyledCostCategory = styled.Text`
+const StyledCostCategory = styled(Text)`
   color: ${p => p.theme.colorLabel};
   font-size: ${p => p.theme.textS};
 `

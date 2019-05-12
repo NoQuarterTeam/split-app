@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import styled from "../application/theme"
-import Column from "./styled/Column"
 import useAppContext from "../lib/hooks/useAppContext"
+import Column from "./styled/Column"
+import Text from "../components/styled/Text"
 
 interface CostsHeaderProps {
   onSubmit: (search: string) => void
@@ -29,7 +30,7 @@ function CostsHeader({ onSubmit }: CostsHeaderProps) {
           value={search}
           onBlur={() => setFocus(false)}
           onFocus={() => setFocus(true)}
-          placeholderTextColor={theme.colorPlaceholder}
+          placeholderTextColor={theme.colorLabel}
           onChangeText={setSearch}
           onSubmitEditing={handleSubmit}
         />
@@ -65,38 +66,37 @@ const StyledCostsHeader = styled.View`
 `
 
 const StyledInputWrap = styled.View`
-  background-color: ${p => p.theme.colorPage};
   width: 100%;
+  background-color: ${p => p.theme.colorPage};
   border-radius: ${p => p.theme.borderRadius};
-  padding: ${p => `${p.theme.paddingS} ${p.theme.paddingM}`};
   ${p => p.theme.flexBetween};
 `
 
 const StyledInput = styled.TextInput`
-  background-color: transparent;
   border: 0;
   flex-grow: 1;
   color: ${p => p.theme.colorText};
   padding: ${p => p.theme.paddingM};
   font-size: ${p => p.theme.textM};
+  font-family: "Verdana";
 `
 
-const StyledCancel = styled.TouchableOpacity``
+const StyledCancel = styled.TouchableOpacity`
+  padding: 0 ${p => p.theme.paddingM};
+`
+
 const StyledCancelText = styled.Text`
   color: ${p => p.theme.colorLabel};
 `
 
 const StyledTableHeader = styled.View`
   width: 100%;
-  margin: ${p => p.theme.paddingL} 0;
   padding: ${p => p.theme.paddingM};
+  margin: ${p => p.theme.paddingM} 0;
   ${p => p.theme.flexCenter};
 `
 
-const StyledLabel = styled.Text`
-  text-transform: uppercase;
-  letter-spacing: 1px;
+const StyledLabel = styled(Text)`
   color: ${p => p.theme.colorLabel};
-  font-size: ${p => p.theme.textXS};
-  font-weight: ${p => p.theme.fontBold};
+  font-size: ${p => p.theme.textS};
 `

@@ -60,6 +60,7 @@ const StyledInput = styled.TextInput<{ hasPrefix?: boolean }>`
   ${p => p.hasPrefix && "padding-left: 16px"};
   border-top-left-radius: ${p => p.theme.borderRadius};
   border-top-right-radius: ${p => p.theme.borderRadius};
+  font-family: "Verdana";
 `
 
 const StyledPrefix = styled.Text`

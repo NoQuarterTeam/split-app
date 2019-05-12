@@ -8,6 +8,7 @@ import Page from "../components/Page"
 import CostItem from "../components/CostItem"
 import { FlatList } from "react-native"
 import CostsHeader from "../components/CostsHeader"
+import Header from "../components/styled/Header"
 
 const Costs: FC = () => {
   const { house } = useAppContext()
@@ -37,9 +38,7 @@ const Costs: FC = () => {
 
 export default Costs
 
-const StyledTitle = styled.Text`
-  color: ${p => p.theme.colorText};
-  font-size: ${p => p.theme.textL};
+const StyledTitle = styled(Header)`
   padding: ${p => p.theme.paddingL} 0;
-  font-weight: ${p => p.theme.fontBold};
+  font-size: ${p => p.theme.textXL};
 `

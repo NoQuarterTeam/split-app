@@ -47,10 +47,7 @@ const StyledInput = styled.TextInput`
   width: 100%;
   border: 0;
   padding: 0;
-  border: 2px solid transparent;
   background-color: transparent;
   color: ${p => p.theme.colorText};
-  border-radius: ${p => p.theme.borderRadius};
-  font-size: ${p => p.theme.textL};
-  font-weight: ${p => p.theme.fontBlack};
+  font-size: ${p => p.theme.textXL};
 `

@@ -1,6 +1,5 @@
-import React, { FC } from "react"
-import { Text, Button } from "react-native"
-import { useLogout } from "../lib/connector"
+import React, { FC, Fragment } from "react"
+import { Text } from "react-native"
 
 import styled from "../application/theme"
 import useAppContext from "../lib/hooks/useAppContext"
@@ -8,13 +7,11 @@ import { round } from "../lib/helpers"
 
 import Page from "../components/Page"
 import HouseName from "../components/HouseName"
+import HouseBalance from "../components/HouseBalance"
 
 const Balance: FC = () => {
   const { user, house } = useAppContext()
   if (!house) return <Text>Create House Form</Text>
-
-  const logout = useLogout()
-  const handleLogout = () => logout()
 
   const getBalanceHeader = () => {
     if (user.balance > 0) {
@@ -28,17 +25,13 @@ const Balance: FC = () => {
       {house.invites.length === 0 && house.users.length === 1 ? (
         <Text>Invite Form</Text>
       ) : (
-        <StyledWrapper>
+        <Fragment>
           <StyledHeader>
             <HouseName house={house} />
             <HouseSummary>{getBalanceHeader()}</HouseSummary>
           </StyledHeader>
-          <Text>House balance</Text>
-          <StyledInviteWrapper>
-            <Text>House invite</Text>
-          </StyledInviteWrapper>
-          <Button onPress={handleLogout} title="logout" />
-        </StyledWrapper>
+          <HouseBalance users={house.users} />
+        </Fragment>
       )}
     </Page>
   )
@@ -46,27 +39,15 @@ const Balance: FC = () => {
 
 export default Balance
 
-const StyledWrapper = styled.View`
-  padding: ${p => p.theme.paddingL};
-`
-
 const StyledHeader = styled.View`
   width: 100%;
   display: flex;
-  padding: ${p => p.theme.paddingS};
-  padding-left: 60px;
+  padding: ${p => p.theme.paddingL};
+  margin-top: ${p => p.theme.paddingM};
 `
 
 const HouseSummary = styled.Text`
-  padding-left: ${p => p.theme.paddingS};
   font-size: ${p => p.theme.textM};
+  padding: ${p => p.theme.paddingM} 0;
   color: ${p => p.theme.colorLabel};
-`
-
-const StyledInviteWrapper = styled.View`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: ${p => p.theme.paddingL};
-  ${p => p.theme.flexBetween};
 `

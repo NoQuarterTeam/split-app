@@ -11,33 +11,42 @@ const theme: (isDark: boolean) => ThemeInterface = isDark => ({
   colorPink: "#ed60d3",
   colorBlue: "#11a9ff",
   fontBlack: 900,
-  fontBold: 400,
-  fontNormal: 200,
+  fontBold: 700,
+  fontNormal: 400,
   paddingL: "20px",
   paddingM: "10px",
   paddingS: "5px",
   paddingXL: "40px",
   paddingXS: "3px",
   borderRadius: "5px",
-  textL: "22px",
+  textL: "20px",
   textM: "16px",
   textS: "12px",
-  textXL: "28px",
+  textXL: "26px",
   textXS: "10px",
+  boxShadow: {
+    shadowColor: "#777",
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+  },
   flexCenter: `
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
   `,
   flexBetween: `
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: row;
   `,
   flexAround: `
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-direction: row;
   `,
 })
 
@@ -64,6 +73,7 @@ export interface ThemeInterface {
   textS: string
   textXL: string
   textXS: string
+  boxShadow: any
   flexCenter: string
   flexBetween: string
   flexAround: string

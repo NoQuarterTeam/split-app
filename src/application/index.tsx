@@ -1,5 +1,5 @@
 import React from "react"
-
+import "../lib/prototypes"
 import AppProvider from "../components/providers/AppProvider"
 import CheckUser from "../components/CheckUser"
 import Routes from "./routes"

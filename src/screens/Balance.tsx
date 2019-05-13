@@ -1,7 +1,7 @@
 import React, { FC, Fragment } from "react"
 
 import styled from "../application/theme"
-import useAppContext from "../lib/hooks/useAppContext"
+import { useAppState } from "../lib/hooks/useAppContext"
 import { round } from "../lib/helpers"
 
 import Text from "../components/styled/Text"
@@ -10,7 +10,7 @@ import HouseName from "../components/HouseName"
 import HouseBalance from "../components/HouseBalance"
 
 const Balance: FC = () => {
-  const { user, house } = useAppContext()
+  const { user, house } = useAppState()
   if (!house) return <Text>Create House Form</Text>
 
   const getBalanceHeader = () => {

@@ -3,10 +3,10 @@ import {
   RouteProvider as RouteContextProvider,
   Routes,
 } from "../../application/context"
-import useAppContext from "../../lib/hooks/useAppContext"
+import { useAppState } from "../../lib/hooks/useAppContext"
 
 const RouteProvider: FC = ({ children }) => {
-  const { user } = useAppContext()
+  const { user } = useAppState()
   const [route, setRoute] = useState<Routes>(user ? "BALANCE" : "LOGIN")
   return (
     <RouteContextProvider value={{ route, setRoute }}>

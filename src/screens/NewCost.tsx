@@ -1,15 +1,33 @@
 import React from "react"
-import { View, Text } from "react-native"
 import Button from "../components/Button"
-import useAppContext from "../lib/hooks/useAppContext"
+import { useAppState, useRoute } from "../lib/hooks/useAppContext"
+import Page from "../components/Page"
+import CostForm from "../components/CostForm"
+import { useCreateCost, CostInput } from "../lib/connector"
 
 function NewCost() {
-  const { setRoute } = useAppContext()
+  const { user } = useAppState()
+  const { setRoute } = useRoute()
+  if (!user.houseId) setRoute("BALANCE")
+  const createCost = useCreateCost(user.houseId || "")
+
+  const handleCreateCost = async (costData: CostInput) => {
+    await createCost({
+      variables: {
+        data: costData,
+      },
+    })
+    if (window.history.state) {
+      setRoute("BALANCE")
+    } else {
+      setRoute("BALANCE")
+    }
+  }
   return (
-    <View>
-      <Text>New Cost screen</Text>
+    <Page title="New cost">
+      <CostForm onFormSubmit={handleCreateCost} />
       <Button text="back" onPress={() => setRoute("BALANCE")} />
-    </View>
+    </Page>
   )
 }
 

@@ -1,24 +1,21 @@
 import React, { FC, useState } from "react"
 import { useAllCosts } from "../lib/connector"
-import styled from "../application/theme"
 
-import useAppContext from "../lib/hooks/useAppContext"
+import { useAppState } from "../lib/hooks/useAppContext"
 
 import Page from "../components/Page"
 import CostItem from "../components/CostItem"
 import { FlatList } from "react-native"
 import CostsHeader from "../components/CostsHeader"
-import Header from "../components/styled/Header"
 
 const Costs: FC = () => {
-  const { house } = useAppContext()
+  const { house } = useAppState()
   if (!house) return null
   const [search, setSearch] = useState<string>("")
   const { costs, fetchMore, refresh } = useAllCosts(house.id, search)
 
   return (
-    <Page>
-      <StyledTitle>Costs</StyledTitle>
+    <Page title="Costs">
       <FlatList
         data={costs}
         showsVerticalScrollIndicator={false}
@@ -37,8 +34,3 @@ const Costs: FC = () => {
 }
 
 export default Costs
-
-const StyledTitle = styled(Header)`
-  padding: ${p => p.theme.paddingL} 0;
-  font-size: ${p => p.theme.textXL};
-`

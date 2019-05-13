@@ -10,6 +10,13 @@ export const round = (value: number, places = 2) => {
   return Math.round(value * exp) / exp
 }
 
+export const sumBy = (arr: any, key: string, abs?: boolean) => {
+  return arr.reduce((acc: any, item: any) => {
+    if (abs) return Math.abs(item[key]) + acc
+    return acc + item[key]
+  }, 0)
+}
+
 export const sleep = (delay: number) => {
   return new Promise(resolve => {
     setTimeout(() => resolve(), delay)

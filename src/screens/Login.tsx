@@ -5,14 +5,14 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { useLogin } from "../lib/connector"
 
 import styled from "../application/theme"
-import useAppContext from "../lib/hooks/useAppContext"
+import { useRoute } from "../lib/hooks/useAppContext"
 import Input from "../components/Input"
 import Button from "../components/Button"
 import Spacer from "../components/styled/Spacer"
 import Logo from "../components/Logo"
 
 function Login() {
-  const { setRoute } = useAppContext()
+  const { setRoute } = useRoute()
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
   const passwordRef = useRef<TextInput>(null)

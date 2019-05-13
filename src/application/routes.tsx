@@ -1,11 +1,11 @@
 import React from "react"
-import useAppContext from "../lib/hooks/useAppContext"
+import { useRoute } from "../lib/hooks/useAppContext"
 import Balance from "../screens/Balance"
 import Costs from "../screens/Costs"
 import NewCost from "../screens/NewCost"
 
 function Routes() {
-  const { route } = useAppContext()
+  const { route } = useRoute()
   switch (route) {
     case "BALANCE":
       return <Balance />

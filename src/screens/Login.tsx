@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react"
 import { GraphQLError } from "graphql"
 import { TextInput } from "react-native"
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view"
 import { useLogin } from "../lib/connector"
 
 import styled from "../application/theme"
@@ -10,6 +9,8 @@ import Input from "../components/Input"
 import Button from "../components/Button"
 import Spacer from "../components/styled/Spacer"
 import Logo from "../components/Logo"
+import Text from "../components/styled/Text"
+import AuthForm from "../components/AuthForm"
 
 function Login() {
   const { setRoute } = useRoute()
@@ -27,7 +28,7 @@ function Login() {
       variables: { data: { email, password } },
     })
       .then(() => {
-        setRoute("BALANCE")
+        setRoute({ type: "route", route: "BALANCE" })
       })
       .catch((loginError: GraphQLError) => {
         setLoading(false)
@@ -36,75 +37,64 @@ function Login() {
   }
 
   return (
-    <KeyboardAwareScrollView>
-      <StyledAuthForm>
-        <Logo />
-        <Spacer />
-        <Input
-          label="Email"
-          keyboardType="email-address"
-          enablesReturnKeyAutomatically={true}
-          blurOnSubmit={false}
-          autoCapitalize="none"
-          placeholder="jimsebe@gmail.com"
-          returnKeyLabel="next"
-          returnKeyType="next"
-          onSubmitEditing={() =>
-            passwordRef.current && passwordRef.current.focus()
-          }
-          onChangeText={setEmail}
-          value={email}
-        />
-        <Spacer />
-        <Input
-          ref={passwordRef}
-          label="Password"
-          autoCapitalize="none"
-          secureTextEntry={true}
-          placeholder="********"
-          returnKeyLabel="done"
-          returnKeyType="done"
-          onChangeText={setPassword}
-          onSubmitEditing={handleSubmit}
-          value={password}
-        />
-        <Spacer />
-        <Button
-          loading={loading}
-          text="Login"
-          variant="primary"
-          color="pink"
-          onPress={handleSubmit}
-          disabled={loading}
-        />
-        {error ? (
-          <StyledError>
-            <StyledErrorMessage>{error}</StyledErrorMessage>
-          </StyledError>
-        ) : null}
-        <Spacer />
-        <Button
-          full={true}
-          text="Sign up"
-          variant="tertiary"
-          color="blue"
-          onPress={() => setRoute("REGISTER")}
-          disabled={loading}
-        />
-      </StyledAuthForm>
-    </KeyboardAwareScrollView>
+    <AuthForm>
+      <Logo />
+      <Spacer />
+      <Input
+        label="Email"
+        keyboardType="email-address"
+        enablesReturnKeyAutomatically={true}
+        blurOnSubmit={false}
+        autoCapitalize="none"
+        placeholder="jimsebe@gmail.com"
+        returnKeyLabel="next"
+        returnKeyType="next"
+        onSubmitEditing={() =>
+          passwordRef.current && passwordRef.current.focus()
+        }
+        onChangeText={setEmail}
+        value={email}
+      />
+      <Spacer />
+      <Input
+        ref={passwordRef}
+        label="Password"
+        autoCapitalize="none"
+        secureTextEntry={true}
+        placeholder="********"
+        returnKeyLabel="done"
+        returnKeyType="done"
+        onChangeText={setPassword}
+        onSubmitEditing={handleSubmit}
+        value={password}
+      />
+      <Spacer />
+      <Button
+        loading={loading}
+        text="Login"
+        variant="primary"
+        color="pink"
+        onPress={handleSubmit}
+        disabled={loading}
+      />
+      {error ? (
+        <StyledError>
+          <StyledErrorMessage>{error}</StyledErrorMessage>
+        </StyledError>
+      ) : null}
+      <Spacer />
+      <Button
+        text="Sign up"
+        variant="tertiary"
+        color="blue"
+        onPress={() => setRoute({ type: "route", route: "REGISTER" })}
+        disabled={loading}
+      />
+    </AuthForm>
   )
 }
 
 export default Login
-
-const StyledAuthForm = styled.View`
-  width: 100%;
-  align-items: center;
-  justify-content: flex-start;
-  padding: ${p => p.theme.paddingXL};
-  padding-top: 80px;
-`
 
 const StyledError = styled.View`
   opacity: 0.4;
@@ -112,8 +102,6 @@ const StyledError = styled.View`
   padding: ${p => p.theme.paddingM};
 `
 
-const StyledErrorMessage = styled.Text`
-  font-size: ${p => p.theme.textS};
+const StyledErrorMessage = styled(Text)`
   text-align: right;
-  color: ${p => p.theme.colorText};
 `

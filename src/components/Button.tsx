@@ -17,7 +17,7 @@ interface ButtonProps {
 
 function Button({
   variant = "primary",
-  color = "blue",
+  color = "pink",
   loading = false,
   disabled = false,
   ...props
@@ -55,7 +55,7 @@ const tertiaryStyles = () => css`
 `
 
 const getVariantStyles = ({
-  color = "blue",
+  color = "pink",
   variant = "primary",
 }: ThemeInterface & ButtonProps) => {
   switch (variant) {

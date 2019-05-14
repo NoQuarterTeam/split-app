@@ -34,7 +34,7 @@ export const ThemeProvider = ThemeContext.Provider
 
 // Route
 
-export type Routes = "LOGIN" | "REGISTER" | "BALANCE" | "COSTS" | "NEW_COST"
+export type Routes = "LOGIN" | "REGISTER" | "BALANCE" | "COSTS" | "SETTINGS"
 export type Modals = "NEW_COST" | "EDIT_COST" | null
 
 export interface RouteContext {

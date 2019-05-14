@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "../application/theme"
+import Text from "./styled/Text"
 
 function Logo() {
   return (
@@ -22,7 +23,6 @@ const StyledLogoContainer = styled.View`
 const StyledImage = styled.Image`
   width: 40px;
 `
-const StyledLogo = styled.Text`
+const StyledLogo = styled(Text)`
   font-size: ${p => p.theme.textL};
-  color: ${p => p.theme.colorText};
 `

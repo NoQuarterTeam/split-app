@@ -17,9 +17,13 @@ function renderAuthRoutes(route: string) {
 
 const CheckUser: FC = ({ children }) => {
   const { user } = useAppState()
-  const { route } = useRoute()
+  const { routes } = useRoute()
 
-  return user ? <Fragment>{children}</Fragment> : renderAuthRoutes(route)
+  return user ? (
+    <Fragment>{children}</Fragment>
+  ) : (
+    renderAuthRoutes(routes.currentRoute)
+  )
 }
 
 export default CheckUser

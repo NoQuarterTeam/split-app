@@ -20,12 +20,11 @@ function BottomBar() {
       </StyledTab>
       <StyledTab>
         <TouchableOpacity
-          onPress={() => setRoute({ type: "modal", modal: "NEW_COST" })}
+          onPress={() => setRoute({ type: "route", route: "SETTINGS" })}
         >
-          <Image
-            source={require("../assets/images/icon-plus.png")}
-            style={{ width: 75, height: 75 }}
-          />
+          <StyledTabText active={routes.currentRoute === "SETTINGS"}>
+            Settings
+          </StyledTabText>
         </TouchableOpacity>
       </StyledTab>
       <StyledTab>
@@ -35,6 +34,16 @@ function BottomBar() {
           <StyledTabText active={routes.currentRoute === "COSTS"}>
             Costs
           </StyledTabText>
+        </TouchableOpacity>
+      </StyledTab>
+      <StyledTab>
+        <TouchableOpacity
+          onPress={() => setRoute({ type: "modal", modal: "NEW_COST" })}
+        >
+          <Image
+            source={require("../assets/images/icon-plus.png")}
+            style={{ width: 75, height: 75 }}
+          />
         </TouchableOpacity>
       </StyledTab>
       <NewCost modalOpen={routes.modal === "NEW_COST"} />
@@ -53,6 +62,12 @@ const StyledBottomBar = styled.View`
   ${p => p.theme.flexAround};
 `
 
+// const StyledMainButton = styled.View`
+//   position: absolute;
+//   bottom: 40px;
+//   width: 100%;
+//   ${p => p.theme.flexCenter};
+// `
 const StyledTab = styled.View`
   flex: 1;
   ${p => p.theme.flexCenter};

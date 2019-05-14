@@ -1,4 +1,5 @@
 import React, { FC, Fragment } from "react"
+import { ScrollView, RefreshControl } from "react-native"
 
 import styled from "../application/theme"
 import { useAppState } from "../lib/hooks/useAppContext"
@@ -10,9 +11,12 @@ import HouseName from "../components/HouseName"
 import HouseBalance from "../components/HouseBalance"
 
 const Balance: FC = () => {
-  const { user, house } = useAppState()
+  const { user, house, refetch } = useAppState()
   if (!house) return <Text>Create House Form</Text>
 
+  const handleRefetchBalance = () => {
+    refetch()
+  }
   const getBalanceHeader = () => {
     if (user.balance > 0) {
       return `You are owed €${round(user.balance * 0.01)}`
@@ -30,7 +34,17 @@ const Balance: FC = () => {
             <HouseName house={house} />
             <HouseSummary>{getBalanceHeader()}</HouseSummary>
           </StyledHeader>
-          <HouseBalance users={house.users} />
+          <ScrollView
+            refreshControl={
+              <RefreshControl
+                refreshing={false}
+                onRefresh={handleRefetchBalance}
+              />
+            }
+            contentContainerStyle={{ height: "100%" }}
+          >
+            <HouseBalance users={house.users} />
+          </ScrollView>
         </Fragment>
       )}
     </Page>

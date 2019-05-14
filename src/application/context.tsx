@@ -7,11 +7,13 @@ import { ThemeInterface, theme } from "./theme"
 export interface StateContext {
   user: MeQuery["me"]
   house: GetHouseQuery["house"]
+  refetch: () => void
 }
 
 export const StateContext = React.createContext<StateContext>({
   user: null,
   house: null,
+  refetch: () => {},
 })
 
 export const StateProvider = StateContext.Provider

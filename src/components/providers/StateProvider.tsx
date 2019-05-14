@@ -5,10 +5,10 @@ import Loading from "../styled/Loading"
 
 const StateProvider: FC = ({ children }) => {
   const { user, userLoading } = useMe()
-  const { house, getHouseLoading } = useGetHouse()
+  const { house, getHouseLoading, refetch } = useGetHouse()
 
   return (
-    <StateContextProvider value={{ user, house }}>
+    <StateContextProvider value={{ user, house, refetch }}>
       {userLoading || getHouseLoading ? (
         <Loading />
       ) : (

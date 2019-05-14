@@ -9,9 +9,9 @@ import {
 } from "../types"
 
 export function useGetHouse() {
-  const { data, error, loading } = useGetHouseQuery()
+  const { data, error, loading, refetch } = useGetHouseQuery()
   const house = (data && data.house) || null
-  return { house, getHouseLoading: loading, getHouseError: error }
+  return { house, getHouseLoading: loading, getHouseError: error, refetch }
 }
 
 export function useCreateHouse() {

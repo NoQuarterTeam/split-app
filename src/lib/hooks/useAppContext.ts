@@ -10,6 +10,7 @@ export function useAppState() {
   if (!stateContext)
     throw new Error("hook must be called under <StateProvider>")
   return {
+    ...stateContext,
     user: stateContext.user!, // eslint-disable-line
     house: stateContext.house!, // eslint-disable-line
   }

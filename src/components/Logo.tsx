@@ -22,6 +22,7 @@ const StyledLogoContainer = styled.View`
 
 const StyledImage = styled.Image`
   width: 40px;
+  height: 40px;
 `
 const StyledLogo = styled(Text)`
   font-size: ${p => p.theme.textL};

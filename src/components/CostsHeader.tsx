@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import styled from "../application/theme"
-import useAppContext from "../lib/hooks/useAppContext"
+import { useTheme } from "../lib/hooks/useAppContext"
 import Column from "./styled/Column"
 import Text from "../components/styled/Text"
 
@@ -9,7 +9,7 @@ interface CostsHeaderProps {
 }
 
 function CostsHeader({ onSubmit }: CostsHeaderProps) {
-  const { theme } = useAppContext()
+  const { theme } = useTheme()
   const [search, setSearch] = useState<string>("")
   const [focus, setFocus] = useState<boolean>(false)
 

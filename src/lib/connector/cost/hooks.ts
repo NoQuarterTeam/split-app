@@ -88,24 +88,34 @@ export function useDestroyCost(cost: CostFragment) {
     variables: { costId: cost.id },
     refetchQueries: [{ query: GetHouseDocument }],
     update: (cache, { data }) => {
-      const costsData = cache.readQuery<AllCostsQuery, AllCostsQueryVariables>({
-        query: AllCostsDocument,
-        variables: { houseId: cost.houseId, skip: 0, search: "" },
-      })
-      if (data && costsData && costsData.allCosts && costsData.allCosts.costs) {
-        const costs = costsData.allCosts.costs.filter(c => c.id !== cost.id)
-        cache.writeQuery({
+      try {
+        const costsData = cache.readQuery<
+          AllCostsQuery,
+          AllCostsQueryVariables
+        >({
           query: AllCostsDocument,
-          data: {
-            allCosts: {
-              __typename: costsData.allCosts.__typename,
-              count: costsData.allCosts.count,
-              costs,
-            },
-          },
           variables: { houseId: cost.houseId, skip: 0, search: "" },
         })
-      }
+        if (
+          data &&
+          costsData &&
+          costsData.allCosts &&
+          costsData.allCosts.costs
+        ) {
+          const costs = costsData.allCosts.costs.filter(c => c.id !== cost.id)
+          cache.writeQuery({
+            query: AllCostsDocument,
+            data: {
+              allCosts: {
+                __typename: costsData.allCosts.__typename,
+                count: costsData.allCosts.count,
+                costs,
+              },
+            },
+            variables: { houseId: cost.houseId, skip: 0, search: "" },
+          })
+        }
+      } catch {}
     },
   })
 }
@@ -115,23 +125,28 @@ export function useCreateCost(houseId: string) {
     refetchQueries: [{ query: GetHouseDocument }],
     awaitRefetchQueries: true,
     update: (cache, { data }) => {
-      const costsData = cache.readQuery<AllCostsQuery, AllCostsQueryVariables>({
-        query: AllCostsDocument,
-        variables: { houseId, skip: 0, search: "" },
-      })
-      if (data && costsData && costsData.allCosts) {
-        cache.writeQuery({
+      try {
+        const costsData = cache.readQuery<
+          AllCostsQuery,
+          AllCostsQueryVariables
+        >({
           query: AllCostsDocument,
           variables: { houseId, skip: 0, search: "" },
-          data: {
-            allCosts: {
-              __typename: costsData.allCosts.__typename,
-              count: costsData.allCosts.count,
-              costs: [data.createCost, ...costsData.allCosts.costs],
-            },
-          },
         })
-      }
+        if (data && costsData && costsData.allCosts) {
+          cache.writeQuery({
+            query: AllCostsDocument,
+            variables: { houseId, skip: 0, search: "" },
+            data: {
+              allCosts: {
+                __typename: costsData.allCosts.__typename,
+                count: costsData.allCosts.count,
+                costs: [data.createCost, ...costsData.allCosts.costs],
+              },
+            },
+          })
+        }
+      } catch {}
     },
   })
 }

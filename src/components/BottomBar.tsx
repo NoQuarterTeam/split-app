@@ -1,20 +1,27 @@
 import React from "react"
 import styled from "../application/theme"
 import { Image, TouchableOpacity } from "react-native"
-import useAppContext from "../lib/hooks/useAppContext"
+import { useRoute } from "../lib/hooks/useAppContext"
 import Text from "../components/styled/Text"
+import NewCost from "../screens/NewCost"
 
 function BottomBar() {
-  const { route, setRoute } = useAppContext()
+  const { routes, setRoute } = useRoute()
   return (
     <StyledBottomBar>
       <StyledTab>
-        <TouchableOpacity onPress={() => setRoute("BALANCE")}>
-          <StyledTabText active={route === "BALANCE"}>Balance</StyledTabText>
+        <TouchableOpacity
+          onPress={() => setRoute({ type: "route", route: "BALANCE" })}
+        >
+          <StyledTabText active={routes.currentRoute === "BALANCE"}>
+            Balance
+          </StyledTabText>
         </TouchableOpacity>
       </StyledTab>
       <StyledTab>
-        <TouchableOpacity onPress={() => setRoute("NEW_COST")}>
+        <TouchableOpacity
+          onPress={() => setRoute({ type: "modal", modal: "NEW_COST" })}
+        >
           <Image
             source={require("../assets/images/icon-plus.png")}
             style={{ width: 75, height: 75 }}
@@ -22,10 +29,15 @@ function BottomBar() {
         </TouchableOpacity>
       </StyledTab>
       <StyledTab>
-        <TouchableOpacity onPress={() => setRoute("COSTS")}>
-          <StyledTabText active={route === "COSTS"}>Costs</StyledTabText>
+        <TouchableOpacity
+          onPress={() => setRoute({ type: "route", route: "COSTS" })}
+        >
+          <StyledTabText active={routes.currentRoute === "COSTS"}>
+            Costs
+          </StyledTabText>
         </TouchableOpacity>
       </StyledTab>
+      <NewCost modalOpen={routes.modal === "NEW_COST"} />
     </StyledBottomBar>
   )
 }

@@ -1,6 +1,6 @@
 import React, { FC, Fragment } from "react"
 
-import useAppContext from "../lib/hooks/useAppContext"
+import { useAppState, useRoute } from "../lib/hooks/useAppContext"
 import Login from "../screens/Login"
 import Register from "../screens/Register"
 
@@ -16,7 +16,9 @@ function renderAuthRoutes(route: string) {
 }
 
 const CheckUser: FC = ({ children }) => {
-  const { user, route } = useAppContext()
+  const { user } = useAppState()
+  const { route } = useRoute()
+
   return user ? <Fragment>{children}</Fragment> : renderAuthRoutes(route)
 }
 

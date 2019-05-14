@@ -1,13 +1,14 @@
 import React, { memo } from "react"
-import { CostInput, UserFragment } from "@split/connector"
+import { CostInput, UserFragment } from "../lib/connector"
 
-import styled, { media } from "../application/theme"
+import styled from "../application/theme"
 import { round } from "../lib/helpers"
 
 import Column from "./styled/Column"
 import Alert from "./Alert"
 import Participant from "./Participant"
 import Button from "./Button"
+import Text from "./styled/Text"
 
 interface CostSharesProps {
   users: UserFragment[]
@@ -61,13 +62,11 @@ function CostShares({
       {(isDifferent || !formState.equalSplit) && (
         <StyledButtonWrapper>
           <Button
-            type="button"
             color="pink"
             variant="secondary"
-            onClick={applyEqualSplit}
-          >
-            Split equally
-          </Button>
+            onPress={applyEqualSplit}
+            text="Split equally"
+          />
         </StyledButtonWrapper>
       )}
     </StyledCostShares>
@@ -76,28 +75,20 @@ function CostShares({
 
 export default memo(CostShares)
 
-const StyledCostShares = styled.div`
+const StyledCostShares = styled.View`
   width: 100%;
   padding: ${p => p.theme.paddingL};
   margin: ${p => p.theme.paddingXL} 0;
-
-  ${media.greaterThan("md")`
-    width: 40%;
-    margin: 0;
-  `}
 `
 
-const StyledHeader = styled.div`
+const StyledHeader = styled.View`
   ${p => p.theme.flexBetween};
   margin-bottom: ${p => p.theme.paddingL};
 `
 
-const StyledLabel = styled.div`
-  color: ${p => p.theme.colorLabel};
-  font-size: ${p => p.theme.textS};
-`
+const StyledLabel = styled(Text)``
 
-const StyledAlertWrapper = styled.div`
+const StyledAlertWrapper = styled.View`
   position: absolute;
   width: 100%;
   left: 0;
@@ -105,7 +96,7 @@ const StyledAlertWrapper = styled.div`
   ${p => p.theme.flexCenter};
 `
 
-const StyledButtonWrapper = styled.div`
+const StyledButtonWrapper = styled.View`
   position: absolute;
   left: 0;
   width: 100%;

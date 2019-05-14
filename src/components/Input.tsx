@@ -2,7 +2,9 @@ import React, { memo, forwardRef, Ref, useState } from "react"
 import { TextInputProps, TextInput } from "react-native"
 
 import styled, { lighten } from "../application/theme"
-import useAppContext from "../lib/hooks/useAppContext"
+import { useTheme } from "../lib/hooks/useAppContext"
+
+import Text from "./styled/Text"
 
 interface InputProps extends TextInputProps {
   label?: string
@@ -14,7 +16,7 @@ function Input(
   { label, prefix, style, ...inputProps }: InputProps,
   ref: Ref<TextInput>,
 ) {
-  const { theme } = useAppContext()
+  const { theme } = useTheme()
   const [focused, setFocused] = useState(false)
   return (
     <StyledContainer focused={focused}>
@@ -37,13 +39,14 @@ export default memo(forwardRef(Input))
 
 const StyledContainer = styled.View<{ focused: boolean }>`
   width: 100%;
+  position: relative;
   padding: ${p => p.theme.paddingS} 0;
   border-bottom-width: 2px;
   border-color: ${p =>
     p.focused ? p.theme.colorPink : lighten(0.25, p.theme.colorPink)};
 `
 
-const StyledLabel = styled.Text`
+const StyledLabel = styled(Text)`
   color: ${p => p.theme.colorLabel};
   font-size: ${p => p.theme.textS};
 `
@@ -58,14 +61,12 @@ const StyledInput = styled.TextInput<{ hasPrefix?: boolean }>`
   padding-top: ${p => p.theme.paddingM};
   padding-bottom: ${p => p.theme.paddingS};
   ${p => p.hasPrefix && "padding-left: 16px"};
-  border-top-left-radius: ${p => p.theme.borderRadius};
-  border-top-right-radius: ${p => p.theme.borderRadius};
   font-family: "Verdana";
 `
 
-const StyledPrefix = styled.Text`
+const StyledPrefix = styled(Text)`
   position: absolute;
   left: 0;
-  top: 11px;
+  top: 31px;
   color: ${p => p.theme.colorLabel};
 `

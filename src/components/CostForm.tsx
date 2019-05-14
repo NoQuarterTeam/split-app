@@ -10,6 +10,7 @@ import { useAppState } from "../lib/hooks/useAppContext"
 import CostInputs from "./CostInputs"
 import Button from "./Button"
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view"
+import CostShares from "./CostShares"
 // import CostShares from "./CostShares"
 // import ErrorBanner from "./ErrorBanner"
 
@@ -86,43 +87,38 @@ function CostForm({ cost, onFormSubmit, onCostDelete }: CostFormProps) {
           setFormState={setFormState}
           isEditing={!!cost && dayjs(cost.date).isBefore(dayjs())}
         />
-        {/* <CostShares
+        <CostShares
           users={house.users}
           formState={formState}
           isDifferent={isDifferent}
           setFormState={setFormState}
           applyEqualSplit={applyEqualSplit}
-        /> */}
-      </StyleFieldsWrapper>
-      <Fragment>
-        <Button
-          onPress={handleCostCreate}
-          disabled={loading}
-          loading={loading}
-          text="Submit"
         />
-        {onCostDelete && (
+        <Fragment>
           <Button
+            onPress={handleCostCreate}
+            disabled={loading}
+            loading={loading}
+            variant="primary"
             color="pink"
-            variant="tertiary"
-            text="Delete cost"
-            onPress={onCostDelete}
+            text="Submit"
           />
-        )}
-      </Fragment>
-      {/* {error && <ErrorBanner text={error} />} */}
+          {onCostDelete && (
+            <Button
+              color="pink"
+              variant="tertiary"
+              text="Delete cost"
+              onPress={onCostDelete}
+            />
+          )}
+        </Fragment>
+        {/* {error && <ErrorBanner text={error} />} */}
+      </StyleFieldsWrapper>
     </KeyboardAwareScrollView>
   )
 }
 
 export default CostForm
-
-const StyledForm = styled.View`
-  flex-wrap: wrap;
-  padding: ${p => p.theme.paddingL};
-
-  ${p => p.theme.flexBetween};
-`
 
 const StyleFieldsWrapper = styled.View`
   display: flex;
@@ -130,4 +126,5 @@ const StyleFieldsWrapper = styled.View`
   justify-content: flex-start;
   flex-wrap: wrap;
   width: 100%;
+  padding: ${p => p.theme.paddingL};
 `

@@ -2,7 +2,7 @@ import * as styledComponents from "styled-components/native"
 import { darken, lighten } from "polished"
 
 const theme: (isDark: boolean) => ThemeInterface = isDark => ({
-  colorPage: isDark ? "#2f3335" : "white",
+  colorPage: isDark ? "#2f3335" : "#fff",
   colorBackground: isDark ? "#373c3f" : "#f8f9fd",
   colorPlaceholder: isDark ? "#6f7172" : "#d3d3d3",
   colorShadow: isDark ? "rgba(0, 0, 0, 0.1)" : "rgba(200, 200, 200, 0.1)",

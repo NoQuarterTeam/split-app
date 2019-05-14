@@ -35,15 +35,24 @@ export const ThemeProvider = ThemeContext.Provider
 // Route
 
 export type Routes = "LOGIN" | "REGISTER" | "BALANCE" | "COSTS" | "NEW_COST"
+export type Modals = "NEW_COST" | "EDIT_COST" | null
 
 export interface RouteContext {
-  setRoute: (route: Routes) => void
-  route: Routes
+  setRoute: (action: any) => void
+  routes: {
+    currentRoute: Routes
+    modal: Modals
+    data: string | null
+  }
 }
 
 export const RouteContext = React.createContext<RouteContext>({
   setRoute: () => {},
-  route: "BALANCE",
+  routes: {
+    currentRoute: "BALANCE",
+    modal: null,
+    data: null,
+  },
 })
 
 export const RouteProvider = RouteContext.Provider

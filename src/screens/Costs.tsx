@@ -1,16 +1,19 @@
-import React, { FC, useState } from "react"
+import React, { FC, useState, Suspense } from "react"
 import { useAllCosts } from "../lib/connector"
+import { FlatList } from "react-native"
 
-import { useAppState } from "../lib/hooks/useAppContext"
+import { useAppState, useRoute } from "../lib/hooks/useAppContext"
 
 import Page from "../components/Page"
 import CostItem from "../components/CostItem"
-import { FlatList } from "react-native"
 import CostsHeader from "../components/CostsHeader"
+import EditCost from "./EditCost"
 
 const Costs: FC = () => {
   const { house } = useAppState()
-  if (!house) return null
+  if (!house) return null // TODO: Do something with these types of things,
+  // e.g. render the house form
+  const { routes } = useRoute()
   const [search, setSearch] = useState<string>("")
   const { costs, fetchMore, refresh } = useAllCosts(house.id, search)
 
@@ -29,6 +32,11 @@ const Costs: FC = () => {
         keyExtractor={item => item.id}
         renderItem={({ item }) => <CostItem cost={item} />}
       />
+      <Suspense fallback={null}>
+        {routes.modal === "EDIT_COST" && (
+          <EditCost costId={routes.data || ""} modalOpen={true} />
+        )}
+      </Suspense>
     </Page>
   )
 }

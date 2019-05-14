@@ -870,6 +870,11 @@
   dependencies:
     any-observable "^0.3.0"
 
+"@tele2/react-native-select-input@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@tele2/react-native-select-input/-/react-native-select-input-1.1.0.tgz#211f3ef1f5fda102f77e49afc8b3fda178bccf13"
+  integrity sha512-vo1IkASW5HwYvVlKzmEjVJxjDMFS8Kf+WH8+Zt9k4yH8mHNwK63d4UsuR6frZZMo+qx5uPXNr5yBCNfVdvC+tA==
+
 "@types/babel__core@^7.1.0":
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.1.tgz#ce9a9e5d92b7031421e1d0d74ae59f572ba48be6"

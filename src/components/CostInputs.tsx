@@ -4,7 +4,7 @@ import styled from "../application/theme"
 
 import { decimalCount } from "../lib/helpers"
 import Input from "./Input"
-import PickerSelect from "./PickerSelect"
+import Select from "./Select"
 
 interface CostInputsProps {
   formState: CostInput
@@ -20,7 +20,7 @@ function CostInputs({ formState, setFormState }: CostInputsProps) {
           label="Name"
           placeholder="Beers"
           value={formState.name}
-          onChange={name => setFormState({ name })}
+          onChangeText={name => setFormState({ name })}
         />
       </StyledInputWrapper>
       <StyledInputWrapper>
@@ -39,10 +39,10 @@ function CostInputs({ formState, setFormState }: CostInputsProps) {
         />
       </StyledInputWrapper>
       <StyledInputWrapper>
-        <PickerSelect
+        <Select
           label="Category"
-          selectedValue={formState.category}
-          onValueChange={category => setFormState({ category })}
+          value={formState.category}
+          onChange={category => setFormState({ category })}
           options={[
             { value: "food", label: "Food" },
             { value: "drinks", label: "Drinks" },
@@ -63,10 +63,10 @@ function CostInputs({ formState, setFormState }: CostInputsProps) {
         />
       </StyledInputWrapper>
       <StyledInputWrapper>
-        <PickerSelect
+        <Select
           label="Recurring"
-          selectedValue={formState.recurring}
-          onValueChange={recurring => setFormState({ recurring })}
+          value={formState.recurring}
+          onChange={recurring => setFormState({ recurring })}
           options={[
             { value: "one-off", label: "One off" },
             { value: "month", label: "Monthly" },

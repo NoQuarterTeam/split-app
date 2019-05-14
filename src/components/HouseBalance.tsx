@@ -3,7 +3,7 @@ import { UserFragment } from "../lib/connector"
 
 import styled, { darken } from "../application/theme"
 import { round } from "../lib/helpers"
-import useAppContext from "../lib/hooks/useAppContext"
+import { useAppState } from "../lib/hooks/useAppContext"
 import Text from "../components/styled/Text"
 
 import Avatar from "./Avatar"
@@ -13,7 +13,7 @@ interface HouseBalanceProps {
 }
 
 function HouseBalance({ users }: HouseBalanceProps) {
-  const { house } = useAppContext()
+  const { house } = useAppState()
   const total = users.sumBy("balance", true)
 
   return (
@@ -48,7 +48,7 @@ export default memo(HouseBalance)
 
 const StyledHouseBalance = styled.View`
   width: 100%;
-  height: 400px;
+  height: 85%;
   position: relative;
   ${p => p.theme.flexAround};
 `

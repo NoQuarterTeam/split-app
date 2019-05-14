@@ -11,14 +11,19 @@ import Text from "../components/styled/Text"
 
 import Column from "./styled/Column"
 import Avatar from "./Avatar"
+import { useRoute } from "../lib/hooks/useAppContext"
 
 interface CostProps {
   cost: CostFragment & PayerFragment
 }
 
 function CostItem({ cost }: CostProps) {
+  const { setRoute } = useRoute()
+  const handleCostPress = () => {
+    setRoute({ type: "modal", modal: "EDIT_COST", data: cost.id })
+  }
   return (
-    <StyledCost>
+    <StyledCost onPress={handleCostPress}>
       <Column flex={10}>
         <StyledCostName>{cost.name}</StyledCostName>
         <StyledCostCategory>{capitalize(cost.category)}</StyledCostCategory>
@@ -50,7 +55,7 @@ function CostItem({ cost }: CostProps) {
 
 export default memo(CostItem)
 
-const StyledCost = styled.View`
+const StyledCost = styled.TouchableOpacity`
   width: 100%;
   padding-right: 0;
   margin-bottom: ${p => p.theme.paddingM};

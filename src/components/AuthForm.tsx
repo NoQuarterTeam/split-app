@@ -7,7 +7,10 @@ interface AuthFormProps {
 }
 function AuthForm({ children }: AuthFormProps) {
   return (
-    <KeyboardAwareScrollView contentContainerStyle={{ height: "100%" }}>
+    <KeyboardAwareScrollView
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{ height: "100%" }}
+    >
       <StyledAuthForm>{children}</StyledAuthForm>
     </KeyboardAwareScrollView>
   )

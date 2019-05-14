@@ -80,7 +80,7 @@ function CostForm({ cost, onFormSubmit, onCostDelete }: CostFormProps) {
   }
 
   return (
-    <KeyboardAwareScrollView>
+    <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
       <StyleFieldsWrapper>
         <CostInputs
           formState={formState}

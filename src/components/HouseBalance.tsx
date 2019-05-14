@@ -54,7 +54,7 @@ export default memo(HouseBalance)
 
 const StyledHouseBalance = styled.View`
   width: 100%;
-  height: 85%;
+  height: 80%;
   position: relative;
   ${p => p.theme.flexAround};
 `

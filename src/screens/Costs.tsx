@@ -30,6 +30,7 @@ const Costs: FC = () => {
         onEndReachedThreshold={0.8}
         ListHeaderComponent={<CostsHeader onSubmit={setSearch} />}
         keyExtractor={item => item.id}
+        contentContainerStyle={{ paddingBottom: 80 }}
         renderItem={({ item }) => <CostItem cost={item} />}
       />
       <Suspense fallback={null}>

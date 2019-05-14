@@ -84,6 +84,15 @@ function Login() {
       ) : null}
       <Spacer />
       <Button
+        text="Forgot password?"
+        variant="tertiary"
+        color="text"
+        onPress={() => setRoute({ type: "route", route: "FORGOT_PASSWORD" })}
+        disabled={loading}
+      />
+      <Spacer />
+
+      <Button
         text="Sign up"
         variant="tertiary"
         color="text"

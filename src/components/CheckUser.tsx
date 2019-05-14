@@ -3,6 +3,7 @@ import React, { FC, Fragment } from "react"
 import { useAppState, useRoute } from "../lib/hooks/useAppContext"
 import Login from "../screens/Login"
 import Register from "../screens/Register"
+import ForgotPassword from "../screens/ForgotPassword"
 
 function renderAuthRoutes(route: string) {
   switch (route) {
@@ -10,6 +11,8 @@ function renderAuthRoutes(route: string) {
       return <Login />
     case "REGISTER":
       return <Register />
+    case "FORGOT_PASSWORD":
+      return <ForgotPassword />
     default:
       return <Login />
   }

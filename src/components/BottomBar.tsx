@@ -1,12 +1,13 @@
-import React from "react"
+import React, { Fragment } from "react"
 import styled from "../application/theme"
 import { Image, TouchableOpacity } from "react-native"
-import { useRoute } from "../lib/hooks/useAppContext"
+import { useRoute, useAppState } from "../lib/hooks/useAppContext"
 import Text from "../components/styled/Text"
 import NewCost from "../screens/NewCost"
 
 function BottomBar() {
   const { routes, setRoute } = useRoute()
+  const { house } = useAppState()
   return (
     <StyledBottomBar>
       <StyledTab>
@@ -27,26 +28,30 @@ function BottomBar() {
           </StyledTabText>
         </TouchableOpacity>
       </StyledTab>
-      <StyledTab>
-        <TouchableOpacity
-          onPress={() => setRoute({ type: "route", route: "COSTS" })}
-        >
-          <StyledTabText active={routes.currentRoute === "COSTS"}>
-            Costs
-          </StyledTabText>
-        </TouchableOpacity>
-      </StyledTab>
-      <StyledTab>
-        <TouchableOpacity
-          onPress={() => setRoute({ type: "modal", modal: "NEW_COST" })}
-        >
-          <Image
-            source={require("../assets/images/icon-plus.png")}
-            style={{ width: 75, height: 75 }}
-          />
-        </TouchableOpacity>
-      </StyledTab>
-      <NewCost modalOpen={routes.modal === "NEW_COST"} />
+      {house && (
+        <Fragment>
+          <StyledTab>
+            <TouchableOpacity
+              onPress={() => setRoute({ type: "route", route: "COSTS" })}
+            >
+              <StyledTabText active={routes.currentRoute === "COSTS"}>
+                Costs
+              </StyledTabText>
+            </TouchableOpacity>
+          </StyledTab>
+          <StyledTab>
+            <TouchableOpacity
+              onPress={() => setRoute({ type: "modal", modal: "NEW_COST" })}
+            >
+              <Image
+                source={require("../assets/images/icon-plus.png")}
+                style={{ width: 75, height: 75 }}
+              />
+            </TouchableOpacity>
+          </StyledTab>
+        </Fragment>
+      )}
+      {house && <NewCost modalOpen={routes.modal === "NEW_COST"} />}
     </StyledBottomBar>
   )
 }

@@ -25,4 +25,5 @@ const StyledImage = styled.Image`
 `
 const StyledLogo = styled(Text)`
   font-size: ${p => p.theme.textL};
+  color: ${p => p.theme.colorText};
 `

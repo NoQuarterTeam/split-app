@@ -1,7 +1,6 @@
 import React, { FC } from "react"
 import styled from "../application/theme"
 
-import BottomBar from "./BottomBar"
 import Header from "./styled/Header"
 
 type PageProps = {
@@ -15,7 +14,6 @@ const Page: FC<PageProps> = ({ children, title }) => {
         {title && <StyledTitle>{title}</StyledTitle>}
         {children}
       </StyledPageContent>
-      <BottomBar />
     </StyledPage>
   )
 }
@@ -38,6 +36,6 @@ const StyledPageContent = styled.View`
   width: 100%;
   min-height: 100%;
   padding: ${p => p.theme.paddingL};
-  padding-bottom: 140px;
+  padding-bottom: 80px;
   background-color: ${p => p.theme.colorBackground};
 `

@@ -86,7 +86,7 @@ function Login() {
       <Button
         text="Sign up"
         variant="tertiary"
-        color="blue"
+        color="text"
         onPress={() => setRoute({ type: "route", route: "REGISTER" })}
         disabled={loading}
       />

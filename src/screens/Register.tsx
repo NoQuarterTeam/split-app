@@ -117,7 +117,7 @@ function Register() {
         full={true}
         text="Login"
         variant="tertiary"
-        color="pink"
+        color="text"
         onPress={() => setRoute({ type: "route", route: "LOGIN" })}
         disabled={loading}
       />

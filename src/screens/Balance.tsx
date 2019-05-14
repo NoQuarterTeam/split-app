@@ -9,14 +9,13 @@ import Text from "../components/styled/Text"
 import Page from "../components/Page"
 import HouseName from "../components/HouseName"
 import HouseBalance from "../components/HouseBalance"
+import InviteForm from "../components/InviteForm"
 
 const Balance: FC = () => {
   const { user, house, refetch } = useAppState()
-  if (!house) return <Text>Create House Form</Text>
+  if (!house) return null
 
-  const handleRefetchBalance = () => {
-    refetch()
-  }
+  const handleRefetchBalance = () => refetch()
   const getBalanceHeader = () => {
     if (user.balance > 0) {
       return `You are owed €${round(user.balance * 0.01)}`
@@ -27,7 +26,7 @@ const Balance: FC = () => {
   return (
     <Page>
       {house.invites.length === 0 && house.users.length === 1 ? (
-        <Text>Invite Form</Text>
+        <InviteForm house={house} />
       ) : (
         <Fragment>
           <StyledHeader>

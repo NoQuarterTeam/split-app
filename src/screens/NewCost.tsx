@@ -1,14 +1,13 @@
 import React from "react"
+import { Modal } from "react-native"
 import Button from "../components/Button"
 import { useAppState, useRoute } from "../lib/hooks/useAppContext"
 import CostForm from "../components/CostForm"
 import { useCreateCost, CostInput } from "../lib/connector"
-import { Modal } from "react-native"
 
 function NewCost({ modalOpen }: { modalOpen: boolean }) {
   const { user } = useAppState()
   const { setRoute } = useRoute()
-  if (!user.houseId) setRoute({ type: "modal", modal: null })
   const createCost = useCreateCost(user.houseId || "")
 
   const handleCreateCost = async (costData: CostInput) => {

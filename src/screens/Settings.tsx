@@ -6,23 +6,21 @@ import Button from "../components/Button"
 import { useLogout } from "../lib/connector"
 import ProfileForm from "../components/ProfileForm"
 import { useAppState } from "../lib/hooks/useAppContext"
-import Spacer from "../components/styled/Spacer"
 
 function Settings() {
   const { user } = useAppState()
   const logout = useLogout()
   const handleLogout = () => logout()
   return (
-    <Page title="Settings">
+    <Page title="Settings" white={true}>
       <KeyboardAwareScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 160 }}
       >
         <ProfileForm user={user} />
-        <Spacer />
         <Button
-          color="text"
-          variant="tertiary"
+          variant="text"
+          color="tertiary"
           onPress={handleLogout}
           text="Logout"
         />

@@ -2,8 +2,8 @@ import React, { memo } from "react"
 import styled, { css, ThemeInterface, lighten } from "../application/theme"
 import { capitalize } from "../lib/helpers"
 
-export type Variant = "primary" | "secondary" | "tertiary"
-export type Color = "blue" | "pink" | "text"
+export type Color = "primary" | "secondary" | "tertiary"
+export type Variant = "block" | "outline" | "text"
 
 interface ButtonProps {
   onPress: () => void
@@ -16,8 +16,8 @@ interface ButtonProps {
 }
 
 function Button({
-  variant = "primary",
-  color = "pink",
+  variant = "block",
+  color = "primary",
   loading = false,
   disabled = false,
   ...props
@@ -39,42 +39,41 @@ function Button({
 
 export default memo(Button)
 
-const primaryStyles = (color: string) => css`
-  padding: ${p => `${p.theme.paddingM} ${p.theme.paddingXL}`};
+const blockStyles = (color: string) => css`
   background-color: ${p => p.theme["color" + capitalize(color)]};
 `
 
-const secondaryStyles = (color: string) => css`
+const outlineStyles = (color: string) => css`
   background-color: transparent;
-  padding: ${p => `${p.theme.paddingM} ${p.theme.paddingXL}`};
   border: 2px solid ${p => lighten(0.25, p.theme["color" + capitalize(color)])};
 `
 
-const tertiaryStyles = () => css`
+const textStyles = () => css`
   background-color: transparent;
 `
 
 const getVariantStyles = ({
-  color = "pink",
-  variant = "primary",
+  color = "primary",
+  variant = "block",
 }: ThemeInterface & ButtonProps) => {
   switch (variant) {
-    case "primary":
-      return primaryStyles(color)
-    case "secondary":
-      return secondaryStyles(color)
-    case "tertiary":
-      return tertiaryStyles
+    case "block":
+      return blockStyles(color)
+    case "outline":
+      return outlineStyles(color)
+    case "text":
+      return textStyles
     default:
-      return primaryStyles(color)
+      return blockStyles(color)
   }
 }
 
 const StyledButton = styled.TouchableOpacity<ButtonProps>`
-  border-radius: 100px;
+  border-radius: ${p => p.theme.borderRadius};
   margin: ${p => (p.full ? 0 : p.theme.paddingS)};
   width: ${p => (!p.full ? "auto" : "100%")};
   opacity: ${p => (p.disabled ? 0.5 : 1)};
+  padding: ${p => p.theme.paddingM};
   ${p => getVariantStyles({ ...p, ...p.theme })}
 `
 
@@ -83,5 +82,5 @@ const StyledText = styled.Text<{ color: Color; variant: Variant }>`
   text-align: center;
   font-size: ${p => p.theme.textM};
   color: ${p =>
-    p.variant === "primary" ? "white" : p.theme["color" + capitalize(p.color)]};
+    p.variant === "block" ? "white" : p.theme["color" + capitalize(p.color)]};
 `

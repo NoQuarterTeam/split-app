@@ -25,7 +25,7 @@ function Input(
       <StyledInput
         ref={ref}
         hasPrefix={!!prefix}
-        placeholderTextColor={theme.colorPlaceholder}
+        placeholderTextColor={theme.colorTertiary}
         style={style}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
@@ -41,25 +41,22 @@ const StyledContainer = styled.View<{ focused: boolean }>`
   width: 100%;
   position: relative;
   padding: ${p => p.theme.paddingS} 0;
-  border-bottom-width: 2px;
-  border-color: ${p =>
-    p.focused ? p.theme.colorPink : lighten(0.25, p.theme.colorPink)};
 `
 
 const StyledLabel = styled(Text)`
   color: ${p => p.theme.colorLabel};
   font-size: ${p => p.theme.textS};
+  padding: ${p => p.theme.paddingM} ${p => p.theme.paddingS};
 `
 
 const StyledInput = styled.TextInput<{ hasPrefix?: boolean }>`
   border: 0;
   width: 100%;
-  background-color: transparent;
-  border-radius: 0;
+  background-color: ${p => p.theme.colorBackground};
+  border-radius: ${p => p.theme.borderRadius};
   color: ${p => p.theme.colorText};
   font-size: ${p => p.theme.textM};
-  padding-top: ${p => p.theme.paddingM};
-  padding-bottom: ${p => p.theme.paddingS};
+  padding: ${p => p.theme.paddingL} ${p => p.theme.paddingL};
   ${p => p.hasPrefix && "padding-left: 16px"};
   font-family: "Verdana";
 `

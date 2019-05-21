@@ -67,8 +67,8 @@ function ForgotPassword() {
           {error ? <StyledError>{error}</StyledError> : null}
           <Spacer />
           <Button
-            color="text"
-            variant="tertiary"
+            variant="text"
+            color="tertiary"
             full={true}
             onPress={() => setRoute({ type: "route", route: "LOGIN" })}
             text="Login"

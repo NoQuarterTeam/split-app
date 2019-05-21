@@ -38,8 +38,6 @@ function Login() {
 
   return (
     <AuthForm>
-      <Logo />
-      <Spacer />
       <Input
         label="Email"
         keyboardType="email-address"
@@ -55,7 +53,6 @@ function Login() {
         onChangeText={setEmail}
         value={email}
       />
-      <Spacer />
       <Input
         ref={passwordRef}
         label="Password"
@@ -72,8 +69,7 @@ function Login() {
       <Button
         loading={loading}
         text="Login"
-        variant="primary"
-        color="pink"
+        full={true}
         onPress={handleSubmit}
         disabled={loading}
       />
@@ -85,8 +81,8 @@ function Login() {
       <Spacer />
       <Button
         text="Forgot password?"
-        variant="tertiary"
-        color="text"
+        variant="text"
+        color="tertiary"
         onPress={() => setRoute({ type: "route", route: "FORGOT_PASSWORD" })}
         disabled={loading}
       />
@@ -94,8 +90,8 @@ function Login() {
 
       <Button
         text="Sign up"
-        variant="tertiary"
-        color="text"
+        variant="text"
+        color="tertiary"
         onPress={() => setRoute({ type: "route", route: "REGISTER" })}
         disabled={loading}
       />

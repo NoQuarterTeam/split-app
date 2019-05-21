@@ -61,16 +61,10 @@ const StyledBottomBar = styled.View`
   width: 100%;
   height: 65px;
   flex-direction: row;
-  background-color: ${p => p.theme.colorBackground};
+  background-color: white;
   ${p => p.theme.flexAround};
 `
 
-// const StyledMainButton = styled.View`
-//   position: absolute;
-//   bottom: 40px;
-//   width: 100%;
-//   ${p => p.theme.flexCenter};
-// `
 const StyledTab = styled.TouchableOpacity`
   flex: 1;
   ${p => p.theme.flexCenter};

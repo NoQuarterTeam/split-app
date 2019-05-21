@@ -35,7 +35,7 @@ const StyledAvatar = styled.Image<{ size: number }>`
 `
 
 const StyledAvatarName = styled.View<{ size: number }>`
-  background-color: ${p => p.theme.colorBlue};
+  background-color: ${p => p.theme.colorSecondary};
   height: ${p => p.size}px;
   width: ${p => p.size}px;
   border-radius: ${p => p.size}px;
@@ -44,7 +44,7 @@ const StyledAvatarName = styled.View<{ size: number }>`
 `
 
 const StyledInitials = styled.Text`
-  color: ${p => darken(0.2, p.theme.colorBlue)};
+  color: ${p => darken(0.2, p.theme.colorSecondary)};
   font-weight: ${p => p.theme.fontBlack};
   font-size: ${p => p.theme.textS};
 `

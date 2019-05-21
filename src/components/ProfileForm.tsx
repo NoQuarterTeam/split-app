@@ -49,7 +49,6 @@ function ProfileForm({ user }: ProfileFormProps) {
         placeholder="jim@noquarter.co"
         label="Email"
       />
-      <Spacer />
       <Input
         value={form.values.firstName}
         onChangeText={firstName =>
@@ -58,7 +57,6 @@ function ProfileForm({ user }: ProfileFormProps) {
         placeholder="jim"
         label="First name"
       />
-      <Spacer />
       <Input
         value={form.values.lastName}
         onChangeText={lastName =>
@@ -67,7 +65,6 @@ function ProfileForm({ user }: ProfileFormProps) {
         placeholder="sebe"
         label="Last name"
       />
-      <Spacer />
       <Input
         secureTextEntry={true}
         value={form.values.password}
@@ -79,6 +76,7 @@ function ProfileForm({ user }: ProfileFormProps) {
       />
       <Spacer />
       <Button
+        full={true}
         disabled={!form.dirty || form.loading}
         onPress={handleUpdateUser}
         loading={form.loading}
@@ -95,7 +93,6 @@ const StyledProfileForm = styled.View`
   width: 100%;
   height: 100%;
   border-radius: ${p => p.theme.borderRadius};
-  padding: 0 ${p => p.theme.paddingL};
   ${p => p.theme.flexCenter};
   flex-direction: column;
 `

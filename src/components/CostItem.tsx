@@ -60,7 +60,7 @@ const StyledCost = styled.TouchableOpacity`
   padding-right: 0;
   margin-bottom: ${p => p.theme.paddingM};
   border: 2px solid transparent;
-  background-color: ${p => p.theme.colorPage};
+  background-color: ${p => p.theme.colorBackground};
   padding: ${p => p.theme.paddingM};
   border-radius: ${p => p.theme.borderRadius};
   ${p => p.theme.flexBetween};

@@ -43,8 +43,6 @@ function Register() {
 
   return (
     <AuthForm>
-      <Logo />
-      <Spacer />
       <Input
         label="Email"
         keyboardType="email-address"
@@ -60,7 +58,6 @@ function Register() {
         onChangeText={text => setEmail(text)}
         value={email}
       />
-      <Spacer />
       <Input
         ref={passwordRef}
         label="Password"
@@ -75,7 +72,6 @@ function Register() {
           firstNameRef.current && firstNameRef.current.focus()
         }
       />
-      <Spacer />
       <Input
         ref={firstNameRef}
         label="First name"
@@ -88,7 +84,6 @@ function Register() {
           lastNameRef.current && lastNameRef.current.focus()
         }
       />
-      <Spacer />
       <Input
         ref={lastNameRef}
         label="Last name"
@@ -104,6 +99,7 @@ function Register() {
       <Button
         loading={loading}
         text="Register"
+        full={true}
         onPress={handleSubmit}
         disabled={loading}
       />
@@ -116,8 +112,8 @@ function Register() {
       <Button
         full={true}
         text="Login"
-        variant="tertiary"
-        color="text"
+        variant="text"
+        color="tertiary"
         onPress={() => setRoute({ type: "route", route: "LOGIN" })}
         disabled={loading}
       />

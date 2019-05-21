@@ -99,17 +99,10 @@ function CostForm({ cost, onFormSubmit, onCostDelete }: CostFormProps) {
             onPress={handleCostCreate}
             disabled={loading}
             loading={loading}
-            variant="primary"
-            color="pink"
             text="Submit"
           />
           {onCostDelete && (
-            <Button
-              color="pink"
-              variant="tertiary"
-              text="Delete cost"
-              onPress={onCostDelete}
-            />
+            <Button variant="text" text="Delete cost" onPress={onCostDelete} />
           )}
         </Fragment>
         {/* {error && <ErrorBanner text={error} />} */}

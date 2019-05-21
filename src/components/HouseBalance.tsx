@@ -78,13 +78,13 @@ const StyledPending = styled.View`
   border-radius: 40px;
   height: 80px;
   width: 80px;
-  background-color: ${p => p.theme.colorPink};
+  background-color: ${p => p.theme.colorPrimary};
   ${p => p.theme.flexCenter};
 `
 
 const StyledPendingText = styled(Text)`
   text-align: center;
-  color: ${p => darken(0.2, p.theme.colorPink)};
+  color: ${p => darken(0.2, p.theme.colorPrimary)};
 `
 
 const StyledFlame = styled.View<{
@@ -96,7 +96,7 @@ const StyledFlame = styled.View<{
   width: 8px;
   border-radius: 8px;
   background-color: ${p =>
-    p.negative ? p.theme.colorPink : p.theme.colorBlue};
+    p.negative ? p.theme.colorPrimary : p.theme.colorSecondary};
   height: ${p => p.percentage * 2}px; /* Max 125px as 50% is the max abs */
   ${p =>
     p.negative

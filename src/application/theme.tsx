@@ -2,14 +2,13 @@ import * as styledComponents from "styled-components/native"
 import { darken, lighten } from "polished"
 
 const theme: (isDark: boolean) => ThemeInterface = isDark => ({
-  colorPage: isDark ? "#2f3335" : "#fff",
   colorBackground: isDark ? "#373c3f" : "#f8f9fd",
-  colorPlaceholder: isDark ? "#6f7172" : "#d3d3d3",
   colorShadow: isDark ? "rgba(0, 0, 0, 0.1)" : "rgba(200, 200, 200, 0.1)",
   colorLabel: isDark ? "#81878a" : "#b1bbc4",
   colorText: isDark ? "#ebecec" : "#1b2d41",
-  colorPink: "#ed60d3",
-  colorBlue: "#11a9ff",
+  colorPrimary: "#F35680",
+  colorSecondary: "#0085ff",
+  colorTertiary: "#a1a9c3",
   fontBlack: 900,
   fontBold: 700,
   fontNormal: 400,
@@ -18,7 +17,7 @@ const theme: (isDark: boolean) => ThemeInterface = isDark => ({
   paddingS: "5px",
   paddingXL: "40px",
   paddingXS: "3px",
-  borderRadius: "5px",
+  borderRadius: "10px",
   textL: "18px",
   textM: "16px",
   textS: "12px",
@@ -50,15 +49,14 @@ const theme: (isDark: boolean) => ThemeInterface = isDark => ({
 })
 
 export interface ThemeInterface {
-  colorPage: string
   borderRadius: string
   colorBackground: string
   colorText: string
   colorLabel: string
   colorShadow: string
-  colorPlaceholder: string
-  colorPink: string
-  colorBlue: string
+  colorPrimary: string
+  colorSecondary: string
+  colorTertiary: string
   fontBlack: number
   fontBold: number
   fontNormal: number

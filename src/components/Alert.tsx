@@ -15,7 +15,7 @@ const StyledAlert = styled.View`
   padding: 8px ${p => p.theme.paddingL};
   font-weight: ${p => p.theme.fontBold};
   font-size: ${p => p.theme.textS};
-  color: ${p => p.theme.colorPink};
-  background-color: ${p => lighten(0.25, p.theme.colorPink)};
+  color: ${p => p.theme.colorPrimary};
+  background-color: ${p => lighten(0.25, p.theme.colorPrimary)};
 `
 export default memo(Alert)

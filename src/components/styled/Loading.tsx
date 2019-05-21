@@ -12,7 +12,7 @@ const StyledContainer = styled.View`
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: ${p => p.theme.colorPage};
+  background-color: white;
 
   ${p => p.theme.flexCenter};
 `

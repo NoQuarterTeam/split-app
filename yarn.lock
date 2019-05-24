@@ -870,7 +870,7 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@tele2/react-native-select-input@^1.1.0":
+"@tele2/react-native-select-input@1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@tele2/react-native-select-input/-/react-native-select-input-1.1.0.tgz#211f3ef1f5fda102f77e49afc8b3fda178bccf13"
   integrity sha512-vo1IkASW5HwYvVlKzmEjVJxjDMFS8Kf+WH8+Zt9k4yH8mHNwK63d4UsuR6frZZMo+qx5uPXNr5yBCNfVdvC+tA==
@@ -945,7 +945,7 @@
   dependencies:
     "@types/jest-diff" "*"
 
-"@types/node@^12.0.2":
+"@types/node@12.0.2":
   version "12.0.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.2.tgz#3452a24edf9fea138b48fad4a0a028a683da1e40"
   integrity sha512-5tabW/i+9mhrfEOUcLDu2xBPsHJ+X5Orqy9FKpale3SjDA17j5AEpYq5vfy3oAeAHGcvANRCO3NV3d2D6q3NiA==

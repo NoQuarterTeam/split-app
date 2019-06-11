@@ -1,5 +1,5 @@
 import React from "react"
-import { Modal } from "react-native"
+import { Modal, View } from "react-native"
 import {
   useGetCost,
   useEditCost,
@@ -47,10 +47,14 @@ function EditCost({ modalOpen, costId }: EditCostProps) {
         onFormSubmit={handleEditCost}
         onCostDelete={handleDeleteCost}
       />
-      <Button
-        text="back"
-        onPress={() => setRoute({ type: "modal", modal: null, data: null })}
-      />
+      <View style={{ position: "absolute", top: 35, right: 15 }}>
+        <Button
+          text="Cancel"
+          variant="text"
+          color="tertiary"
+          onPress={() => setRoute({ type: "modal", modal: null })}
+        />
+      </View>
     </Modal>
   )
 }

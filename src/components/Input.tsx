@@ -1,7 +1,7 @@
 import React, { memo, forwardRef, Ref, useState } from "react"
 import { TextInputProps, TextInput } from "react-native"
 
-import styled, { lighten } from "../application/theme"
+import styled from "../application/theme"
 import { useTheme } from "../lib/hooks/useAppContext"
 
 import Text from "./styled/Text"
@@ -21,7 +21,7 @@ function Input(
   return (
     <StyledContainer focused={focused}>
       {label ? <StyledLabel>{label}</StyledLabel> : null}
-      {prefix ? <StyledPrefix>{prefix}</StyledPrefix> : null}
+      {prefix ? <StyledPrefix style={style}>{prefix}</StyledPrefix> : null}
       <StyledInput
         ref={ref}
         hasPrefix={!!prefix}
@@ -56,7 +56,7 @@ const StyledInput = styled.TextInput<{ hasPrefix?: boolean }>`
   border-radius: ${p => p.theme.borderRadius};
   color: ${p => p.theme.colorText};
   font-size: ${p => p.theme.textM};
-  padding: ${p => p.theme.paddingL} ${p => p.theme.paddingL};
+  padding: ${p => p.theme.paddingM} ${p => p.theme.paddingL};
   ${p => p.hasPrefix && "padding-left: 16px"};
   font-family: "Verdana";
 `

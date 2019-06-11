@@ -1,14 +1,14 @@
 import React, { memo } from "react"
-import { ShareInput, UserFragment } from "../lib/connector"
-import styled from "../application/theme"
-import { decimalCount } from "../lib/helpers"
+import { ShareInput, UserFragment } from "../../lib/connector"
+import styled from "../../application/theme"
+import { decimalCount } from "../../lib/helpers"
 
-import Input from "./Input"
-// import Radio from "./Radio"
-import Avatar from "./Avatar"
-// import Switch from "./Switch"
-import Column from "./styled/Column"
-import Center from "./styled/Center"
+import Input from "../Input"
+import Avatar from "../Avatar"
+import Switch from "../Switch"
+import Radio from "../Radio"
+import Column from "../styled/Column"
+import Center from "../styled/Center"
 
 interface ParticipantProps {
   user: UserFragment
@@ -45,16 +45,17 @@ function Participant({
     }
   }
 
-  const handleCostShareUpdate = (e: any) => {
-    if (+e.target.value < 0) return
-    if (decimalCount(+e.target.value) > 2) return
+  const handleCostShareUpdate = (val: string) => {
+    let amount = val
+    if (amount[0] === "€") amount = val.split("€")[1]
+    if (decimalCount(+amount) > 2) return
     setFormState({
       equalSplit: false,
       costShares: shares.map(s => {
         if (s.userId !== user.id) return s
         return {
           userId: user.id,
-          amount: +e.target.value,
+          amount,
         }
       }),
     })
@@ -64,41 +65,40 @@ function Participant({
     <StyledParticipant>
       <Column flex={4}>
         <Center>
-          {/* <Switch
-            on={!!userShare}
-            handleClick={() => toggleParticipant(user.id)}
-          /> */}
+          <Switch
+            value={!!userShare}
+            onValueChange={() => toggleParticipant(user.id)}
+          />
           <StyledAvatarWrapper
             onPress={() => toggleParticipant(user.id)}
             on={!!userShare}
           >
-            <Avatar user={user} />
+            <Avatar user={user} size={50} />
           </StyledAvatarWrapper>
         </Center>
       </Column>
-      <Column flex={3}>
+      <Column flex={3} style={{ alignItems: "center" }}>
         <Input
-          prefix="€"
-          placeholder="0.00"
+          placeholder="€0.00"
+          keyboardType="numeric"
           onChangeText={handleCostShareUpdate}
           value={
-            !userShare || userShare.amount === 0
-              ? ""
-              : userShare.amount.toString()
+            userShare && userShare.amount > 0
+              ? `€${userShare.amount.toString()}`
+              : ""
           }
-          style={{ borderWidth: 0, opacity: userShare ? 1 : 0.4 }}
+          style={{
+            textAlign: "center",
+            borderWidth: 0,
+            opacity: userShare ? 1 : 0.4,
+          }}
         />
       </Column>
-      <Column flex={1}>
-        {/* <div>
-          <Radio
-            id={user.id}
-            value={user.id}
-            checked={isPayer}
-            name="payerId"
-            onChange={e => setFormState({ payerId: e.target.value })}
-          />
-        </div> */}
+      <Column flex={2} style={{ alignItems: "center" }}>
+        <Radio
+          checked={isPayer}
+          onPress={() => setFormState({ payerId: user.id })}
+        />
       </Column>
     </StyledParticipant>
   )

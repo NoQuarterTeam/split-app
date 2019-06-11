@@ -13,7 +13,7 @@ export const round = (value: number, places = 2) => {
 export const sumBy = (arr: any, key: string, abs?: boolean) => {
   return arr.reduce((acc: any, item: any) => {
     if (abs) return Math.abs(item[key]) + acc
-    return acc + item[key]
+    return acc + +item[key]
   }, 0)
 }
 

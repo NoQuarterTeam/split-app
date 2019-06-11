@@ -2,7 +2,7 @@ import React from "react"
 import { Modal, View } from "react-native"
 import Button from "../components/Button"
 import { useAppState, useRoute } from "../lib/hooks/useAppContext"
-import CostForm from "../components/CostFormAlt"
+import CostForm from "../components/CostForm"
 import { useCreateCost, CostInput } from "../lib/connector"
 
 function NewCost({ modalOpen }: { modalOpen: boolean }) {

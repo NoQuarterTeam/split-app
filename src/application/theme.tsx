@@ -13,7 +13,7 @@ const theme: (isDark: boolean) => ThemeInterface = isDark => ({
   fontBold: 700,
   fontNormal: 400,
   paddingL: "20px",
-  paddingM: "10px",
+  paddingM: "12px",
   paddingS: "5px",
   paddingXL: "40px",
   paddingXS: "3px",

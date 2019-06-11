@@ -1,8 +1,8 @@
 import React, { FC } from "react"
-import Button from "./Button"
-import styled from "../application/theme"
-import Header from "./styled/Header"
-import Text from "./styled/Text"
+import Button from "../Button"
+import styled from "../../application/theme"
+import Header from "../styled/Header"
+import Text from "../styled/Text"
 
 interface InputSlideProps {
   title: string
@@ -17,7 +17,7 @@ const InputSlide: FC<InputSlideProps> = ({
   onBack,
 }) => {
   return (
-    <StyledCostForm>
+    <StyledInputSlide>
       <StyledTitle>{title}</StyledTitle>
       <StyledChildren>{children}</StyledChildren>
       {onNext ? <Button onPress={onNext} text="Next" /> : null}
@@ -26,16 +26,17 @@ const InputSlide: FC<InputSlideProps> = ({
           <StyledBackText>Back</StyledBackText>
         </StyledBack>
       ) : null}
-    </StyledCostForm>
+    </StyledInputSlide>
   )
 }
 
 export default InputSlide
 
-const StyledCostForm = styled.View`
+const StyledInputSlide = styled.View`
   height: 100%;
   width: 100%;
   background-color: ${p => p.theme.colorBackground};
+  flex-direction: column;
   padding: ${p => p.theme.paddingXL} ${p => p.theme.paddingL};
 `
 
@@ -44,9 +45,7 @@ const StyledTitle = styled(Header)`
   font-size: ${p => p.theme.textXL};
 `
 
-const StyledChildren = styled.View`
-  height: 40%;
-`
+const StyledChildren = styled.View``
 
 const StyledBack = styled.TouchableOpacity`
   padding: ${p => p.theme.paddingL};

@@ -3,10 +3,15 @@ import styled from "../../application/theme"
 
 interface ColumnProps {
   flex: number
+  style?: any
 }
 
-const Column: FC<ColumnProps> = ({ children, flex = 1 }) => {
-  return <StyledColumn flex={flex}>{children}</StyledColumn>
+const Column: FC<ColumnProps> = ({ children, flex = 1, style }) => {
+  return (
+    <StyledColumn flex={flex} style={style}>
+      {children}
+    </StyledColumn>
+  )
 }
 
 export default Column

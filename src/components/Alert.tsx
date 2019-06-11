@@ -1,21 +1,28 @@
 import React, { memo } from "react"
 import styled, { lighten } from "../application/theme"
+import Text from "./styled/Text"
 
 interface AlertProps {
   text: string
 }
 function Alert({ text }: AlertProps) {
-  return <StyledAlert>{text}</StyledAlert>
+  return (
+    <StyledAlert>
+      <StyledAlertText>{text}</StyledAlertText>
+    </StyledAlert>
+  )
 }
+export default memo(Alert)
 
 const StyledAlert = styled.View`
-  width: max-content;
-  border-radius: 7px;
+  border-radius: ${p => p.theme.borderRadius};
   text-align: center;
-  padding: 8px ${p => p.theme.paddingL};
-  font-weight: ${p => p.theme.fontBold};
-  font-size: ${p => p.theme.textS};
-  color: ${p => p.theme.colorPrimary};
+  margin: ${p => p.theme.paddingS};
+  padding: ${p => p.theme.paddingM} ${p => p.theme.paddingL};
   background-color: ${p => lighten(0.25, p.theme.colorPrimary)};
 `
-export default memo(Alert)
+
+const StyledAlertText = styled(Text)`
+  font-size: ${p => p.theme.textS};
+  color: ${p => p.theme.colorPrimary};
+`

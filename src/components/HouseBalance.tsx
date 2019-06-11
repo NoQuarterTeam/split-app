@@ -1,7 +1,7 @@
 import React, { memo } from "react"
 import { UserFragment } from "../lib/connector"
 
-import styled, { darken } from "../application/theme"
+import styled, { lighten } from "../application/theme"
 import { round } from "../lib/helpers"
 import { useAppState } from "../lib/hooks/useAppContext"
 import Text from "../components/styled/Text"
@@ -15,6 +15,8 @@ interface HouseBalanceProps {
 function HouseBalance({ users }: HouseBalanceProps) {
   const { house } = useAppState()
   const total = users.sumBy("balance", true)
+  let avatarCount = users.length
+  if (house.invites.length > 0) avatarCount = avatarCount + 1
   return (
     <StyledHouseBalance>
       {users.map(user => {
@@ -22,7 +24,7 @@ function HouseBalance({ users }: HouseBalanceProps) {
           <StyledUserGraph key={user.id}>
             <StyledFlame
               negative={user.balance < 0}
-              smallMargin={users.length > 3}
+              smallMargin={avatarCount > 3}
               percentage={
                 users.length === 1 || user.balance === 0 || total === 0
                   ? 0
@@ -30,7 +32,7 @@ function HouseBalance({ users }: HouseBalanceProps) {
               }
             />
             <StyledSpacer />
-            <Avatar user={user} size={users.length > 3 ? 50 : 70} />
+            <Avatar user={user} size={avatarCount > 3 ? 60 : 70} />
             <StyledUserBalance>
               {user.balance < 0 && "-"} € {round(Math.abs(user.balance * 0.01))}
             </StyledUserBalance>
@@ -40,8 +42,11 @@ function HouseBalance({ users }: HouseBalanceProps) {
       {house && house.invites.length > 0 && (
         <StyledUserGraph>
           <StyledSpacer />
-          <StyledPending>
-            <StyledPendingText>Pending invites</StyledPendingText>
+          <StyledPending size={avatarCount > 3 ? 60 : 70}>
+            <StyledPendingText>
+              {house.invites.length}{" "}
+              {house.invites.length === 1 ? "invite" : "invites"} pending
+            </StyledPendingText>
           </StyledPending>
           <StyledSpacer />
         </StyledUserGraph>
@@ -74,17 +79,18 @@ const StyledUserBalance = styled(StyledSpacer)`
   color: ${p => p.theme.colorText};
 `
 
-const StyledPending = styled.View`
-  border-radius: 40px;
-  height: 80px;
-  width: 80px;
-  background-color: ${p => p.theme.colorPrimary};
+const StyledPending = styled.View<{ size: number }>`
+  border-radius: ${p => p.size * 0.5}px;
+  height: ${p => p.size}px;
+  width: ${p => p.size}px;
+  background-color: ${p => lighten(0.2, p.theme.colorPrimary)};
   ${p => p.theme.flexCenter};
 `
 
 const StyledPendingText = styled(Text)`
   text-align: center;
-  color: ${p => darken(0.2, p.theme.colorPrimary)};
+  font-size: ${p => p.theme.textS};
+  color: ${p => p.theme.colorPrimary};
 `
 
 const StyledFlame = styled.View<{
@@ -101,9 +107,9 @@ const StyledFlame = styled.View<{
   ${p =>
     p.negative
       ? p.smallMargin
-        ? "top: 110px"
+        ? "top: 120px"
         : "top: 130px"
       : p.smallMargin
-      ? "bottom: 90px"
+      ? "bottom: 100px"
       : "bottom: 110px"}
 `

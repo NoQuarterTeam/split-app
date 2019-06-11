@@ -8,8 +8,7 @@
     "lint": "eslint --cache --ext .jsx,.js,.ts,.tsx src",
     "prettify": "prettier --write './src/**/*.{ts,tsx}'",
     "pre-commit": "lint-staged",
-    "ios": "react-native run-ios --simulator=\"iPhone 7\"",
-    "test": "jest --passWithNoTests"
+    "ios": "react-native run-ios --simulator=\"iPhone 7\""
   },
   "husky": {
     "hooks": {
@@ -31,7 +30,6 @@
   },
   "dependencies": {
     "@react-native-community/async-storage": "1.4.2",
-    "@tele2/react-native-select-input": "1.1.0",
     "apollo-boost": "0.4.2",
     "apollo-client": "2.6.2",
     "dayjs": "1.8.14",
@@ -39,6 +37,7 @@
     "graphql-tag": "2.10.1",
     "polished": "3.4.0",
     "react": "16.8.6",
+    "react-apollo": "^2.5.6",
     "react-apollo-hooks": "0.4.5",
     "react-native": "0.59.9",
     "react-native-keyboard-aware-scroll-view": "0.8.0",

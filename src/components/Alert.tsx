@@ -16,7 +16,6 @@ export default memo(Alert)
 
 const StyledAlert = styled.View`
   border-radius: ${p => p.theme.borderRadius};
-  text-align: center;
   margin: ${p => p.theme.paddingS};
   padding: ${p => p.theme.paddingM} ${p => p.theme.paddingL};
   background-color: ${p => lighten(0.25, p.theme.colorPrimary)};
@@ -24,5 +23,6 @@ const StyledAlert = styled.View`
 
 const StyledAlertText = styled(Text)`
   font-size: ${p => p.theme.textS};
+  text-align: center;
   color: ${p => p.theme.colorPrimary};
 `

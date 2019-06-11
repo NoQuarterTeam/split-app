@@ -8,7 +8,6 @@ import { useRoute } from "../lib/hooks/useAppContext"
 import Input from "../components/Input"
 import Button from "../components/Button"
 import Spacer from "../components/styled/Spacer"
-import Logo from "../components/Logo"
 import Text from "../components/styled/Text"
 import AuthForm from "../components/AuthForm"
 

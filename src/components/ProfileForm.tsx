@@ -91,7 +91,6 @@ export default memo(ProfileForm)
 
 const StyledProfileForm = styled.View`
   width: 100%;
-  height: 100%;
   border-radius: ${p => p.theme.borderRadius};
   ${p => p.theme.flexCenter};
   flex-direction: column;

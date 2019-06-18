@@ -17,7 +17,8 @@ const Amount: FC<Props> = props => {
       autoFocus={true}
       value={props.amount ? `€${props.amount.toString()}` : ""}
       returnKeyLabel="Next"
-      returnKeyType="next"
+      returnKeyType="done"
+      onSubmitEditing={props.onSubmit}
       onChangeText={val => {
         let amount = val
         if (amount[0] === "€") amount = val.split("€")[1]

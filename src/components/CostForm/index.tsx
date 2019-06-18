@@ -132,7 +132,7 @@ function CostForm({
         >
           <Amount
             amount={formState.amount}
-            onSubmit={() => setStep("Amount")}
+            onSubmit={() => setStep("Options")}
             onChange={amount => setFormState({ amount })}
           />
         </InputSlide>

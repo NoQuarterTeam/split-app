@@ -10,6 +10,8 @@ import Page from "../components/Page"
 import HouseName from "../components/HouseName"
 import HouseBalance from "../components/HouseBalance"
 import InviteForm from "../components/InviteForm"
+import Header from "../components/styled/Header"
+import Spacer from "../components/styled/Spacer"
 
 const Balance: FC = () => {
   const { user, house, refetch } = useAppState()
@@ -26,7 +28,11 @@ const Balance: FC = () => {
   return (
     <Page>
       {house.invites.length === 0 && house.users.length === 1 ? (
-        <InviteForm house={house} />
+        <StyledInviteWrap>
+          <Header>Now invite a house mate</Header>
+          <Spacer />
+          <InviteForm house={house} />
+        </StyledInviteWrap>
       ) : (
         <Fragment>
           <StyledHeader>
@@ -61,4 +67,15 @@ const HouseSummary = styled(Text)`
   font-size: ${p => p.theme.textM};
   padding-top: ${p => p.theme.paddingM};
   color: ${p => p.theme.colorLabel};
+`
+
+const StyledInviteWrap = styled.View`
+  height: 80%;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: ${p => p.theme.paddingM};
 `

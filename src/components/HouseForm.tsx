@@ -30,7 +30,7 @@ function HouseForm() {
       <Input
         value={name}
         onChangeText={setName}
-        placeholder="The boys gaff"
+        placeholder="My cool house"
         label="House name"
       />
       <Spacer />
@@ -47,8 +47,7 @@ function HouseForm() {
 export default memo(HouseForm)
 
 const StyledForm = styled.View`
-  height: 100%;
-  max-width: 450px;
+  height: 80%;
   width: 100%;
   margin: 0 auto;
   display: flex;

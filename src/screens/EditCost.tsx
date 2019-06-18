@@ -1,5 +1,5 @@
 import React from "react"
-import { Modal, View } from "react-native"
+import { Modal } from "react-native"
 import {
   useGetCost,
   useEditCost,
@@ -9,7 +9,6 @@ import {
 
 import CostForm from "../components/CostForm"
 import { useRoute } from "../lib/hooks/useAppContext"
-import Button from "../components/Button"
 
 interface EditCostProps {
   costId: string
@@ -44,17 +43,12 @@ function EditCost({ modalOpen, costId }: EditCostProps) {
     <Modal animationType="slide" transparent={false} visible={modalOpen}>
       <CostForm
         cost={cost}
+        onFormCancel={() =>
+          setRoute({ type: "modal", modal: null, data: null })
+        }
         onFormSubmit={handleEditCost}
         onCostDelete={handleDeleteCost}
       />
-      <View style={{ position: "absolute", top: 35, right: 15 }}>
-        <Button
-          text="Cancel"
-          variant="text"
-          color="tertiary"
-          onPress={() => setRoute({ type: "modal", modal: null })}
-        />
-      </View>
     </Modal>
   )
 }

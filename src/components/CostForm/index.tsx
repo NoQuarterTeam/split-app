@@ -10,14 +10,23 @@ import Name from "./Name"
 import Amount from "./Amount"
 import Options from "./Options"
 import Button from "../Button"
+import { TouchableOpacity } from "react-native"
+import Text from "../styled/Text"
+import styled from "../../application/theme"
 
 interface CostFormProps {
-  onCostDelete?: () => void
+  onFormCancel: () => void
   onFormSubmit: (data: CostInput) => Promise<any>
+  onCostDelete?: () => void
   cost?: GetCostQuery["getCost"]
 }
 
-function CostForm({ cost, onFormSubmit, onCostDelete }: CostFormProps) {
+function CostForm({
+  cost,
+  onFormSubmit,
+  onFormCancel,
+  onCostDelete,
+}: CostFormProps) {
   const [step, setStep] = useState("Name")
   const [loading, setLoading] = useState(false)
 
@@ -94,9 +103,16 @@ function CostForm({ cost, onFormSubmit, onCostDelete }: CostFormProps) {
   switch (step) {
     case "Name":
       return (
-        <InputSlide title="Name" onNext={() => setStep("Amount")}>
+        <InputSlide
+          onCancel={onFormCancel}
+          title="Name"
+          onNext={() => setStep("Amount")}
+          disabled={!formState.name}
+        >
           {onCostDelete ? (
-            <Button text="Delete cost" variant="text" onPress={onCostDelete} />
+            <TouchableOpacity onPress={onCostDelete}>
+              <StyledDelete>Delete cost</StyledDelete>
+            </TouchableOpacity>
           ) : null}
           <Name
             name={formState.name}
@@ -108,9 +124,11 @@ function CostForm({ cost, onFormSubmit, onCostDelete }: CostFormProps) {
     case "Amount":
       return (
         <InputSlide
+          onCancel={onFormCancel}
           title="Amount"
           onBack={() => setStep("Name")}
           onNext={() => setStep("Options")}
+          disabled={!formState.amount}
         >
           <Amount
             amount={formState.amount}
@@ -122,6 +140,7 @@ function CostForm({ cost, onFormSubmit, onCostDelete }: CostFormProps) {
     case "Options":
       return (
         <InputSlide
+          onCancel={onFormCancel}
           title="Options"
           onBack={() => setStep("Amount")}
           onNext={() => setStep("Participants")}
@@ -137,7 +156,11 @@ function CostForm({ cost, onFormSubmit, onCostDelete }: CostFormProps) {
 
     case "Participants":
       return (
-        <InputSlide title="Participants" onBack={() => setStep("Options")}>
+        <InputSlide
+          onCancel={onFormCancel}
+          title="Participants"
+          onBack={() => setStep("Options")}
+        >
           <Participants
             users={house.users}
             formState={formState}
@@ -156,5 +179,10 @@ function CostForm({ cost, onFormSubmit, onCostDelete }: CostFormProps) {
       throw new Error("no step defined")
   }
 }
+
+const StyledDelete = styled(Text)`
+  padding: ${p => p.theme.paddingM} 0;
+  color: ${p => p.theme.colorPrimary};
+`
 
 export default CostForm

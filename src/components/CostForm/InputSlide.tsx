@@ -1,4 +1,5 @@
 import React, { FC } from "react"
+import { TouchableOpacity } from "react-native"
 import Button from "../Button"
 import styled from "../../application/theme"
 import Header from "../styled/Header"
@@ -6,23 +7,27 @@ import Text from "../styled/Text"
 
 interface InputSlideProps {
   title: string
+  onCancel: () => void
   onNext?: () => void
   onBack?: () => void
+  disabled?: boolean
 }
 
-const InputSlide: FC<InputSlideProps> = ({
-  children,
-  title,
-  onNext,
-  onBack,
-}) => {
+const InputSlide: FC<InputSlideProps> = props => {
   return (
     <StyledInputSlide>
-      <StyledTitle>{title}</StyledTitle>
-      <StyledChildren>{children}</StyledChildren>
-      {onNext ? <Button onPress={onNext} text="Next" /> : null}
-      {onBack ? (
-        <StyledBack onPress={onBack}>
+      <StyledHeader>
+        <StyledTitle>{props.title}</StyledTitle>
+        <TouchableOpacity onPress={props.onCancel}>
+          <Text>Cancel</Text>
+        </TouchableOpacity>
+      </StyledHeader>
+      <StyledChildren>{props.children}</StyledChildren>
+      {props.onNext ? (
+        <Button onPress={props.onNext} text="Next" disabled={props.disabled} />
+      ) : null}
+      {props.onBack ? (
+        <StyledBack onPress={props.onBack}>
           <StyledBackText>Back</StyledBackText>
         </StyledBack>
       ) : null}
@@ -40,15 +45,19 @@ const StyledInputSlide = styled.View`
   padding: ${p => p.theme.paddingXL} ${p => p.theme.paddingL};
 `
 
+const StyledHeader = styled.View`
+  ${p => p.theme.flexBetween};
+`
 const StyledTitle = styled(Header)`
-  width: 100%;
   font-size: ${p => p.theme.textXL};
 `
 
 const StyledChildren = styled.View``
 
 const StyledBack = styled.TouchableOpacity`
-  padding: ${p => p.theme.paddingL};
+  width: 50%;
+  margin-top: ${p => p.theme.paddingL};
+  padding: ${p => p.theme.paddingS};
 `
 
 const StyledBackText = styled(Text)`

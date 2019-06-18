@@ -1,6 +1,5 @@
 import React from "react"
-import { Modal, View } from "react-native"
-import Button from "../components/Button"
+import { Modal } from "react-native"
 import { useAppState, useRoute } from "../lib/hooks/useAppContext"
 import CostForm from "../components/CostForm"
 import { useCreateCost, CostInput } from "../lib/connector"
@@ -20,15 +19,10 @@ function NewCost({ modalOpen }: { modalOpen: boolean }) {
   }
   return (
     <Modal animationType="slide" transparent={false} visible={modalOpen}>
-      <CostForm onFormSubmit={handleCreateCost} />
-      <View style={{ position: "absolute", top: 35, right: 15 }}>
-        <Button
-          text="Cancel"
-          variant="text"
-          color="tertiary"
-          onPress={() => setRoute({ type: "modal", modal: null })}
-        />
-      </View>
+      <CostForm
+        onFormSubmit={handleCreateCost}
+        onFormCancel={() => setRoute({ type: "modal", modal: null })}
+      />
     </Modal>
   )
 }

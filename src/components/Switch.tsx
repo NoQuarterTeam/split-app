@@ -13,7 +13,7 @@ const Switch: FC<Props> = props => {
   return (
     <RNSwitch
       value={props.value}
-      trackColor={{ true: theme.colorSecondary, false: theme.colorLabel }}
+      trackColor={{ true: theme.colorPrimary, false: theme.colorLabel }}
       onValueChange={props.onValueChange}
     />
   )

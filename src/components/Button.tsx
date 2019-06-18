@@ -70,7 +70,6 @@ const getVariantStyles = ({
 
 const StyledButton = styled.TouchableOpacity<ButtonProps>`
   border-radius: ${p => p.theme.borderRadius};
-  margin: ${p => (p.full ? 0 : p.theme.paddingS)};
   width: ${p => (!p.full ? "auto" : "100%")};
   opacity: ${p => (p.disabled ? 0.5 : 1)};
   padding: ${p => p.theme.paddingM};

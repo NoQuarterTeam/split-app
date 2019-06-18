@@ -20,13 +20,13 @@ const StyledRadio = styled.TouchableOpacity`
   width: 28px;
   height: 28px;
   border-radius: 14;
-  border: 2px solid ${p => p.theme.colorSecondary};
+  border: 2px solid ${p => p.theme.colorPrimary};
   ${p => p.theme.flexCenter};
 `
 
 const StyledOn = styled.View`
   height: 14px;
   width: 14px;
-  background-color: ${p => p.theme.colorSecondary};
+  background-color: ${p => p.theme.colorPrimary};
   border-radius: 10;
 `

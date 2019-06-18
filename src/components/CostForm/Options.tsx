@@ -138,7 +138,7 @@ const StyledOptionText = styled(Text)`
 const StyledEditButton = styled.TouchableOpacity``
 
 const StyledEditButtonText = styled(Text)`
-  color: ${p => p.theme.colorSecondary};
+  color: ${p => p.theme.colorLabel};
 `
 
 const StyledModal = styled.View`

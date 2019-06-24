@@ -35,7 +35,7 @@
     "dayjs": "1.8.14",
     "graphql": "14.3.1",
     "graphql-tag": "2.10.1",
-    "polished": "3.4.0",
+    "polished": "3.4.1",
     "react": "16.8.6",
     "react-apollo": "2.5.8",
     "react-apollo-hooks": "0.4.5",

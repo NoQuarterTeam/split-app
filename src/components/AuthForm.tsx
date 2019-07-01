@@ -26,9 +26,5 @@ export default AuthForm
 
 const StyledAuthForm = styled.View`
   width: 100%;
-  /* align-items: center; */
-  /* justify-content: center; */
-  padding: ${p => p.theme.paddingXL};
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding: 60px ${p => p.theme.paddingXL};
 `

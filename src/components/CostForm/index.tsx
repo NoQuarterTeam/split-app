@@ -10,7 +10,7 @@ import Name from "./Name"
 import Amount from "./Amount"
 import Options from "./Options"
 import Button from "../Button"
-import { TouchableOpacity } from "react-native"
+import { TouchableOpacity, Alert } from "react-native"
 import Text from "../styled/Text"
 import styled from "../../application/theme"
 
@@ -100,6 +100,23 @@ function CostForm({
     })
   }
 
+  const handleDeleteCost = () => {
+    if (onCostDelete) {
+      Alert.alert(
+        "Delete cost",
+        "Are you sure?",
+        [
+          {
+            text: "Cancel",
+            style: "cancel",
+          },
+          { text: "Delete", onPress: () => onCostDelete() },
+        ],
+        { cancelable: false },
+      )
+    }
+  }
+
   switch (step) {
     case "Name":
       return (
@@ -110,7 +127,7 @@ function CostForm({
           disabled={!formState.name}
         >
           {onCostDelete ? (
-            <TouchableOpacity onPress={onCostDelete}>
+            <TouchableOpacity onPress={handleDeleteCost}>
               <StyledDelete>Delete cost</StyledDelete>
             </TouchableOpacity>
           ) : null}

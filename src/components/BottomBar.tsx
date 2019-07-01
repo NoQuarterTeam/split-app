@@ -4,12 +4,14 @@ import { Image } from "react-native"
 import { useRoute, useAppState } from "../lib/hooks/useAppContext"
 import Text from "../components/styled/Text"
 import NewCost from "../screens/NewCost"
+import { isIphoneX } from "../lib/helpers"
 
 function BottomBar() {
   const { routes, setRoute } = useRoute()
   const { house } = useAppState()
+
   return (
-    <StyledBottomBar>
+    <StyledBottomBar isIphoneX={isIphoneX()}>
       <StyledTab onPress={() => setRoute({ type: "route", route: "BALANCE" })}>
         <Image
           source={require("../assets/images/icon-balance.png")}
@@ -54,15 +56,16 @@ function BottomBar() {
   )
 }
 
-const StyledBottomBar = styled.View`
+const StyledBottomBar = styled.View<{ isIphoneX: boolean }>`
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 65px;
   flex-direction: row;
   background-color: white;
   ${p => p.theme.flexAround};
+
+  padding-bottom: ${p => (p.isIphoneX ? p.theme.paddingL : 0)};
 `
 
 const StyledTab = styled.TouchableOpacity`

@@ -4,6 +4,7 @@ import Button from "../Button"
 import styled from "../../application/theme"
 import Header from "../styled/Header"
 import Text from "../styled/Text"
+import { isIphoneX } from "../../lib/helpers"
 
 interface InputSlideProps {
   title: string
@@ -15,7 +16,7 @@ interface InputSlideProps {
 
 const InputSlide: FC<InputSlideProps> = props => {
   return (
-    <StyledInputSlide>
+    <StyledInputSlide isIphoneX={isIphoneX()}>
       <StyledHeader>
         <StyledTitle>{props.title}</StyledTitle>
         <TouchableOpacity onPress={props.onCancel}>
@@ -37,16 +38,18 @@ const InputSlide: FC<InputSlideProps> = props => {
 
 export default InputSlide
 
-const StyledInputSlide = styled.View`
+const StyledInputSlide = styled.View<{ isIphoneX: boolean }>`
   height: 100%;
   width: 100%;
   background-color: ${p => p.theme.colorBackground};
   flex-direction: column;
-  padding: ${p => p.theme.paddingXL} ${p => p.theme.paddingL};
+  padding: ${p => p.theme.paddingM} ${p => p.theme.paddingL};
+  padding-top: ${p => (p.isIphoneX ? p.theme.paddingXL : p.theme.paddingM)};
 `
 
 const StyledHeader = styled.View`
   ${p => p.theme.flexBetween};
+  padding: ${p => p.theme.paddingL} 0;
 `
 const StyledTitle = styled(Header)`
   font-size: ${p => p.theme.textXL};

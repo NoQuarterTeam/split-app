@@ -1,3 +1,5 @@
+import { Dimensions, ScaledSize, Platform } from "react-native"
+
 export const snakeToCamel = (value: string) =>
   value.replace(/_(\w)/g, m => m[1].toUpperCase())
 
@@ -43,3 +45,16 @@ const distribute = (divider: number, numerator: number, precision = 2) => {
 
 export const splitTheBill = (people: number, amount: number) =>
   distribute(people, amount)
+
+export function isIPhoneXSize(dim: ScaledSize) {
+  return dim.height == 812 || dim.width == 812
+}
+
+export function isIPhoneXrSize(dim: ScaledSize) {
+  return dim.height == 896 || dim.width == 896
+}
+
+export function isIphoneX() {
+  const dim = Dimensions.get("window")
+  return Platform.OS === "ios" && (isIPhoneXSize(dim) || isIPhoneXrSize(dim))
+}

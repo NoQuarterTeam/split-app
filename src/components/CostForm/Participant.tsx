@@ -9,6 +9,7 @@ import Switch from "../Switch"
 import Radio from "../Radio"
 import Column from "../styled/Column"
 import Center from "../styled/Center"
+import { Keyboard } from "react-native"
 
 interface ParticipantProps {
   user: UserFragment
@@ -82,6 +83,9 @@ function Participant({
           placeholder="€0.00"
           keyboardType="numeric"
           onChangeText={handleCostShareUpdate}
+          onBlur={() => Keyboard.dismiss()}
+          returnKeyLabel="Next"
+          returnKeyType="done"
           value={
             userShare && userShare.amount
               ? `€${userShare.amount.toString()}`

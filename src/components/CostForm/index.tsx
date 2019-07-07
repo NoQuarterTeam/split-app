@@ -1,5 +1,7 @@
 import React, { useState, useLayoutEffect } from "react"
 import dayjs from "dayjs"
+import { TouchableOpacity, Alert } from "react-native"
+
 import { useAppState } from "../../lib/hooks/useAppContext"
 import useFormState from "../../lib/hooks/useFormState"
 import { CostInput, GetCostQuery } from "../../lib/connector"
@@ -10,7 +12,6 @@ import Name from "./Name"
 import Amount from "./Amount"
 import Options from "./Options"
 import Button from "../Button"
-import { TouchableOpacity, Alert } from "react-native"
 import Text from "../styled/Text"
 import styled from "../../application/theme"
 

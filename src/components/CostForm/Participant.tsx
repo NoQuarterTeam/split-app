@@ -83,7 +83,7 @@ function Participant({
           keyboardType="numeric"
           onChangeText={handleCostShareUpdate}
           value={
-            userShare && userShare.amount > 0
+            userShare && userShare.amount
               ? `€${userShare.amount.toString()}`
               : ""
           }

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled, { darken } from "../application/theme"
 import { useTheme } from "../lib/hooks/useAppContext"
 import Column from "./styled/Column"
@@ -6,16 +6,19 @@ import Text from "../components/styled/Text"
 
 interface CostsHeaderProps {
   onSubmit: (search: string) => void
+  search: string
 }
 
-function CostsHeader({ onSubmit }: CostsHeaderProps) {
+function CostsHeader({ onSubmit, search }: CostsHeaderProps) {
   const { theme } = useTheme()
-  const [search, setSearch] = useState<string>("")
+  const [inputSearch, setSearch] = useState(search)
   const [focus, setFocus] = useState<boolean>(false)
 
-  const handleSubmit = () => {
-    onSubmit(search)
-  }
+  useEffect(() => {
+    setSearch(search)
+  }, [search])
+
+  const handleSubmit = () => onSubmit(inputSearch)
 
   const handleClearSearch = () => {
     onSubmit("")
@@ -27,7 +30,7 @@ function CostsHeader({ onSubmit }: CostsHeaderProps) {
       <StyledInputWrap focused={focus}>
         <StyledInput
           placeholder="Search costs"
-          value={search}
+          value={inputSearch}
           onBlur={() => setFocus(false)}
           onFocus={() => setFocus(true)}
           placeholderTextColor={theme.colorLabel}

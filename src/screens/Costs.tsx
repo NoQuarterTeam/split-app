@@ -1,8 +1,9 @@
-import React, { FC, useState, Suspense } from "react"
+import React, { FC, Suspense } from "react"
 import { useAllCosts } from "../lib/connector"
 import { FlatList } from "react-native"
 
 import { useAppState, useRoute } from "../lib/hooks/useAppContext"
+import { useAsyncStorage } from "../lib/hooks/useAsyncStorage"
 
 import Page from "../components/Page"
 import CostItem from "../components/CostItem"
@@ -14,7 +15,7 @@ const Costs: FC = () => {
   if (!house) return null // TODO: Do something with these types of things,
   // e.g. render the house form
   const { routes } = useRoute()
-  const [search, setSearch] = useState<string>("")
+  const [search, setSearch] = useAsyncStorage("costs:search", "")
   const { costs, fetchMore, refresh } = useAllCosts(house.id, search)
 
   return (
@@ -28,7 +29,9 @@ const Costs: FC = () => {
         refreshing={false}
         onRefresh={refresh}
         onEndReachedThreshold={0.8}
-        ListHeaderComponent={<CostsHeader onSubmit={setSearch} />}
+        ListHeaderComponent={
+          <CostsHeader onSubmit={setSearch} search={search} />
+        }
         keyExtractor={item => item.id}
         contentContainerStyle={{ paddingBottom: 80 }}
         renderItem={({ item }) => <CostItem cost={item} />}

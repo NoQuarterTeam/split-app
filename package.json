@@ -36,12 +36,12 @@
     "graphql": "14.4.2",
     "graphql-tag": "2.10.1",
     "polished": "3.4.1",
-    "react": "16.8.6",
+    "react": "16.9.0",
     "react-apollo": "3.0.0",
     "react-apollo-hooks": "0.4.5",
-    "react-native": "0.59.9",
+    "react-native": "0.60.4",
     "react-native-keyboard-aware-scroll-view": "0.8.0",
-    "scheduler": "0.14.0",
+    "scheduler": "0.15.0",
     "styled-components": "4.3.2"
   },
   "devDependencies": {
@@ -69,7 +69,7 @@
     "lint-staged": "9.2.1",
     "metro-react-native-babel-preset": "0.55.0",
     "prettier": "1.18.2",
-    "react-test-renderer": "16.8.6",
+    "react-test-renderer": "16.9.0",
     "typescript": "3.5.3"
   },
   "jest": {

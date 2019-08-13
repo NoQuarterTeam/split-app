@@ -1,5 +1,5 @@
 import React, { useState, memo } from "react"
-import { useEditHouse, HouseFragment } from "../lib/connector"
+import { useEditHouse, HouseFragment } from "../lib/graphql"
 
 import styled from "../application/theme"
 
@@ -9,7 +9,7 @@ interface HouseNameProps {
 
 function HouseName({ house }: HouseNameProps) {
   const [houseName, setHouseName] = useState<string>(house.name)
-  const updateHouse = useEditHouse()
+  const [updateHouse] = useEditHouse()
 
   const handleHouseUpdate = (e: any) => {
     e.preventDefault()

@@ -4,7 +4,7 @@ import { TouchableOpacity, Alert } from "react-native"
 
 import { useAppState } from "../../lib/hooks/useAppContext"
 import useFormState from "../../lib/hooks/useFormState"
-import { CostInput, GetCostQuery } from "../../lib/connector"
+import { CostInput, GetCostQuery } from "../../lib/graphql"
 import { round, splitTheBill, sleep } from "../../lib/helpers"
 import InputSlide from "./InputSlide"
 import Participants from "./Participants"

@@ -1,6 +1,5 @@
 import gql from "graphql-tag"
-import * as ReactApolloHooks from "react-apollo-hooks"
-import * as ReactApollo from "react-apollo"
+import * as ReactApolloHooks from "@apollo/react-hooks"
 export type Maybe<T> = T | null
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -172,7 +171,7 @@ export type Query = {
 }
 
 export type QueryAllCostsArgs = {
-  skip: Scalars["Int"]
+  skip?: Maybe<Scalars["Int"]>
   houseId: Scalars["String"]
   search?: Maybe<Scalars["String"]>
 }
@@ -538,13 +537,17 @@ export const AllCostsDocument = gql`
 `
 
 export function useAllCostsQuery(
-  baseOptions?: ReactApolloHooks.QueryHookOptions<AllCostsQueryVariables>,
+  baseOptions?: ReactApolloHooks.QueryHookOptions<
+    AllCostsQuery,
+    AllCostsQueryVariables
+  >,
 ) {
   return ReactApolloHooks.useQuery<AllCostsQuery, AllCostsQueryVariables>(
     AllCostsDocument,
     baseOptions,
   )
 }
+export type AllCostsQueryHookResult = ReturnType<typeof useAllCostsQuery>
 export const GetCostDocument = gql`
   query GetCost($costId: String!) {
     getCost(costId: $costId) {
@@ -557,13 +560,17 @@ export const GetCostDocument = gql`
 `
 
 export function useGetCostQuery(
-  baseOptions?: ReactApolloHooks.QueryHookOptions<GetCostQueryVariables>,
+  baseOptions?: ReactApolloHooks.QueryHookOptions<
+    GetCostQuery,
+    GetCostQueryVariables
+  >,
 ) {
   return ReactApolloHooks.useQuery<GetCostQuery, GetCostQueryVariables>(
     GetCostDocument,
     baseOptions,
   )
 }
+export type GetCostQueryHookResult = ReturnType<typeof useGetCostQuery>
 export const CreateCostDocument = gql`
   mutation CreateCost($data: CostInput!) {
     createCost(data: $data) {
@@ -574,10 +581,6 @@ export const CreateCostDocument = gql`
   ${CostFragmentDoc}
   ${PayerFragmentDoc}
 `
-export type CreateCostMutationFn = ReactApollo.MutationFn<
-  CreateCostMutation,
-  CreateCostMutationVariables
->
 
 export function useCreateCostMutation(
   baseOptions?: ReactApolloHooks.MutationHookOptions<
@@ -590,6 +593,9 @@ export function useCreateCostMutation(
     CreateCostMutationVariables
   >(CreateCostDocument, baseOptions)
 }
+export type CreateCostMutationHookResult = ReturnType<
+  typeof useCreateCostMutation
+>
 export const EditCostDocument = gql`
   mutation EditCost($costId: String!, $data: CostInput!) {
     editCost(costId: $costId, data: $data) {
@@ -600,10 +606,6 @@ export const EditCostDocument = gql`
   ${CostFragmentDoc}
   ${SharesFragmentDoc}
 `
-export type EditCostMutationFn = ReactApollo.MutationFn<
-  EditCostMutation,
-  EditCostMutationVariables
->
 
 export function useEditCostMutation(
   baseOptions?: ReactApolloHooks.MutationHookOptions<
@@ -616,15 +618,12 @@ export function useEditCostMutation(
     EditCostMutationVariables
   >(EditCostDocument, baseOptions)
 }
+export type EditCostMutationHookResult = ReturnType<typeof useEditCostMutation>
 export const DestroyCostDocument = gql`
   mutation DestroyCost($costId: String!) {
     destroyCost(costId: $costId)
   }
 `
-export type DestroyCostMutationFn = ReactApollo.MutationFn<
-  DestroyCostMutation,
-  DestroyCostMutationVariables
->
 
 export function useDestroyCostMutation(
   baseOptions?: ReactApolloHooks.MutationHookOptions<
@@ -637,6 +636,9 @@ export function useDestroyCostMutation(
     DestroyCostMutationVariables
   >(DestroyCostDocument, baseOptions)
 }
+export type DestroyCostMutationHookResult = ReturnType<
+  typeof useDestroyCostMutation
+>
 export const GetHouseDocument = gql`
   query GetHouse {
     house {
@@ -655,13 +657,17 @@ export const GetHouseDocument = gql`
 `
 
 export function useGetHouseQuery(
-  baseOptions?: ReactApolloHooks.QueryHookOptions<GetHouseQueryVariables>,
+  baseOptions?: ReactApolloHooks.QueryHookOptions<
+    GetHouseQuery,
+    GetHouseQueryVariables
+  >,
 ) {
   return ReactApolloHooks.useQuery<GetHouseQuery, GetHouseQueryVariables>(
     GetHouseDocument,
     baseOptions,
   )
 }
+export type GetHouseQueryHookResult = ReturnType<typeof useGetHouseQuery>
 export const CreateHouseDocument = gql`
   mutation CreateHouse($data: HouseInput!) {
     createHouse(data: $data) {
@@ -678,10 +684,6 @@ export const CreateHouseDocument = gql`
   ${UserFragmentDoc}
   ${InviteFragmentDoc}
 `
-export type CreateHouseMutationFn = ReactApollo.MutationFn<
-  CreateHouseMutation,
-  CreateHouseMutationVariables
->
 
 export function useCreateHouseMutation(
   baseOptions?: ReactApolloHooks.MutationHookOptions<
@@ -694,6 +696,9 @@ export function useCreateHouseMutation(
     CreateHouseMutationVariables
   >(CreateHouseDocument, baseOptions)
 }
+export type CreateHouseMutationHookResult = ReturnType<
+  typeof useCreateHouseMutation
+>
 export const EditHouseDocument = gql`
   mutation EditHouse($houseId: String!, $data: HouseInput!) {
     editHouse(houseId: $houseId, data: $data) {
@@ -702,10 +707,6 @@ export const EditHouseDocument = gql`
   }
   ${HouseFragmentDoc}
 `
-export type EditHouseMutationFn = ReactApollo.MutationFn<
-  EditHouseMutation,
-  EditHouseMutationVariables
->
 
 export function useEditHouseMutation(
   baseOptions?: ReactApolloHooks.MutationHookOptions<
@@ -718,6 +719,9 @@ export function useEditHouseMutation(
     EditHouseMutationVariables
   >(EditHouseDocument, baseOptions)
 }
+export type EditHouseMutationHookResult = ReturnType<
+  typeof useEditHouseMutation
+>
 export const CreateInviteDocument = gql`
   mutation CreateInvite($data: InviteInput!) {
     createInvite(data: $data) {
@@ -726,10 +730,6 @@ export const CreateInviteDocument = gql`
   }
   ${InviteFragmentDoc}
 `
-export type CreateInviteMutationFn = ReactApollo.MutationFn<
-  CreateInviteMutation,
-  CreateInviteMutationVariables
->
 
 export function useCreateInviteMutation(
   baseOptions?: ReactApolloHooks.MutationHookOptions<
@@ -742,15 +742,14 @@ export function useCreateInviteMutation(
     CreateInviteMutationVariables
   >(CreateInviteDocument, baseOptions)
 }
+export type CreateInviteMutationHookResult = ReturnType<
+  typeof useCreateInviteMutation
+>
 export const DestroyInviteDocument = gql`
   mutation DestroyInvite($inviteId: String!) {
     destroyInvite(inviteId: $inviteId)
   }
 `
-export type DestroyInviteMutationFn = ReactApollo.MutationFn<
-  DestroyInviteMutation,
-  DestroyInviteMutationVariables
->
 
 export function useDestroyInviteMutation(
   baseOptions?: ReactApolloHooks.MutationHookOptions<
@@ -763,6 +762,9 @@ export function useDestroyInviteMutation(
     DestroyInviteMutationVariables
   >(DestroyInviteDocument, baseOptions)
 }
+export type DestroyInviteMutationHookResult = ReturnType<
+  typeof useDestroyInviteMutation
+>
 export const CheckInviteDocument = gql`
   query CheckInvite($inviteId: String) {
     checkInvite(inviteId: $inviteId) {
@@ -773,13 +775,17 @@ export const CheckInviteDocument = gql`
 `
 
 export function useCheckInviteQuery(
-  baseOptions?: ReactApolloHooks.QueryHookOptions<CheckInviteQueryVariables>,
+  baseOptions?: ReactApolloHooks.QueryHookOptions<
+    CheckInviteQuery,
+    CheckInviteQueryVariables
+  >,
 ) {
   return ReactApolloHooks.useQuery<CheckInviteQuery, CheckInviteQueryVariables>(
     CheckInviteDocument,
     baseOptions,
   )
 }
+export type CheckInviteQueryHookResult = ReturnType<typeof useCheckInviteQuery>
 export const GetSignedS3UrlDocument = gql`
   mutation GetSignedS3Url($data: S3SignedUrlInput!) {
     getSignedS3Url(data: $data) {
@@ -788,10 +794,6 @@ export const GetSignedS3UrlDocument = gql`
     }
   }
 `
-export type GetSignedS3UrlMutationFn = ReactApollo.MutationFn<
-  GetSignedS3UrlMutation,
-  GetSignedS3UrlMutationVariables
->
 
 export function useGetSignedS3UrlMutation(
   baseOptions?: ReactApolloHooks.MutationHookOptions<
@@ -804,6 +806,9 @@ export function useGetSignedS3UrlMutation(
     GetSignedS3UrlMutationVariables
   >(GetSignedS3UrlDocument, baseOptions)
 }
+export type GetSignedS3UrlMutationHookResult = ReturnType<
+  typeof useGetSignedS3UrlMutation
+>
 export const MeDocument = gql`
   query Me {
     me {
@@ -814,13 +819,14 @@ export const MeDocument = gql`
 `
 
 export function useMeQuery(
-  baseOptions?: ReactApolloHooks.QueryHookOptions<MeQueryVariables>,
+  baseOptions?: ReactApolloHooks.QueryHookOptions<MeQuery, MeQueryVariables>,
 ) {
   return ReactApolloHooks.useQuery<MeQuery, MeQueryVariables>(
     MeDocument,
     baseOptions,
   )
 }
+export type MeQueryHookResult = ReturnType<typeof useMeQuery>
 export const LoginDocument = gql`
   mutation Login($data: LoginInput!) {
     login(data: $data) {
@@ -829,10 +835,6 @@ export const LoginDocument = gql`
   }
   ${UserFragmentDoc}
 `
-export type LoginMutationFn = ReactApollo.MutationFn<
-  LoginMutation,
-  LoginMutationVariables
->
 
 export function useLoginMutation(
   baseOptions?: ReactApolloHooks.MutationHookOptions<
@@ -845,6 +847,7 @@ export function useLoginMutation(
     baseOptions,
   )
 }
+export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>
 export const RegisterDocument = gql`
   mutation Register($data: RegisterInput!) {
     register(data: $data) {
@@ -853,10 +856,6 @@ export const RegisterDocument = gql`
   }
   ${UserFragmentDoc}
 `
-export type RegisterMutationFn = ReactApollo.MutationFn<
-  RegisterMutation,
-  RegisterMutationVariables
->
 
 export function useRegisterMutation(
   baseOptions?: ReactApolloHooks.MutationHookOptions<
@@ -869,6 +868,7 @@ export function useRegisterMutation(
     RegisterMutationVariables
   >(RegisterDocument, baseOptions)
 }
+export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>
 export const UpdateUserDocument = gql`
   mutation UpdateUser($data: UpdateInput!) {
     updateUser(data: $data) {
@@ -877,10 +877,6 @@ export const UpdateUserDocument = gql`
   }
   ${UserFragmentDoc}
 `
-export type UpdateUserMutationFn = ReactApollo.MutationFn<
-  UpdateUserMutation,
-  UpdateUserMutationVariables
->
 
 export function useUpdateUserMutation(
   baseOptions?: ReactApolloHooks.MutationHookOptions<
@@ -893,15 +889,14 @@ export function useUpdateUserMutation(
     UpdateUserMutationVariables
   >(UpdateUserDocument, baseOptions)
 }
+export type UpdateUserMutationHookResult = ReturnType<
+  typeof useUpdateUserMutation
+>
 export const LogoutDocument = gql`
   mutation Logout {
     logout
   }
 `
-export type LogoutMutationFn = ReactApollo.MutationFn<
-  LogoutMutation,
-  LogoutMutationVariables
->
 
 export function useLogoutMutation(
   baseOptions?: ReactApolloHooks.MutationHookOptions<
@@ -914,15 +909,12 @@ export function useLogoutMutation(
     baseOptions,
   )
 }
+export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>
 export const ForgotPasswordDocument = gql`
   mutation ForgotPassword($email: String!) {
     forgotPassword(email: $email)
   }
 `
-export type ForgotPasswordMutationFn = ReactApollo.MutationFn<
-  ForgotPasswordMutation,
-  ForgotPasswordMutationVariables
->
 
 export function useForgotPasswordMutation(
   baseOptions?: ReactApolloHooks.MutationHookOptions<
@@ -935,15 +927,14 @@ export function useForgotPasswordMutation(
     ForgotPasswordMutationVariables
   >(ForgotPasswordDocument, baseOptions)
 }
+export type ForgotPasswordMutationHookResult = ReturnType<
+  typeof useForgotPasswordMutation
+>
 export const ResetPasswordDocument = gql`
   mutation ResetPassword($data: ResetPasswordInput!) {
     resetPassword(data: $data)
   }
 `
-export type ResetPasswordMutationFn = ReactApollo.MutationFn<
-  ResetPasswordMutation,
-  ResetPasswordMutationVariables
->
 
 export function useResetPasswordMutation(
   baseOptions?: ReactApolloHooks.MutationHookOptions<
@@ -956,3 +947,6 @@ export function useResetPasswordMutation(
     ResetPasswordMutationVariables
   >(ResetPasswordDocument, baseOptions)
 }
+export type ResetPasswordMutationHookResult = ReturnType<
+  typeof useResetPasswordMutation
+>

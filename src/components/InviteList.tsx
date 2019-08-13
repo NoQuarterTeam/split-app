@@ -1,5 +1,5 @@
 import React, { memo } from "react"
-import { InviteFragment } from "../lib/connector"
+import { InviteFragment } from "../lib/graphql"
 
 import styled from "../application/theme"
 

@@ -5,7 +5,7 @@ import {
   useEditCost,
   useDestroyCost,
   CostInput,
-} from "../lib/connector"
+} from "../lib/graphql"
 
 import CostForm from "../components/CostForm"
 import { useRoute } from "../lib/hooks/useAppContext"
@@ -18,20 +18,20 @@ interface EditCostProps {
 function EditCost({ modalOpen, costId }: EditCostProps) {
   const { setRoute } = useRoute()
 
-  const { cost } = useGetCost(costId)
-  if (!cost) setRoute({ type: "modal", modal: null, data: null })
-  if (!cost) return null
-  const editCost = useEditCost(cost ? cost.houseId : "")
-  const destroyCost = useDestroyCost(cost)
+  const { cost, loading } = useGetCost(costId)
+  const [editCost] = useEditCost(cost ? cost.houseId : "")
+  const [destroyCost] = useDestroyCost(cost)
 
   const handleEditCost = async (costData: CostInput) => {
-    await editCost({
-      variables: {
-        costId: cost.id,
-        data: costData,
-      },
-    })
-    setRoute({ type: "modal", modal: null, data: null })
+    if (cost) {
+      await editCost({
+        variables: {
+          costId: cost.id,
+          data: costData,
+        },
+      })
+      setRoute({ type: "modal", modal: null, data: null })
+    }
   }
 
   const handleDeleteCost = async () => {
@@ -39,16 +39,22 @@ function EditCost({ modalOpen, costId }: EditCostProps) {
     setRoute({ type: "modal", modal: null, data: null })
   }
 
+  if (!cost && !loading) {
+    setRoute({ type: "modal", modal: null, data: null })
+    return null
+  }
   return (
     <Modal animationType="slide" transparent={false} visible={modalOpen}>
-      <CostForm
-        cost={cost}
-        onFormCancel={() =>
-          setRoute({ type: "modal", modal: null, data: null })
-        }
-        onFormSubmit={handleEditCost}
-        onCostDelete={handleDeleteCost}
-      />
+      {cost ? (
+        <CostForm
+          cost={cost}
+          onFormCancel={() =>
+            setRoute({ type: "modal", modal: null, data: null })
+          }
+          onFormSubmit={handleEditCost}
+          onCostDelete={handleDeleteCost}
+        />
+      ) : null}
     </Modal>
   )
 }

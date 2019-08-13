@@ -2,12 +2,12 @@ import React from "react"
 import { Modal } from "react-native"
 import { useAppState, useRoute } from "../lib/hooks/useAppContext"
 import CostForm from "../components/CostForm"
-import { useCreateCost, CostInput } from "../lib/connector"
+import { useCreateCost, CostInput } from "../lib/graphql"
 
 function NewCost({ modalOpen }: { modalOpen: boolean }) {
   const { user } = useAppState()
   const { setRoute } = useRoute()
-  const createCost = useCreateCost(user.houseId || "")
+  const [createCost] = useCreateCost(user.houseId || "")
 
   const handleCreateCost = async (costData: CostInput) => {
     await createCost({

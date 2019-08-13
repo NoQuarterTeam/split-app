@@ -1,6 +1,6 @@
 import React, { memo } from "react"
 import dayjs from "dayjs"
-import { CostFragment, PayerFragment } from "../lib/connector"
+import { CostFragment, PayerFragment } from "../lib/graphql"
 
 import styled from "../application/theme"
 import { round, capitalize } from "../lib/helpers"
@@ -19,7 +19,10 @@ interface CostProps {
 
 function CostItem({ cost }: CostProps) {
   const { setRoute } = useRoute()
+
   const handleCostPress = () => {
+    console.log("what")
+
     setRoute({ type: "modal", modal: "EDIT_COST", data: cost.id })
   }
   return (

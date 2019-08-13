@@ -1,5 +1,5 @@
-import React, { FC, Suspense } from "react"
-import { useAllCosts } from "../lib/connector"
+import React, { FC } from "react"
+import { useAllCosts } from "../lib/graphql"
 import { FlatList } from "react-native"
 
 import { useAppState, useRoute } from "../lib/hooks/useAppContext"
@@ -17,6 +17,8 @@ const Costs: FC = () => {
   const { routes } = useRoute()
   const [search, setSearch] = useAsyncStorage("costs:search", "")
   const { costs, fetchMore, refresh } = useAllCosts(house.id, search)
+
+  console.log(routes.modal)
 
   return (
     <Page title="Costs">
@@ -36,11 +38,9 @@ const Costs: FC = () => {
         contentContainerStyle={{ paddingBottom: 80 }}
         renderItem={({ item }) => <CostItem cost={item} />}
       />
-      <Suspense fallback={null}>
-        {routes.modal === "EDIT_COST" && (
-          <EditCost costId={routes.data || ""} modalOpen={true} />
-        )}
-      </Suspense>
+      {routes.modal === "EDIT_COST" && (
+        <EditCost costId={routes.data || ""} modalOpen={true} />
+      )}
     </Page>
   )
 }

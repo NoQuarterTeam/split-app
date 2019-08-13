@@ -1,16 +1,16 @@
 import React, { FC, memo } from "react"
-import { InviteFragment } from "../lib/connector"
+import { InviteFragment } from "../lib/graphql"
 import styled from "../application/theme"
 import Text from "./styled/Text"
 import Button from "./Button"
-import { useDestroyInvite } from "../lib/connector"
+import { useDestroyInvite } from "../lib/graphql"
 
 interface Props {
   invite: InviteFragment
 }
 
 const InviteRow: FC<Props> = ({ invite }) => {
-  const destroyInvite = useDestroyInvite(invite.id)
+  const [destroyInvite] = useDestroyInvite(invite.id)
 
   const handleDestroyInvite = () => {
     destroyInvite({

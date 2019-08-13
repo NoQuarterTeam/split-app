@@ -1,5 +1,5 @@
 import React, { memo } from "react"
-import { ShareInput, UserFragment } from "../../lib/connector"
+import { ShareInput, UserFragment } from "../../lib/graphql"
 import styled from "../../application/theme"
 import { decimalCount } from "../../lib/helpers"
 

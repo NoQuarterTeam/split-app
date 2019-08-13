@@ -1,5 +1,5 @@
 import React, { memo } from "react"
-import { UserFragment } from "../lib/connector"
+import { UserFragment } from "../lib/graphql"
 
 import styled, { lighten } from "../application/theme"
 import { round } from "../lib/helpers"

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react"
 import { GraphQLError } from "graphql"
 import { TextInput } from "react-native"
-import { useLogin } from "../lib/connector"
+import { useLogin } from "../lib/graphql"
 
 import styled from "../application/theme"
 import { useRoute } from "../lib/hooks/useAppContext"
@@ -17,7 +17,7 @@ function Login() {
   const [password, setPassword] = useState<string>("")
   const passwordRef = useRef<TextInput>(null)
 
-  const login = useLogin()
+  const [login] = useLogin()
   const [error, setError] = useState<string>("")
   const [loading, setLoading] = useState<boolean>(false)
 

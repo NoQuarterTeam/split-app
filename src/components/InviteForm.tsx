@@ -1,5 +1,5 @@
 import React, { memo, useState } from "react"
-import { useCreateInvite } from "../lib/connector"
+import { useCreateInvite } from "../lib/graphql"
 
 import styled from "../application/theme"
 
@@ -16,7 +16,7 @@ function InviteForm({ house }: InviteFormProps) {
   const [email, setEmail] = useState<string>("")
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>("")
-  const createInvite = useCreateInvite()
+  const [createInvite] = useCreateInvite()
 
   const handleCreateInvite = () => {
     setLoading(true)

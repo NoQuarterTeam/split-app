@@ -1,5 +1,5 @@
 import React, { memo } from "react"
-import { useUpdateUser, UserFragment } from "../lib/connector"
+import { useUpdateUser, UserFragment } from "../lib/graphql"
 
 import styled from "../application/theme"
 
@@ -21,7 +21,7 @@ function ProfileForm({ user }: ProfileFormProps) {
     lastName: user.lastName,
     password: "",
   })
-  const updateUser = useUpdateUser()
+  const [updateUser] = useUpdateUser()
 
   const handleUpdateUser = () => {
     const data: { [key: string]: string } = {}

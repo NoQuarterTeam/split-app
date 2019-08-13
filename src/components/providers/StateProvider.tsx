@@ -1,5 +1,5 @@
 import React, { Fragment, FC } from "react"
-import { useMe, useGetHouse } from "../../lib/connector"
+import { useMe, useGetHouse } from "../../lib/graphql"
 import { StateProvider as StateContextProvider } from "../../application/context"
 import Loading from "../styled/Loading"
 

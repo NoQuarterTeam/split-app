@@ -1,7 +1,7 @@
 import React, { memo } from "react"
 import { KeyboardAvoidingView } from "react-native"
 
-import { CostInput, UserFragment } from "../../lib/connector"
+import { CostInput, UserFragment } from "../../lib/graphql"
 
 import styled from "../../application/theme"
 import { round } from "../../lib/helpers"

@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from "react"
 import { GraphQLError } from "graphql"
 
-import { useForgotPassword } from "../lib/connector"
+import { useForgotPassword } from "../lib/graphql"
 
 import { useRoute } from "../lib/hooks/useAppContext"
 import Input from "../components/Input"
@@ -18,7 +18,7 @@ function ForgotPassword() {
   const [loading, setLoading] = useState<boolean>(false)
   const [success, setSuccess] = useState<boolean>(false)
 
-  const forgotPassword = useForgotPassword()
+  const [forgotPassword] = useForgotPassword()
 
   const handleSubmit = () => {
     setLoading(true)

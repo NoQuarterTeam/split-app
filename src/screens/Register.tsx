@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react"
 import { GraphQLError } from "graphql"
 import { TextInput } from "react-native"
-import { useRegister } from "../lib/connector"
+import { useRegister } from "../lib/graphql"
 
 import styled from "../application/theme"
 import { useRoute } from "../lib/hooks/useAppContext"
@@ -21,7 +21,7 @@ function Register() {
   const firstNameRef = useRef<TextInput>(null)
   const lastNameRef = useRef<TextInput>(null)
 
-  const register = useRegister()
+  const [register] = useRegister()
   const [error, setError] = useState<string>("")
   const [loading, setLoading] = useState<boolean>(false)
 

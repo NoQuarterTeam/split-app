@@ -1,5 +1,5 @@
 import React from "react"
-import { MeQuery, GetHouseQuery } from "../lib/connector"
+import { MeQuery, GetHouseQuery } from "../lib/graphql"
 import { ThemeInterface, theme } from "./theme"
 
 // App State

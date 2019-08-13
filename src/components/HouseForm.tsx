@@ -1,5 +1,5 @@
 import React, { memo, useState } from "react"
-import { useCreateHouse } from "../lib/connector"
+import { useCreateHouse } from "../lib/graphql"
 
 import styled from "../application/theme"
 
@@ -13,7 +13,7 @@ function HouseForm() {
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>("")
 
-  const createHouse = useCreateHouse()
+  const [createHouse] = useCreateHouse()
 
   const handleCreateHouse = () => {
     setLoading(true)

@@ -18,8 +18,6 @@ const Costs: FC = () => {
   const [search, setSearch] = useAsyncStorage("costs:search", "")
   const { costs, fetchMore, refresh } = useAllCosts(house.id, search)
 
-  console.log(routes.modal)
-
   return (
     <Page title="Costs">
       <FlatList

@@ -21,8 +21,6 @@ function CostItem({ cost }: CostProps) {
   const { setRoute } = useRoute()
 
   const handleCostPress = () => {
-    console.log("what")
-
     setRoute({ type: "modal", modal: "EDIT_COST", data: cost.id })
   }
   return (

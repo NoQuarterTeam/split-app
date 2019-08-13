@@ -19,7 +19,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": false,
-      "buildNumber": 1,
+      "buildNumber": "1",
       "bundleIdentifier": "co.noquarter.splitapp"
     },
     "android": {

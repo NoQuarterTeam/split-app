@@ -1,0 +1,80 @@
+{
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "typecheck": "tsc --noEmit",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "lint": "eslint --cache --ext .jsx,.js,.ts,.tsx src",
+    "prettify": "prettier --write './src/**/*.{ts,tsx}'",
+    "pre-commit": "lint-staged"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn pre-commit"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,json,ts,tsx}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix --cache --ext .jsx,.js,.ts,.tsx src",
+      "git add"
+    ]
+  },
+  "resolutions": {
+    "graphql": "14.4.2"
+  },
+  "dependencies": {
+    "apollo-boost": "0.4.4",
+    "apollo-client": "2.6.4",
+    "dayjs": "1.8.15",
+    "expo": "^34.0.1",
+    "graphql": "14.4.2",
+    "graphql-tag": "2.10.1",
+    "polished": "3.4.1",
+    "react": "16.8.3",
+    "react-apollo": "3.0.0",
+    "react-apollo-hooks": "0.4.5",
+    "react-dom": "^16.8.6",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
+    "react-native-keyboard-aware-scroll-view": "0.8.0",
+    "react-native-web": "^0.11.4",
+    "scheduler": "0.14.0",
+    "styled-components": "4.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "7.5.5",
+    "@babel/runtime": "7.5.5",
+    "@types/graphql": "14.2.3",
+    "@types/jest": "24.0.17",
+    "@types/node": "12.7.1",
+    "@types/react": "16.9.1",
+    "@types/react-native": "0.60.4",
+    "@types/react-test-renderer": "16.9.0",
+    "@types/styled-components": "4.1.18",
+    "@typescript-eslint/eslint-plugin": "1.13.0",
+    "@typescript-eslint/parser": "1.13.0",
+    "babel-eslint": "10.0.2",
+    "babel-jest": "24.8.0",
+    "babel-preset-expo": "^6.0.0",
+    "eslint": "6.1.0",
+    "eslint-config-prettier": "6.0.0",
+    "eslint-plugin-flowtype": "4.2.0",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-react": "7.14.3",
+    "eslint-plugin-react-hooks": "1.6.1",
+    "husky": "3.0.3",
+    "jest": "24.8.0",
+    "lint-staged": "9.2.1",
+    "metro-react-native-babel-preset": "0.55.0",
+    "prettier": "1.18.2",
+    "react-test-renderer": "16.8.6",
+    "typescript": "3.5.3"
+  },
+  "private": true
+}

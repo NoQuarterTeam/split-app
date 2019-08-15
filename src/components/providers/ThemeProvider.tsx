@@ -10,7 +10,7 @@ import { useAsyncStorage } from "../../lib/hooks/useAsyncStorage"
 import { StatusBar } from "react-native"
 
 const ThemeProvider: FC = ({ children }) => {
-  const [isDark, setDarkTheme] = useAsyncStorage("darkTheme", true)
+  const [isDark, setDarkTheme] = useAsyncStorage("darkTheme", false)
   const toggleTheme = () => setDarkTheme(!isDark)
 
   return (

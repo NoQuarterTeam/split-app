@@ -1,19 +1,16 @@
 import React, { FC } from "react"
-import { Switch } from "react-native"
+
 import { useTheme } from "../lib/hooks/useAppContext"
 import styled from "../application/theme"
 import Header from "./styled/Header"
+import Switch from "./Switch"
 
 const ThemeSwitcher: FC = () => {
-  const { theme, isDark, toggleTheme } = useTheme()
+  const { isDark, toggleTheme } = useTheme()
   return (
     <StyledWrapper>
       <StyledTitle>Dark mode</StyledTitle>
-      <Switch
-        trackColor={{ true: theme.colorPrimary, false: theme.colorGrey }}
-        value={isDark}
-        onValueChange={toggleTheme}
-      />
+      <Switch value={isDark} onValueChange={toggleTheme} />
     </StyledWrapper>
   )
 }

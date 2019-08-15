@@ -45,5 +45,5 @@ const StyledInput = styled.TextInput`
   text-align: center;
   height: 200px;
   font-family: "Verdana";
-  color: white;
+  color: ${p => p.theme.colorText};
 `

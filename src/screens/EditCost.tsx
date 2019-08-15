@@ -9,6 +9,7 @@ import {
 
 import CostForm from "../components/CostForm"
 import { useRoute } from "../lib/hooks/useAppContext"
+import styled from "../application/theme"
 
 interface EditCostProps {
   costId: string
@@ -44,19 +45,26 @@ function EditCost({ modalOpen, costId }: EditCostProps) {
     return null
   }
   return (
-    <Modal animationType="slide" transparent={false} visible={modalOpen}>
-      {cost ? (
-        <CostForm
-          cost={cost}
-          onFormCancel={() =>
-            setRoute({ type: "modal", modal: null, data: null })
-          }
-          onFormSubmit={handleEditCost}
-          onCostDelete={handleDeleteCost}
-        />
-      ) : null}
+    <Modal animationType="slide" transparent={true} visible={modalOpen}>
+      <StyledWrapper>
+        {cost ? (
+          <CostForm
+            cost={cost}
+            onFormCancel={() =>
+              setRoute({ type: "modal", modal: null, data: null })
+            }
+            onFormSubmit={handleEditCost}
+            onCostDelete={handleDeleteCost}
+          />
+        ) : null}
+      </StyledWrapper>
     </Modal>
   )
 }
 
 export default EditCost
+
+const StyledWrapper = styled.View`
+  flex: 1;
+  background-color: ${p => p.theme.colorGrey};
+`

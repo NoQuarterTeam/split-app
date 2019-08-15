@@ -16,7 +16,7 @@ function Input(
   { label, prefix, style, ...inputProps }: InputProps,
   ref: Ref<TextInput>,
 ) {
-  const { theme } = useTheme()
+  const { theme, isDark } = useTheme()
   const [focused, setFocused] = useState(false)
   return (
     <StyledContainer focused={focused}>
@@ -25,8 +25,9 @@ function Input(
       <StyledInput
         ref={ref}
         hasPrefix={!!prefix}
-        placeholderTextColor={theme.colorTertiary}
+        placeholderTextColor={theme.colorLabel}
         style={style}
+        keyboardAppearance={isDark ? "dark" : "light"}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         {...inputProps}
@@ -52,7 +53,7 @@ const StyledLabel = styled(Text)`
 const StyledInput = styled.TextInput<{ hasPrefix?: boolean }>`
   border: 0;
   width: 100%;
-  background-color: ${p => p.theme.colorBackground};
+  background-color: ${p => p.theme.colorGrey};
   border-radius: ${p => p.theme.borderRadius};
   color: ${p => p.theme.colorText};
   font-size: ${p => p.theme.textM};

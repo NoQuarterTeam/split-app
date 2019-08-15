@@ -2,26 +2,50 @@ import React from "react"
 import { BlurView } from "expo-blur"
 import styled from "../application/theme"
 import { Image } from "react-native"
-import { useRoute, useAppState } from "../lib/hooks/useAppContext"
+import { useRoute, useAppState, useTheme } from "../lib/hooks/useAppContext"
 import Text from "../components/styled/Text"
 import NewCost from "../screens/NewCost"
 import { isIphoneX } from "../lib/helpers"
 
 function BottomBar() {
   const { routes, setRoute } = useRoute()
+  const { isDark } = useTheme()
   const { house } = useAppState()
 
+  const activeRoute = routes.currentRoute
+
+  const balanceImagePath =
+    activeRoute !== "BALANCE"
+      ? require("../assets/images/icon-balance.png")
+      : isDark
+      ? require("../assets/images/icon-balance-light.png")
+      : require("../assets/images/icon-balance-dark.png")
+
+  const costsImagePath =
+    activeRoute !== "COSTS"
+      ? require("../assets/images/icon-costs.png")
+      : isDark
+      ? require("../assets/images/icon-costs-light.png")
+      : require("../assets/images/icon-costs-dark.png")
+
+  const settingsImagePath =
+    activeRoute !== "SETTINGS"
+      ? require("../assets/images/icon-settings.png")
+      : isDark
+      ? require("../assets/images/icon-settings-light.png")
+      : require("../assets/images/icon-settings-dark.png")
   return (
-    <StyledBottomBar isIphoneX={isIphoneX()} tint="default" intensity={100}>
+    <StyledBottomBar
+      isIphoneX={isIphoneX()}
+      tint={isDark ? "dark" : "default"}
+      intensity={100}
+    >
       <StyledTab
         activeOpacity={0.8}
         onPress={() => setRoute({ type: "route", route: "BALANCE" })}
       >
-        <Image
-          source={require("../assets/images/icon-balance.png")}
-          style={{ width: 30, height: 30 }}
-        />
-        <StyledTabText active={routes.currentRoute === "BALANCE"}>
+        <Image source={balanceImagePath} style={{ width: 30, height: 30 }} />
+        <StyledTabText active={activeRoute === "BALANCE"}>
           Balance
         </StyledTabText>
       </StyledTab>
@@ -30,24 +54,16 @@ function BottomBar() {
           activeOpacity={0.8}
           onPress={() => setRoute({ type: "route", route: "COSTS" })}
         >
-          <Image
-            source={require("../assets/images/icon-costs.png")}
-            style={{ width: 30, height: 30 }}
-          />
-          <StyledTabText active={routes.currentRoute === "COSTS"}>
-            Costs
-          </StyledTabText>
+          <Image source={costsImagePath} style={{ width: 30, height: 30 }} />
+          <StyledTabText active={activeRoute === "COSTS"}>Costs</StyledTabText>
         </StyledTab>
       )}
       <StyledTab
         activeOpacity={0.8}
         onPress={() => setRoute({ type: "route", route: "SETTINGS" })}
       >
-        <Image
-          source={require("../assets/images/icon-settings.png")}
-          style={{ width: 30, height: 30 }}
-        />
-        <StyledTabText active={routes.currentRoute === "SETTINGS"}>
+        <Image source={settingsImagePath} style={{ width: 30, height: 30 }} />
+        <StyledTabText active={activeRoute === "SETTINGS"}>
           Settings
         </StyledTabText>
       </StyledTab>

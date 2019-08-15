@@ -8,6 +8,7 @@ import Header from "../styled/Header"
 import Button from "../Button"
 import Text from "../styled/Text"
 import Spacer from "../styled/Spacer"
+import { useTheme } from "../../lib/hooks/useAppContext"
 
 interface Props {
   category: string
@@ -18,7 +19,7 @@ interface Props {
 
 const Options: FC<Props> = props => {
   const [modalOpen, setModalOpen] = useState<string>("none")
-
+  const { theme } = useTheme()
   return (
     <Fragment>
       <StyledOptions>
@@ -62,6 +63,7 @@ const Options: FC<Props> = props => {
           <Spacer />
           {modalOpen === "Category" ? (
             <Picker
+              itemStyle={{ color: theme.colorText }}
               selectedValue={props.category}
               onValueChange={category => props.onChange({ category })}
             >
@@ -92,6 +94,7 @@ const Options: FC<Props> = props => {
             />
           ) : modalOpen === "Recurring" ? (
             <Picker
+              itemStyle={{ color: theme.colorText }}
               selectedValue={props.recurring}
               onValueChange={recurring => props.onChange({ recurring })}
             >
@@ -145,7 +148,7 @@ const StyledModal = styled.View`
   height: 100%;
   padding: ${p => p.theme.paddingXL};
   padding-top: 150px;
-  background-color: ${p => p.theme.colorBackground};
+  background-color: ${p => p.theme.colorGrey};
 `
 
 const StyledModalHeader = styled(Header)`

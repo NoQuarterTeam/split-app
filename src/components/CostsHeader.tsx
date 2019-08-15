@@ -10,7 +10,7 @@ interface CostsHeaderProps {
 }
 
 function CostsHeader({ onSubmit, search }: CostsHeaderProps) {
-  const { theme } = useTheme()
+  const { theme, isDark } = useTheme()
   const [inputSearch, setSearch] = useState(search)
   const [focus, setFocus] = useState<boolean>(false)
 
@@ -34,6 +34,7 @@ function CostsHeader({ onSubmit, search }: CostsHeaderProps) {
           onBlur={() => setFocus(false)}
           onFocus={() => setFocus(true)}
           placeholderTextColor={theme.colorLabel}
+          keyboardAppearance={isDark ? "dark" : "light"}
           onChangeText={setSearch}
           onSubmitEditing={handleSubmit}
         />
@@ -70,11 +71,11 @@ const StyledCostsHeader = styled.View`
 
 const StyledInputWrap = styled.View<{ focused: boolean }>`
   width: 100%;
-  background-color: ${p => p.theme.colorBackground};
+  background-color: ${p => p.theme.colorGrey};
   border-radius: ${p => p.theme.borderRadius};
   border-width: 2px;
   border-color: ${p =>
-    p.focused ? darken(0.05, p.theme.colorBackground) : "white"};
+    p.focused ? darken(0.05, p.theme.colorGrey) : p.theme.colorPage};
   ${p => p.theme.flexBetween};
 `
 

@@ -63,7 +63,7 @@ function Particpants({
           <Button
             onPress={applyEqualSplit}
             text="Split equally"
-            variant="outline"
+            color="secondary"
           />
         )}
       </StyledWrapper>

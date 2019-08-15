@@ -7,9 +7,10 @@ import {
 } from "../../application/theme"
 
 import { useAsyncStorage } from "../../lib/hooks/useAsyncStorage"
+import { StatusBar } from "react-native"
 
 const ThemeProvider: FC = ({ children }) => {
-  const [isDark, setDarkTheme] = useAsyncStorage("darkTheme", false)
+  const [isDark, setDarkTheme] = useAsyncStorage("darkTheme", true)
   const toggleTheme = () => setDarkTheme(!isDark)
 
   return (
@@ -17,7 +18,11 @@ const ThemeProvider: FC = ({ children }) => {
       <ThemeContextProvider
         value={{ toggleTheme, isDark, theme: theme(isDark) }}
       >
-        <Fragment>{children}</Fragment>
+        <Fragment>
+          <StatusBar barStyle={isDark ? "light-content" : "dark-content"} />
+
+          {children}
+        </Fragment>
       </ThemeContextProvider>
     </SCThemeProvider>
   )

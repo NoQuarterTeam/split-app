@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import styled from "../../application/theme"
 import { decimalCount } from "../../lib/helpers"
+import { useTheme } from "../../lib/hooks/useAppContext"
 
 interface Props {
   amount: number
@@ -9,12 +10,15 @@ interface Props {
 }
 
 const Amount: FC<Props> = props => {
+  const { theme, isDark } = useTheme()
   return (
     <StyledInput
       placeholder="€15.45"
       keyboardType="numeric"
       blurOnSubmit={false}
       autoFocus={true}
+      placeholderTextColor={theme.colorLabel}
+      keyboardAppearance={isDark ? "dark" : "light"}
       value={props.amount ? `€${props.amount.toString()}` : ""}
       returnKeyLabel="Next"
       returnKeyType="done"
@@ -41,4 +45,5 @@ const StyledInput = styled.TextInput`
   text-align: center;
   height: 200px;
   font-family: "Verdana";
+  color: white;
 `

@@ -41,7 +41,7 @@ export default InputSlide
 const StyledInputSlide = styled.View<{ isIphoneX: boolean }>`
   height: 100%;
   width: 100%;
-  background-color: ${p => p.theme.colorBackground};
+  background-color: ${p => p.theme.colorGrey};
   flex-direction: column;
   padding: ${p => p.theme.paddingM} ${p => p.theme.paddingL};
   padding-top: ${p => (p.isIphoneX ? p.theme.paddingXL : p.theme.paddingM)};

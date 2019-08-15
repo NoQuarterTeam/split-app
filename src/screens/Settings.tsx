@@ -8,6 +8,7 @@ import { useLogout } from "../lib/graphql"
 import ProfileForm from "../components/ProfileForm"
 import InviteList from "../components/InviteList"
 import Spacer from "../components/styled/Spacer"
+import ThemeSwitcher from "../components/ThemeSwitcher"
 
 function Settings() {
   const { user, house } = useAppState()
@@ -21,6 +22,8 @@ function Settings() {
         <ProfileForm user={user} />
         <Spacer />
         <InviteList house={house} />
+        <Spacer />
+        <ThemeSwitcher />
         <Spacer />
         <Button
           variant="text"

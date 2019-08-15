@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import styled from "../../application/theme"
+import { useTheme } from "../../lib/hooks/useAppContext"
 
 interface Props {
   name: string
@@ -8,6 +9,7 @@ interface Props {
 }
 
 const Name: FC<Props> = props => {
+  const { theme, isDark } = useTheme()
   return (
     <StyledInput
       placeholder="Beers"
@@ -15,6 +17,8 @@ const Name: FC<Props> = props => {
       autoFocus={true}
       blurOnSubmit={false}
       returnKeyLabel="Next"
+      keyboardAppearance={isDark ? "dark" : "light"}
+      placeholderTextColor={theme.colorLabel}
       returnKeyType="next"
       onSubmitEditing={props.onSubmit}
       onChangeText={props.onChange}
@@ -25,8 +29,9 @@ const Name: FC<Props> = props => {
 export default Name
 
 const StyledInput = styled.TextInput`
-  font-size: ${p => p.theme.textXL};
   text-align: center;
   height: 200px;
   font-family: "Verdana";
+  font-size: ${p => p.theme.textXL};
+  color: ${p => p.theme.colorText};
 `

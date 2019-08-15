@@ -9,22 +9,32 @@ interface AuthFormProps {
 }
 function AuthForm({ children }: AuthFormProps) {
   return (
-    <KeyboardAwareScrollView
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={{ minHeight: "100%" }}
-    >
-      <StyledAuthForm>
-        <Logo />
-        <Spacer />
-        {children}
-      </StyledAuthForm>
-    </KeyboardAwareScrollView>
+    <StyledWrapper>
+      <KeyboardAwareScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          flex: 1,
+        }}
+      >
+        <StyledAuthForm>
+          <Logo />
+          <Spacer />
+          {children}
+        </StyledAuthForm>
+      </KeyboardAwareScrollView>
+    </StyledWrapper>
   )
 }
 
 export default AuthForm
 
+const StyledWrapper = styled.View`
+  flex: 1;
+  background-color: ${p => p.theme.colorPage};
+`
+
 const StyledAuthForm = styled.View`
   width: 100%;
+  flex: 1;
   padding: 60px ${p => p.theme.paddingXL};
 `

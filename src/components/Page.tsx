@@ -31,5 +31,5 @@ const StyledPage = styled.View<{ isWhite: boolean; isIphoneX: boolean }>`
   padding: ${p => p.theme.paddingM} ${p => p.theme.paddingL};
   padding-top: ${p => (p.isIphoneX ? p.theme.paddingXL : p.theme.paddingM)};
   padding-bottom: 80px;
-  background-color: white;
+  background-color: ${p => p.theme.colorPage};
 `

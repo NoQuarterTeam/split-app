@@ -37,7 +37,7 @@ export default memo(InviteRow)
 
 const StyledInvite = styled.View`
   padding: ${p => p.theme.paddingS} ${p => p.theme.paddingM};
-  background-color: ${p => p.theme.colorBackground};
+  background-color: ${p => p.theme.colorGrey};
   border-radius: ${p => p.theme.borderRadius};
   margin-bottom: ${p => p.theme.paddingS};
   ${p => p.theme.flexBetween};

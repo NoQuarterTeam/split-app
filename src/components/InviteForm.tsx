@@ -6,6 +6,7 @@ import styled from "../application/theme"
 import Input from "./Input"
 import Button from "./Button"
 import Text from "./styled/Text"
+import Spacer from "./styled/Spacer"
 
 interface InviteFormProps {
   house: {
@@ -46,6 +47,7 @@ function InviteForm({ house }: InviteFormProps) {
         returnKeyLabel="done"
         returnKeyType="send"
       />
+      <Spacer style={{ marginBottom: 20 }} />
       <Button
         onPress={handleCreateInvite}
         loading={loading}

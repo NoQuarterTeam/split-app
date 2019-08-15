@@ -35,6 +35,7 @@
     "apollo-boost": "0.4.4",
     "dayjs": "1.8.15",
     "expo": "^34.0.1",
+    "expo-blur": "~6.0.0",
     "graphql": "14.4.2",
     "graphql-tag": "2.10.1",
     "polished": "3.4.1",

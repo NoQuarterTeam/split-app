@@ -1,4 +1,5 @@
 import React from "react"
+import { BlurView } from "expo-blur"
 import styled from "../application/theme"
 import { Image } from "react-native"
 import { useRoute, useAppState } from "../lib/hooks/useAppContext"
@@ -11,8 +12,11 @@ function BottomBar() {
   const { house } = useAppState()
 
   return (
-    <StyledBottomBar isIphoneX={isIphoneX()}>
-      <StyledTab onPress={() => setRoute({ type: "route", route: "BALANCE" })}>
+    <StyledBottomBar isIphoneX={isIphoneX()} tint="default" intensity={100}>
+      <StyledTab
+        activeOpacity={0.8}
+        onPress={() => setRoute({ type: "route", route: "BALANCE" })}
+      >
         <Image
           source={require("../assets/images/icon-balance.png")}
           style={{ width: 30, height: 30 }}
@@ -22,7 +26,10 @@ function BottomBar() {
         </StyledTabText>
       </StyledTab>
       {house && (
-        <StyledTab onPress={() => setRoute({ type: "route", route: "COSTS" })}>
+        <StyledTab
+          activeOpacity={0.8}
+          onPress={() => setRoute({ type: "route", route: "COSTS" })}
+        >
           <Image
             source={require("../assets/images/icon-costs.png")}
             style={{ width: 30, height: 30 }}
@@ -32,7 +39,10 @@ function BottomBar() {
           </StyledTabText>
         </StyledTab>
       )}
-      <StyledTab onPress={() => setRoute({ type: "route", route: "SETTINGS" })}>
+      <StyledTab
+        activeOpacity={0.8}
+        onPress={() => setRoute({ type: "route", route: "SETTINGS" })}
+      >
         <Image
           source={require("../assets/images/icon-settings.png")}
           style={{ width: 30, height: 30 }}
@@ -43,11 +53,12 @@ function BottomBar() {
       </StyledTab>
       {house && (
         <StyledTab
+          activeOpacity={0.8}
           onPress={() => setRoute({ type: "modal", modal: "NEW_COST" })}
         >
           <Image
             source={require("../assets/images/icon-plus.png")}
-            style={{ width: 75, height: 75 }}
+            style={{ width: 70, height: 70 }}
           />
         </StyledTab>
       )}
@@ -56,7 +67,7 @@ function BottomBar() {
   )
 }
 
-const StyledBottomBar = styled.View<{ isIphoneX: boolean }>`
+const StyledBottomBar = styled(BlurView)<{ isIphoneX: boolean }>`
   position: absolute;
   bottom: 0;
   left: 0;
@@ -75,7 +86,7 @@ const StyledTab = styled.TouchableOpacity`
 `
 
 const StyledTabText = styled(Text)<{ active: boolean }>`
-  color: ${p => (p.active ? p.theme.colorText : p.theme.colorLabel)};
+  color: ${p => (p.active ? p.theme.colorText : p.theme.colorTertiary)};
 `
 
 export default BottomBar

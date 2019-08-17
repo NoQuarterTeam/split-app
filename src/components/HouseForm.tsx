@@ -10,6 +10,8 @@ import Spacer from "./styled/Spacer"
 
 function HouseForm() {
   const [name, setName] = useState<string>("")
+  const [currency] = useState<string>("Euro")
+
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>("")
 
@@ -18,7 +20,7 @@ function HouseForm() {
   const handleCreateHouse = () => {
     setLoading(true)
     createHouse({
-      variables: { data: { name } },
+      variables: { data: { name, currency } },
     }).catch(() => {
       setLoading(false)
       setError("error creating house")

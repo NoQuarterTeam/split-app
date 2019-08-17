@@ -61,6 +61,7 @@ export type House = {
   createdAt: Scalars["String"]
   updatedAt: Scalars["String"]
   name: Scalars["String"]
+  currency?: Maybe<Scalars["String"]>
   users: Array<User>
   costs: Array<Cost>
   invites: Array<Invite>
@@ -68,6 +69,7 @@ export type House = {
 
 export type HouseInput = {
   name: Scalars["String"]
+  currency: Scalars["String"]
 }
 
 export type Invite = {

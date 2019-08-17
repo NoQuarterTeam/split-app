@@ -3,7 +3,7 @@ import { ScrollView, RefreshControl } from "react-native"
 
 import styled from "../application/theme"
 import { useAppState } from "../lib/hooks/useAppContext"
-import { round } from "../lib/helpers"
+import { round, getCurrency } from "../lib/helpers"
 
 import Text from "../components/styled/Text"
 import Page from "../components/Page"
@@ -20,9 +20,13 @@ const Balance: FC = () => {
   const handleRefetchBalance = () => refetch()
   const getBalanceHeader = () => {
     if (user.balance > 0) {
-      return `You are owed €${round(user.balance * 0.01)}`
+      return `You are owed ${getCurrency(house && house.currency)}${round(
+        user.balance * 0.01,
+      )}`
     } else {
-      return `You owe €${Math.abs(round(user.balance * 0.01))}`
+      return `You owe ${getCurrency(house && house.currency)}${Math.abs(
+        round(user.balance * 0.01),
+      )}`
     }
   }
   return (

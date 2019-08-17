@@ -1,7 +1,7 @@
 import React, { memo } from "react"
 import { ShareInput, UserFragment } from "../../lib/graphql"
 import styled from "../../application/theme"
-import { decimalCount } from "../../lib/helpers"
+import { decimalCount, getCurrency } from "../../lib/helpers"
 
 import Input from "../Input"
 import Avatar from "../Avatar"
@@ -10,6 +10,7 @@ import Radio from "../Radio"
 import Column from "../styled/Column"
 import Center from "../styled/Center"
 import { Keyboard } from "react-native"
+import { useAppState } from "../../lib/hooks/useAppContext"
 
 interface ParticipantProps {
   user: UserFragment
@@ -24,6 +25,7 @@ function Participant({
   shares,
   setFormState,
 }: ParticipantProps) {
+  const { house } = useAppState()
   const userShare = shares.find(s => s.userId === user.id)
 
   const toggleParticipant = (userId: string) => {
@@ -49,7 +51,8 @@ function Participant({
   const handleCostShareUpdate = (val: string) => {
     try {
       let amount = val
-      if (amount[0] === "€") amount = val.split("€")[1]
+      if (amount[0] === getCurrency(house && house.currency))
+        amount = val.split(getCurrency(house && house.currency))[1]
       amount = amount.replace(",", ".")
       if (decimalCount(+amount) > 2) return
       setFormState({
@@ -85,7 +88,7 @@ function Participant({
       </Column>
       <Column flex={3} style={{ alignItems: "center" }}>
         <Input
-          placeholder="€0.00"
+          placeholder={`${getCurrency(house && house.currency)}0.00`}
           keyboardType="numeric"
           onChangeText={handleCostShareUpdate}
           onBlur={() => Keyboard.dismiss()}
@@ -93,7 +96,9 @@ function Participant({
           returnKeyType="done"
           value={
             userShare && userShare.amount
-              ? `€${userShare.amount.toString()}`
+              ? `${getCurrency(
+                  house && house.currency,
+                )}${userShare.amount.toString()}`
               : ""
           }
           style={{

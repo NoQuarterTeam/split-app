@@ -329,7 +329,7 @@ export type DestroyCostMutation = { __typename?: "Mutation" } & Pick<
 
 export type HouseFragment = { __typename?: "House" } & Pick<
   House,
-  "id" | "name"
+  "id" | "name" | "currency"
 >
 
 export type GetHouseQueryVariables = {}
@@ -505,6 +505,7 @@ export const HouseFragmentDoc = gql`
   fragment House on House {
     id
     name
+    currency
   }
 `
 export const InviteFragmentDoc = gql`

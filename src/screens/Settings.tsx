@@ -9,6 +9,7 @@ import ProfileForm from "../components/ProfileForm"
 import InviteList from "../components/InviteList"
 import Spacer from "../components/styled/Spacer"
 import ThemeSwitcher from "../components/ThemeSwitcher"
+import HouseSettings from "../components/HouseSettings"
 
 function Settings() {
   const { user, house } = useAppState()
@@ -20,6 +21,8 @@ function Settings() {
         contentContainerStyle={{ paddingBottom: 100 }}
       >
         <ProfileForm user={user} />
+        <Spacer />
+        <HouseSettings house={house} />
         <Spacer />
         <InviteList house={house} />
         <Spacer />

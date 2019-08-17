@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import styled from "../../application/theme"
-import { decimalCount } from "../../lib/helpers"
-import { useTheme } from "../../lib/hooks/useAppContext"
+import { decimalCount, getCurrency } from "../../lib/helpers"
+import { useTheme, useAppState } from "../../lib/hooks/useAppContext"
 
 interface Props {
   amount: number
@@ -10,23 +10,29 @@ interface Props {
 }
 
 const Amount: FC<Props> = props => {
+  const { house } = useAppState()
   const { theme, isDark } = useTheme()
   return (
     <StyledInput
-      placeholder="€15.45"
+      placeholder={`${getCurrency(house && house.currency)}15.45`}
       keyboardType="numeric"
       blurOnSubmit={false}
       autoFocus={true}
       placeholderTextColor={theme.colorLabel}
       keyboardAppearance={isDark ? "dark" : "light"}
-      value={props.amount ? `€${props.amount.toString()}` : ""}
+      value={
+        props.amount
+          ? `${getCurrency(house && house.currency)}${props.amount.toString()}`
+          : ""
+      }
       returnKeyLabel="Next"
       returnKeyType="done"
       onSubmitEditing={props.onSubmit}
       onChangeText={val => {
         try {
           let amount = val
-          if (amount[0] === "€") amount = amount.split("€")[1]
+          if (amount[0] === getCurrency(house && house.currency))
+            amount = amount.split(getCurrency(house && house.currency))[1]
           if (amount.includes(",")) amount = amount.replace(",", ".")
           if (decimalCount(+amount) > 2) return
           props.onChange(amount)

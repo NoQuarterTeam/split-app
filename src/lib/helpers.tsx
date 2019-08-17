@@ -1,4 +1,5 @@
 import { Dimensions, ScaledSize, Platform } from "react-native"
+import currencies from "./data/currencies"
 
 export const snakeToCamel = (value: string) =>
   value.replace(/_(\w)/g, m => m[1].toUpperCase())
@@ -59,3 +60,6 @@ export function isIphoneX() {
   const dim = Dimensions.get("window")
   return Platform.OS === "ios" && (isIPhoneXSize(dim) || isIPhoneXrSize(dim))
 }
+
+export const getCurrency = (currency?: string | null) =>
+  currencies[currency || "Euro"]

@@ -1,5 +1,5 @@
 import React, { memo, useState } from "react"
-import { useCreateHouse } from "../lib/graphql"
+import { useEditHouse, HouseFragment } from "../lib/graphql"
 
 import styled from "../application/theme"
 
@@ -8,29 +8,36 @@ import Button from "./Button"
 import Text from "./styled/Text"
 import Spacer from "./styled/Spacer"
 import CurrencyOptions from "./CurrencyOptions"
+import Header from "./styled/Header"
 
-function HouseForm() {
-  const [name, setName] = useState<string>("")
-  const [currency, setCurrency] = useState<string>("Euro")
+interface Props {
+  house: HouseFragment
+}
+function HouseSettings({ house }: Props) {
+  const [name, setName] = useState<string>(house.name)
+  const [currency, setCurrency] = useState<string>(house.currency || "Euro")
 
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>("")
 
-  const [createHouse] = useCreateHouse()
+  const [editHouse] = useEditHouse()
 
-  const handleCreateHouse = () => {
+  const handleEditHouse = () => {
     if (!name) return
     setLoading(true)
-    createHouse({
-      variables: { data: { name, currency } },
-    }).catch(() => {
-      setLoading(false)
-      setError("error creating house")
+    editHouse({
+      variables: { houseId: house.id, data: { name, currency } },
     })
+      .then(() => setLoading(false))
+      .catch(() => {
+        setLoading(false)
+        setError("Error updating house")
+      })
   }
 
   return (
     <StyledForm>
+      <Header>House settings</Header>
       <Input
         value={name}
         onChangeText={setName}
@@ -41,21 +48,20 @@ function HouseForm() {
       <CurrencyOptions value={currency} onChange={setCurrency} />
       <Spacer />
       <Button
-        onPress={handleCreateHouse}
+        disabled={loading}
+        onPress={handleEditHouse}
         loading={loading}
-        text="Create house"
+        text="Update house"
       />
       {error ? <StyledError>{error}</StyledError> : null}
     </StyledForm>
   )
 }
 
-export default memo(HouseForm)
+export default memo(HouseSettings)
 
 const StyledForm = styled.View`
-  height: 80%;
   width: 100%;
-  margin: 0 auto;
   display: flex;
   align-items: flex-start;
   justify-content: center;

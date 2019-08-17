@@ -3,7 +3,7 @@ import dayjs from "dayjs"
 import { CostFragment, PayerFragment } from "../lib/graphql"
 
 import styled from "../application/theme"
-import { round, capitalize } from "../lib/helpers"
+import { round, capitalize, getCurrency } from "../lib/helpers"
 import Text from "../components/styled/Text"
 
 // import IconRepeat from "../assets/images/icon-repeat.svg"
@@ -11,13 +11,14 @@ import Text from "../components/styled/Text"
 
 import Column from "./styled/Column"
 import Avatar from "./Avatar"
-import { useRoute } from "../lib/hooks/useAppContext"
+import { useRoute, useAppState } from "../lib/hooks/useAppContext"
 
 interface CostProps {
   cost: CostFragment & PayerFragment
 }
 
 function CostItem({ cost }: CostProps) {
+  const { house } = useAppState()
   const { setRoute } = useRoute()
 
   const handleCostPress = () => {
@@ -42,7 +43,9 @@ function CostItem({ cost }: CostProps) {
             )} */}
       </Column>
       <Column flex={5}>
-        <StyledValue>€ {round(cost.amount * 0.01)}</StyledValue>
+        <StyledValue>
+          {getCurrency(house && house.currency)} {round(cost.amount * 0.01)}
+        </StyledValue>
       </Column>
       <Column flex={5}>
         <Avatar user={cost.payer} size={40} />

@@ -77,7 +77,7 @@ function ProfileForm({ user }: ProfileFormProps) {
       <Spacer />
       <Button
         full={true}
-        disabled={!form.dirty || form.loading}
+        disabled={form.loading}
         onPress={handleUpdateUser}
         loading={form.loading}
         text="Submit"

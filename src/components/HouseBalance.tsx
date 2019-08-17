@@ -2,7 +2,7 @@ import React, { memo } from "react"
 import { UserFragment } from "../lib/graphql"
 
 import styled, { lighten } from "../application/theme"
-import { round } from "../lib/helpers"
+import { round, getCurrency } from "../lib/helpers"
 import { useAppState } from "../lib/hooks/useAppContext"
 import Text from "../components/styled/Text"
 
@@ -34,7 +34,8 @@ function HouseBalance({ users }: HouseBalanceProps) {
             <StyledSpacer />
             <Avatar user={user} size={avatarCount > 3 ? 60 : 70} />
             <StyledUserBalance>
-              {user.balance < 0 && "-"} € {round(Math.abs(user.balance * 0.01))}
+              {user.balance < 0 && "-"} {getCurrency(house && house.currency)}{" "}
+              {round(Math.abs(user.balance * 0.01))}
             </StyledUserBalance>
           </StyledUserGraph>
         )

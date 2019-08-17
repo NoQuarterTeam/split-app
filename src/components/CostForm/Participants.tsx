@@ -4,13 +4,14 @@ import { KeyboardAvoidingView } from "react-native"
 import { CostInput, UserFragment } from "../../lib/graphql"
 
 import styled from "../../application/theme"
-import { round } from "../../lib/helpers"
+import { round, getCurrency } from "../../lib/helpers"
 
 import Column from "../styled/Column"
 import Alert from "../Alert"
 import Participant from "./Participant"
 import Button from "../Button"
 import Text from "../styled/Text"
+import { useAppState } from "../../lib/hooks/useAppContext"
 
 interface ParticpantsProps {
   users: UserFragment[]
@@ -26,6 +27,7 @@ function Particpants({
   setFormState,
   applyEqualSplit,
 }: ParticpantsProps) {
+  const { house } = useAppState()
   const totalParticpantsAmount = formState.costShares.sumBy("amount")
   const amountRemaining = round(formState.amount - totalParticpantsAmount, 2)
   return (
@@ -33,7 +35,11 @@ function Particpants({
       <StyledWrapper>
         {isDifferent && !formState.equalSplit && (
           <StyledAlertWrapper>
-            <Alert text={`Split must equal amount ( € ${amountRemaining} )`} />
+            <Alert
+              text={`Split must equal amount ( ${getCurrency(
+                house && house.currency,
+              )} ${amountRemaining} )`}
+            />
           </StyledAlertWrapper>
         )}
         <StyledHeader>

@@ -20,6 +20,10 @@
       "depTypeList": ["dependencies"],
       "updateTypes": ["major"],
       "automerge": false
+    },
+    {
+      "packageNames": ["react-native", "react"],
+      "automerge": false
     }
   ]
 }

@@ -2,6 +2,7 @@
   "extends": ["config:base", "schedule:earlyMondays"],
   "automerge": true,
   "rebaseStalePrs": true,
+  "requiredStatusChecks": null,
   "packageRules": [
     {
       "packagePatterns": ["eslint"],

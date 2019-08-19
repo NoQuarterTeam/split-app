@@ -42,7 +42,7 @@
     "react": "16.8.3",
     "react-dom": "16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
-    "react-native-keyboard-aware-scroll-view": "0.8.0",
+    "react-native-keyboard-aware-scroll-view": "0.9.1",
     "react-native-web": "0.11.6",
     "scheduler": "0.14.0",
     "styled-components": "4.3.2"

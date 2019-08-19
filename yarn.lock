@@ -10,7 +10,7 @@
     ts-invariant "^0.4.4"
     tslib "^1.10.0"
 
-"@apollo/react-hooks@^3.0.0":
+"@apollo/react-hooks@3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@apollo/react-hooks/-/react-hooks-3.0.0.tgz#5fe4ff7812020f3e1b91b8628af8c03276496d78"
   integrity sha512-7kaV6rkx2WZjDYcBmp52oyhTxbNn5Jc4AUmsXZVEnDu9uuvNYURA8bLlJNF8yu4zS7ed8D+ZebC0y0bhrz8wIg==
@@ -2061,7 +2061,7 @@ babel-plugin-syntax-trailing-function-commas@^7.0.0-beta.0:
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-trailing-function-commas/-/babel-plugin-syntax-trailing-function-commas-7.0.0-beta.0.tgz#aa213c1435e2bffeb6fca842287ef534ad05d5cf"
   integrity sha512-Xj9XuRuz3nTSbaTXWv3itLOcxyF4oPD8douBBmj7U9BBC6nEBYfyOJYQMf/8PJAFotC62UY5dFfIGEPr7WswzQ==
 
-babel-preset-expo@^6.0.0:
+babel-preset-expo@6.0.0, babel-preset-expo@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/babel-preset-expo/-/babel-preset-expo-6.0.0.tgz#acc4eb8343a2f703d5808916c051a6caefde8778"
   integrity sha512-MvDy86afmCt4sFYkg7yXsZyGL0yONT5JQHZSK1r8cu26Zm1No0yQyll+w78e2OkkYwVFtC1u70GyBPdERG7BZg==
@@ -3452,7 +3452,7 @@ expo-asset@~6.0.0:
     path-browserify "^1.0.0"
     url-parse "^1.4.4"
 
-expo-blur@~6.0.0:
+expo-blur@6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/expo-blur/-/expo-blur-6.0.0.tgz#c63e7c464e1a8137dae8a71f893426a538eb9ed9"
   integrity sha512-UqMaE2G2DfoeEJCYFfFLXq9nBeD0m3G1IISpxmdLXHDvzQuFl0kzNAZXX81a9sByWTV85KsxxnxoLImbfxV33A==
@@ -3516,7 +3516,7 @@ expo-web-browser@~6.0.0:
   resolved "https://registry.yarnpkg.com/expo-web-browser/-/expo-web-browser-6.0.0.tgz#63a59d4c02cd7ba47faa6a2eb04decb1a1ab2a32"
   integrity sha512-7XkFPd4PRlVP6FscTnn78c0tY6+yLzb2Eai/ed+l+LB+hZWuhyY3ONzYM7/IKAiPmfhZr4Qs80vIa7iiavti8A==
 
-expo@^34.0.1:
+expo@34.0.4:
   version "34.0.4"
   resolved "https://registry.yarnpkg.com/expo/-/expo-34.0.4.tgz#af6ef0da40c98981b5f3323c86fd815dfa417fff"
   integrity sha512-sZQQoZnN5ASrkSA4qSsk7HPBewHB6b3k9VPZvchT0FBZ1fP5vpmzfIbVOqOLRXHf2VdjNnQVme617TnpPlruJg==
@@ -7247,7 +7247,7 @@ react-devtools-core@^3.6.0:
     shell-quote "^1.6.1"
     ws "^3.3.1"
 
-react-dom@^16.8.6:
+react-dom@16.9.0:
   version "16.9.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.9.0.tgz#5e65527a5e26f22ae3701131bcccaee9fb0d3962"
   integrity sha512-YFT2rxO9hM70ewk9jq0y6sQk8cL02xm4+IzYBz75CQGlClQQ1Bxq0nhHF6OtSbit+AIahujJgb/CPRibFkMNJQ==
@@ -7285,7 +7285,7 @@ react-native-view-shot@2.6.0:
   resolved "https://registry.yarnpkg.com/react-native-view-shot/-/react-native-view-shot-2.6.0.tgz#3b23675826f67658366352c4b97b59a6aded2f43"
   integrity sha512-yO9vWi/11m2hEJl8FrW1SMeVzFfPtMKh20MUInGqlsL0H8Ya2JGGlFfrBzx1KiFR2hFb5OdsTLYNtcVZtJ6pLQ==
 
-react-native-web@^0.11.4:
+react-native-web@0.11.6:
   version "0.11.6"
   resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.11.6.tgz#7766c1550331c8724b2d5fe5d1b9ad83efe32c91"
   integrity sha512-Hqf4mnvuuaEPzcnXyk3UkU2pX4L+UpUzFNakg4diiMq/+dCLDYTAJwQerC69YLoB7ItpWIby1LHUx0uVn3opzg==

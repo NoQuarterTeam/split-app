@@ -33,7 +33,7 @@
   "dependencies": {
     "@apollo/react-hooks": "3.0.1",
     "apollo-boost": "0.4.4",
-    "dayjs": "1.8.15",
+    "dayjs": "1.8.16",
     "expo": "34.0.4",
     "expo-blur": "6.0.0",
     "graphql": "14.5.3",

@@ -3,6 +3,9 @@
   "automerge": true,
   "rebaseStalePrs": true,
   "requiredStatusChecks": null,
+  "major": {
+    "automerge": false
+  },
   "packageRules": [
     {
       "packagePatterns": ["eslint"],
@@ -15,11 +18,6 @@
     {
       "packageNames": ["aws-sdk"],
       "extends": ["schedule:monthly"]
-    },
-    {
-      "depTypeList": ["dependencies"],
-      "updateTypes": ["major"],
-      "automerge": false
     },
     {
       "packageNames": ["react-native", "react"],

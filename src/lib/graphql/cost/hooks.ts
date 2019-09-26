@@ -6,16 +6,16 @@ import {
   AllCostsQuery,
   AllCostsQueryVariables,
   AllCostsDocument,
-  GetHouseDocument,
+  GetGroupDocument,
   useCreateCostMutation,
   CostFragment,
   QueryAllCostsArgs,
 } from "../types"
 
-export function useAllCosts(houseId: string, search: string) {
+export function useAllCosts(groupId: string, search: string) {
   const { data, error, loading, fetchMore } = useAllCostsQuery({
     variables: {
-      houseId,
+      groupId,
       search,
       skip: 0,
     },
@@ -26,7 +26,7 @@ export function useAllCosts(houseId: string, search: string) {
 
   const handleRefresh = () => {
     fetchMore({
-      variables: { houseId, search, skip: 0 },
+      variables: { groupId, search, skip: 0 },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult || !prev.allCosts || !fetchMoreResult.allCosts)
           return prev
@@ -69,13 +69,13 @@ export function useGetCost(costId: string) {
   return { cost, getCostError: error, loading }
 }
 
-export function useEditCost(houseId: string) {
+export function useEditCost(groupId: string) {
   return useEditCostMutation({
     refetchQueries: [
-      { query: GetHouseDocument },
+      { query: GetGroupDocument },
       {
         query: AllCostsDocument,
-        variables: { houseId, skip: 0, search: "" },
+        variables: { groupId, skip: 0, search: "" },
       },
     ],
     awaitRefetchQueries: true,
@@ -86,7 +86,7 @@ export function useDestroyCost(cost?: CostFragment) {
   const costId = cost ? cost.id : ""
   return useDestroyCostMutation({
     variables: { costId },
-    refetchQueries: [{ query: GetHouseDocument }],
+    refetchQueries: [{ query: GetGroupDocument }],
     update: (cache, { data }) => {
       try {
         const costsData = cache.readQuery<
@@ -94,7 +94,7 @@ export function useDestroyCost(cost?: CostFragment) {
           AllCostsQueryVariables
         >({
           query: AllCostsDocument,
-          variables: { houseId: cost ? cost.houseId : "", skip: 0, search: "" },
+          variables: { groupId: cost ? cost.groupId : "", skip: 0, search: "" },
         })
         if (
           data &&
@@ -113,7 +113,7 @@ export function useDestroyCost(cost?: CostFragment) {
               },
             },
             variables: {
-              houseId: cost ? cost.houseId : "",
+              groupId: cost ? cost.groupId : "",
               skip: 0,
               search: "",
             },
@@ -124,9 +124,9 @@ export function useDestroyCost(cost?: CostFragment) {
   })
 }
 
-export function useCreateCost(houseId: string) {
+export function useCreateCost(groupId: string) {
   return useCreateCostMutation({
-    refetchQueries: [{ query: GetHouseDocument }],
+    refetchQueries: [{ query: GetGroupDocument }],
     awaitRefetchQueries: true,
     update: (cache, { data }) => {
       try {
@@ -135,12 +135,12 @@ export function useCreateCost(houseId: string) {
           AllCostsQueryVariables
         >({
           query: AllCostsDocument,
-          variables: { houseId, skip: 0, search: "" },
+          variables: { groupId, skip: 0, search: "" },
         })
         if (data && costsData && costsData.allCosts) {
           cache.writeQuery({
             query: AllCostsDocument,
-            variables: { houseId, skip: 0, search: "" },
+            variables: { groupId, skip: 0, search: "" },
             data: {
               allCosts: {
                 __typename: costsData.allCosts.__typename,

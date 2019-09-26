@@ -8,7 +8,7 @@ import styled from "../application/theme"
 function NewCost({ modalOpen }: { modalOpen: boolean }) {
   const { user } = useAppState()
   const { setRoute } = useRoute()
-  const [createCost] = useCreateCost(user.houseId || "")
+  const [createCost] = useCreateCost(user.groupId || "")
 
   const handleCreateCost = async (costData: CostInput) => {
     await createCost({

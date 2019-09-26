@@ -10,10 +10,10 @@ import ProfileForm from "../components/ProfileForm"
 import InviteList from "../components/InviteList"
 import Spacer from "../components/styled/Spacer"
 import ThemeSwitcher from "../components/ThemeSwitcher"
-import HouseSettings from "../components/HouseSettings"
+import GroupSettings from "../components/GroupSettings"
 
 function Settings() {
-  const { user, house } = useAppState()
+  const { user, group } = useAppState()
   const [logout] = useLogout()
   return (
     <Page title="Settings" white={true}>
@@ -25,9 +25,9 @@ function Settings() {
       >
         <ProfileForm user={user} />
         <Spacer />
-        <HouseSettings house={house} />
+        <GroupSettings group={group} />
         <Spacer />
-        <InviteList house={house} />
+        <InviteList group={group} />
         <Spacer />
         <ThemeSwitcher />
         <Spacer />

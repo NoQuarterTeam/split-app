@@ -9,15 +9,15 @@ import InviteRow from "./InviteRow"
 import InviteForm from "./InviteForm"
 
 interface InviteListProps {
-  house: { id: string; invites: InviteFragment[] }
+  group: { id: string; invites: InviteFragment[] }
 }
-function InviteList({ house }: InviteListProps) {
+function InviteList({ group }: InviteListProps) {
   return (
     <StyledInviteList>
       <Header>Invites</Header>
-      <InviteForm house={house} />
+      <InviteForm group={group} />
       <Spacer />
-      {house.invites.map(invite => (
+      {group.invites.map(invite => (
         <InviteRow key={invite.id} invite={invite} />
       ))}
     </StyledInviteList>

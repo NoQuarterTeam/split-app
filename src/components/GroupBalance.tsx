@@ -8,17 +8,17 @@ import Text from "../components/styled/Text"
 
 import Avatar from "./Avatar"
 
-interface HouseBalanceProps {
+interface GroupBalanceProps {
   users: UserFragment[]
 }
 
-function HouseBalance({ users }: HouseBalanceProps) {
-  const { house } = useAppState()
+function GroupBalance({ users }: GroupBalanceProps) {
+  const { group } = useAppState()
   const total = users.sumBy("balance", true)
   let avatarCount = users.length
-  if (house.invites.length > 0) avatarCount = avatarCount + 1
+  if (group.invites.length > 0) avatarCount = avatarCount + 1
   return (
-    <StyledHouseBalance>
+    <StyledGroupBalance>
       {users.map(user => {
         return (
           <StyledUserGraph key={user.id}>
@@ -34,31 +34,31 @@ function HouseBalance({ users }: HouseBalanceProps) {
             <StyledSpacer />
             <Avatar user={user} size={avatarCount > 3 ? 60 : 70} />
             <StyledUserBalance>
-              {user.balance < 0 && "-"} {getCurrency(house && house.currency)}{" "}
+              {user.balance < 0 && "-"} {getCurrency(group && group.currency)}{" "}
               {round(Math.abs(user.balance * 0.01))}
             </StyledUserBalance>
           </StyledUserGraph>
         )
       })}
-      {house && house.invites.length > 0 && (
+      {group && group.invites.length > 0 && (
         <StyledUserGraph>
           <StyledSpacer />
           <StyledPending size={avatarCount > 3 ? 60 : 70}>
             <StyledPendingText>
-              {house.invites.length}{" "}
-              {house.invites.length === 1 ? "invite" : "invites"} pending
+              {group.invites.length}{" "}
+              {group.invites.length === 1 ? "invite" : "invites"} pending
             </StyledPendingText>
           </StyledPending>
           <StyledSpacer />
         </StyledUserGraph>
       )}
-    </StyledHouseBalance>
+    </StyledGroupBalance>
   )
 }
 
-export default memo(HouseBalance)
+export default memo(GroupBalance)
 
-const StyledHouseBalance = styled.View`
+const StyledGroupBalance = styled.View`
   width: 100%;
   height: 80%;
   position: relative;

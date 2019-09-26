@@ -18,7 +18,7 @@ interface CostProps {
 }
 
 function CostItem({ cost }: CostProps) {
-  const { house } = useAppState()
+  const { group } = useAppState()
   const { setRoute } = useRoute()
 
   const handleCostPress = () => {
@@ -44,7 +44,7 @@ function CostItem({ cost }: CostProps) {
       </Column>
       <Column flex={5}>
         <StyledValue>
-          {getCurrency(house && house.currency)} {round(cost.amount * 0.01)}
+          {getCurrency(group && group.currency)} {round(cost.amount * 0.01)}
         </StyledValue>
       </Column>
       <Column flex={5}>

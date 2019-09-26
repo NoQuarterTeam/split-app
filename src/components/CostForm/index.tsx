@@ -33,7 +33,7 @@ function CostForm({
 
   const [, setError] = useState<string | null>(null)
 
-  const { user, house } = useAppState()
+  const { user, group } = useAppState()
 
   const { formState, setFormState } = useFormState({
     name: cost ? cost.name : "",
@@ -44,7 +44,7 @@ function CostForm({
       ? dayjs(cost.date).format("YYYY-MM-DD")
       : dayjs().format("YYYY-MM-DD"),
     recurring: cost ? cost.recurring : "one-off",
-    houseId: house.id,
+    groupId: group.id,
     payerId: cost ? cost.payerId : user.id,
     costShares: cost
       ? cost.shares
@@ -53,7 +53,7 @@ function CostForm({
             userId: s.user.id,
             amount: round(s.amount * 0.01),
           }))
-      : house.users.map(u => ({ userId: u.id, amount: 0 })),
+      : group.users.map(u => ({ userId: u.id, amount: 0 })),
   })
 
   const isDifferent =
@@ -75,7 +75,7 @@ function CostForm({
   const handleSubmit = async () => {
     if (isDifferent) return
 
-    const costShares = house.users.map(u => {
+    const costShares = group.users.map(u => {
       const userShare = formState.costShares.find(s => s.userId === u.id)
       if (userShare) {
         return {
@@ -180,7 +180,7 @@ function CostForm({
           onBack={() => setStep("Options")}
         >
           <Participants
-            users={house.users}
+            users={group.users}
             formState={formState}
             isDifferent={isDifferent}
             setFormState={setFormState}

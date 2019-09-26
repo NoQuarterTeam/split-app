@@ -1,18 +1,18 @@
 import React from "react"
-import { MeQuery, GetHouseQuery } from "../lib/graphql"
+import { MeQuery, GetGroupQuery } from "../lib/graphql"
 import { ThemeInterface, theme } from "./theme"
 
 // App State
 
 export interface StateContext {
   user: MeQuery["me"]
-  house: GetHouseQuery["house"]
+  group: GetGroupQuery["group"]
   refetch: () => void
 }
 
 export const StateContext = React.createContext<StateContext>({
   user: null,
-  house: null,
+  group: null,
   refetch: () => {},
 })
 

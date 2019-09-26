@@ -23,6 +23,7 @@ function Input(
       {label ? <StyledLabel>{label}</StyledLabel> : null}
       {prefix ? <StyledPrefix style={style}>{prefix}</StyledPrefix> : null}
       <StyledInput
+        // @ts-ignore
         ref={ref}
         hasPrefix={!!prefix}
         placeholderTextColor={theme.colorLabel}

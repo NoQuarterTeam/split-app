@@ -20,7 +20,7 @@ function EditCost({ modalOpen, costId }: EditCostProps) {
   const { setRoute } = useRoute()
 
   const { cost, loading } = useGetCost(costId)
-  const [editCost] = useEditCost(cost ? cost.houseId : "")
+  const [editCost] = useEditCost(cost ? cost.groupId : "")
   const [destroyCost] = useDestroyCost(cost)
 
   const handleEditCost = async (costData: CostInput) => {

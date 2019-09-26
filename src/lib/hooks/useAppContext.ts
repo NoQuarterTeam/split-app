@@ -12,7 +12,7 @@ export function useAppState() {
   return {
     ...stateContext,
     user: stateContext.user!, // eslint-disable-line
-    house: stateContext.house!, // eslint-disable-line
+    group: stateContext.group!, // eslint-disable-line
   }
 }
 export function useRoute() {

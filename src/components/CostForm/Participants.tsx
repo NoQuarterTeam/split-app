@@ -27,7 +27,7 @@ function Particpants({
   setFormState,
   applyEqualSplit,
 }: ParticpantsProps) {
-  const { house } = useAppState()
+  const { group } = useAppState()
   const totalParticpantsAmount = formState.costShares.sumBy("amount")
   const amountRemaining = round(formState.amount - totalParticpantsAmount, 2)
   return (
@@ -37,7 +37,7 @@ function Particpants({
           <StyledAlertWrapper>
             <Alert
               text={`Split must equal amount ( ${getCurrency(
-                house && house.currency,
+                group && group.currency,
               )} ${amountRemaining} )`}
             />
           </StyledAlertWrapper>

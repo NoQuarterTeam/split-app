@@ -25,7 +25,7 @@ function Participant({
   shares,
   setFormState,
 }: ParticipantProps) {
-  const { house } = useAppState()
+  const { group } = useAppState()
   const userShare = shares.find(s => s.userId === user.id)
 
   const toggleParticipant = (userId: string) => {
@@ -51,8 +51,8 @@ function Participant({
   const handleCostShareUpdate = (val: string) => {
     try {
       let amount = val
-      if (amount[0] === getCurrency(house && house.currency))
-        amount = val.split(getCurrency(house && house.currency))[1]
+      if (amount[0] === getCurrency(group && group.currency))
+        amount = val.split(getCurrency(group && group.currency))[1]
       amount = amount.replace(",", ".")
       if (decimalCount(+amount) > 2) return
       setFormState({
@@ -88,7 +88,7 @@ function Participant({
       </Column>
       <Column flex={3} style={{ alignItems: "center" }}>
         <Input
-          placeholder={`${getCurrency(house && house.currency)}0.00`}
+          placeholder={`${getCurrency(group && group.currency)}0.00`}
           keyboardType="numeric"
           onChangeText={handleCostShareUpdate}
           onBlur={() => Keyboard.dismiss()}
@@ -97,7 +97,7 @@ function Participant({
           value={
             userShare && userShare.amount
               ? `${getCurrency(
-                  house && house.currency,
+                  group && group.currency,
                 )}${userShare.amount.toString()}`
               : ""
           }

@@ -1,5 +1,5 @@
 import React, { memo, useState } from "react"
-import { useEditHouse, HouseFragment } from "../lib/graphql"
+import { useEditGroup, GroupFragment } from "../lib/graphql"
 
 import styled from "../application/theme"
 
@@ -11,54 +11,54 @@ import CurrencyOptions from "./CurrencyOptions"
 import Header from "./styled/Header"
 
 interface Props {
-  house: HouseFragment
+  group: GroupFragment
 }
-function HouseSettings({ house }: Props) {
-  const [name, setName] = useState<string>(house.name)
-  const [currency, setCurrency] = useState<string>(house.currency || "Euro")
+function GroupSettings({ group }: Props) {
+  const [name, setName] = useState<string>(group.name)
+  const [currency, setCurrency] = useState<string>(group.currency || "Euro")
 
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>("")
 
-  const [editHouse] = useEditHouse()
+  const [editGroup] = useEditGroup()
 
-  const handleEditHouse = () => {
+  const handleEditGroup = () => {
     if (!name) return
     setLoading(true)
-    editHouse({
-      variables: { houseId: house.id, data: { name, currency } },
+    editGroup({
+      variables: { groupId: group.id, data: { name, currency } },
     })
       .then(() => setLoading(false))
       .catch(() => {
         setLoading(false)
-        setError("Error updating house")
+        setError("Error updating group")
       })
   }
 
   return (
     <StyledForm>
-      <Header>House settings</Header>
+      <Header>Group settings</Header>
       <Input
         value={name}
         onChangeText={setName}
         placeholder="201 Columbusplein"
-        label="House name"
+        label="Group name"
       />
       <Spacer />
       <CurrencyOptions value={currency} onChange={setCurrency} />
       <Spacer />
       <Button
         disabled={loading}
-        onPress={handleEditHouse}
+        onPress={handleEditGroup}
         loading={loading}
-        text="Update house"
+        text="Update group"
       />
       {error ? <StyledError>{error}</StyledError> : null}
     </StyledForm>
   )
 }
 
-export default memo(HouseSettings)
+export default memo(GroupSettings)
 
 const StyledForm = styled.View`
   width: 100%;

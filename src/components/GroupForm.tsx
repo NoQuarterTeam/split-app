@@ -1,5 +1,5 @@
 import React, { memo, useState } from "react"
-import { useCreateHouse } from "../lib/graphql"
+import { useCreateGroup } from "../lib/graphql"
 
 import styled from "../application/theme"
 
@@ -9,23 +9,23 @@ import Text from "./styled/Text"
 import Spacer from "./styled/Spacer"
 import CurrencyOptions from "./CurrencyOptions"
 
-function HouseForm() {
+function GroupForm() {
   const [name, setName] = useState<string>("")
   const [currency, setCurrency] = useState<string>("Euro")
 
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>("")
 
-  const [createHouse] = useCreateHouse()
+  const [createGroup] = useCreateGroup()
 
-  const handleCreateHouse = () => {
+  const handleCreateGroup = () => {
     if (!name) return
     setLoading(true)
-    createHouse({
+    createGroup({
       variables: { data: { name, currency } },
     }).catch(() => {
       setLoading(false)
-      setError("error creating house")
+      setError("error creating group")
     })
   }
 
@@ -35,22 +35,22 @@ function HouseForm() {
         value={name}
         onChangeText={setName}
         placeholder="201 Columbusplein"
-        label="House name"
+        label="Group name"
       />
       <Spacer />
       <CurrencyOptions value={currency} onChange={setCurrency} />
       <Spacer />
       <Button
-        onPress={handleCreateHouse}
+        onPress={handleCreateGroup}
         loading={loading}
-        text="Create house"
+        text="Create group"
       />
       {error ? <StyledError>{error}</StyledError> : null}
     </StyledForm>
   )
 }
 
-export default memo(HouseForm)
+export default memo(GroupForm)
 
 const StyledForm = styled.View`
   height: 80%;

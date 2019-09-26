@@ -9,11 +9,11 @@ import Text from "./styled/Text"
 import Spacer from "./styled/Spacer"
 
 interface InviteFormProps {
-  house: {
+  group: {
     id: string
   }
 }
-function InviteForm({ house }: InviteFormProps) {
+function InviteForm({ group }: InviteFormProps) {
   const [email, setEmail] = useState<string>("")
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>("")
@@ -22,7 +22,7 @@ function InviteForm({ house }: InviteFormProps) {
   const handleCreateInvite = () => {
     setLoading(true)
     createInvite({
-      variables: { data: { email, houseId: house.id } },
+      variables: { data: { email, groupId: group.id } },
     })
       .then(async () => {
         setLoading(false)

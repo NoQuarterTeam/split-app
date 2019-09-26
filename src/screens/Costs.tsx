@@ -11,12 +11,12 @@ import CostsHeader from "../components/CostsHeader"
 import EditCost from "./EditCost"
 
 const Costs: FC = () => {
-  const { house } = useAppState()
-  if (!house) return null // TODO: Do something with these types of things,
-  // e.g. render the house form
+  const { group } = useAppState()
+  if (!group) return null // TODO: Do something with these types of things,
+  // e.g. render the group form
   const { routes } = useRoute()
   const [search, setSearch] = useAsyncStorage("costs:search", "")
-  const { costs, fetchMore, refresh } = useAllCosts(house.id, search)
+  const { costs, fetchMore, refresh } = useAllCosts(group.id, search)
 
   return (
     <Page title="Costs">
@@ -24,7 +24,7 @@ const Costs: FC = () => {
         data={costs}
         showsVerticalScrollIndicator={false}
         onEndReached={() =>
-          fetchMore({ search, skip: costs.length, houseId: house.id })
+          fetchMore({ search, skip: costs.length, groupId: group.id })
         }
         refreshing={false}
         onRefresh={refresh}

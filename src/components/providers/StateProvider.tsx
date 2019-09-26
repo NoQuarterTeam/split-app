@@ -1,15 +1,15 @@
 import React, { Fragment, FC } from "react"
-import { useMe, useGetHouse } from "../../lib/graphql"
+import { useMe, useGetGroup } from "../../lib/graphql"
 import { StateProvider as StateContextProvider } from "../../application/context"
 import Loading from "../styled/Loading"
 
 const StateProvider: FC = ({ children }) => {
   const { user, userLoading } = useMe()
-  const { house, getHouseLoading, refetch } = useGetHouse()
+  const { group, getGroupLoading, refetch } = useGetGroup()
 
   return (
-    <StateContextProvider value={{ user, house, refetch }}>
-      {userLoading || getHouseLoading ? (
+    <StateContextProvider value={{ user, group, refetch }}>
+      {userLoading || getGroupLoading ? (
         <Loading />
       ) : (
         <Fragment>{children}</Fragment>

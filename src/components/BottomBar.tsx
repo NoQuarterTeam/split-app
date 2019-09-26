@@ -11,7 +11,7 @@ import { transparentize } from "polished"
 function BottomBar() {
   const { routes, setRoute } = useRoute()
   const { isDark } = useTheme()
-  const { house } = useAppState()
+  const { group } = useAppState()
 
   const activeRoute = routes.currentRoute
 
@@ -51,7 +51,7 @@ function BottomBar() {
           Balance
         </StyledTabText>
       </StyledTab>
-      {house && (
+      {group && (
         <StyledTab
           activeOpacity={0.8}
           onPress={() => setRoute({ type: "route", route: "COSTS" })}
@@ -69,7 +69,7 @@ function BottomBar() {
           Settings
         </StyledTabText>
       </StyledTab>
-      {house && (
+      {group && (
         <StyledTab
           activeOpacity={0.8}
           onPress={() => setRoute({ type: "modal", modal: "NEW_COST" })}
@@ -80,7 +80,7 @@ function BottomBar() {
           />
         </StyledTab>
       )}
-      {house && <NewCost modalOpen={routes.modal === "NEW_COST"} />}
+      {group && <NewCost modalOpen={routes.modal === "NEW_COST"} />}
     </StyledBottomBar>
   )
 }

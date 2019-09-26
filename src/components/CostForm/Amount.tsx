@@ -10,11 +10,11 @@ interface Props {
 }
 
 const Amount: FC<Props> = props => {
-  const { house } = useAppState()
+  const { group } = useAppState()
   const { theme, isDark } = useTheme()
   return (
     <StyledInput
-      placeholder={`${getCurrency(house && house.currency)}15.45`}
+      placeholder={`${getCurrency(group && group.currency)}15.45`}
       keyboardType="numeric"
       blurOnSubmit={false}
       autoFocus={true}
@@ -22,7 +22,7 @@ const Amount: FC<Props> = props => {
       keyboardAppearance={isDark ? "dark" : "light"}
       value={
         props.amount
-          ? `${getCurrency(house && house.currency)}${props.amount.toString()}`
+          ? `${getCurrency(group && group.currency)}${props.amount.toString()}`
           : ""
       }
       returnKeyLabel="Next"
@@ -31,8 +31,8 @@ const Amount: FC<Props> = props => {
       onChangeText={val => {
         try {
           let amount = val
-          if (amount[0] === getCurrency(house && house.currency))
-            amount = amount.split(getCurrency(house && house.currency))[1]
+          if (amount[0] === getCurrency(group && group.currency))
+            amount = amount.split(getCurrency(group && group.currency))[1]
           if (amount.includes(",")) amount = amount.replace(",", ".")
           if (decimalCount(+amount) > 2) return
           props.onChange(amount)

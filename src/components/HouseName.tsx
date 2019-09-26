@@ -18,6 +18,7 @@ function HouseName({ house }: HouseNameProps) {
       variables: {
         houseId: house.id,
         data: {
+          currency: house.currency,
           name: houseName,
         },
       },
@@ -50,6 +51,6 @@ const StyledInput = styled.TextInput`
   background-color: transparent;
   color: ${p => p.theme.colorText};
   font-size: ${p => p.theme.textXL};
-  font-family: "Helvetica Neue";
+  font-family: ${p => p.theme.fontFamilyHeader};
   font-weight: ${p => p.theme.fontBold};
 `

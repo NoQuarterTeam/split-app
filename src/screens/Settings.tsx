@@ -1,5 +1,6 @@
 import React from "react"
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view"
+import { Platform } from "react-native"
 
 import { useAppState } from "../lib/hooks/useAppContext"
 import Page from "../components/Page"
@@ -18,6 +19,8 @@ function Settings() {
     <Page title="Settings" white={true}>
       <KeyboardAwareScrollView
         showsVerticalScrollIndicator={false}
+        enableOnAndroid
+        extraHeight={Platform.OS === "android" ? 200 : 50}
         contentContainerStyle={{ paddingBottom: 100 }}
       >
         <ProfileForm user={user} />

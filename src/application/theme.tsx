@@ -1,5 +1,6 @@
 import * as styledComponents from "styled-components/native"
 import { darken, lighten } from "polished"
+import { Platform } from "react-native"
 
 const theme: (isDark: boolean) => ThemeInterface = isDark => ({
   colorGrey: isDark ? "#3D3D43" : "#f8f9fd",
@@ -23,6 +24,8 @@ const theme: (isDark: boolean) => ThemeInterface = isDark => ({
   textM: "16px",
   textS: "12px",
   textXL: "26px",
+  fontFamilyText: Platform.OS === "ios" ? "Verdana" : "sans-serif",
+  fontFamilyHeader: Platform.OS === "ios" ? "Helvetica Neue" : "Roboto",
   boxShadow: {
     shadowColor: "#777",
     shadowOffset: { width: 0, height: 5 },
@@ -65,6 +68,8 @@ export interface ThemeInterface {
   paddingL: string
   paddingM: string
   paddingS: string
+  fontFamilyText: string
+  fontFamilyHeader: string
   paddingXL: string
   paddingXS: string
   textL: string

@@ -50,6 +50,6 @@ const StyledInput = styled.TextInput`
   font-size: ${p => p.theme.textXL};
   text-align: center;
   height: 200px;
-  font-family: "Verdana";
+  font-family: ${p => p.theme.fontFamilyText};
   color: ${p => p.theme.colorText};
 `

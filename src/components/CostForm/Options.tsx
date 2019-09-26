@@ -1,5 +1,12 @@
 import React, { FC, useState, Fragment } from "react"
-import { View, Modal, Picker, DatePickerIOS } from "react-native"
+import {
+  Platform,
+  View,
+  Modal,
+  Picker,
+  DatePickerIOS,
+  DatePickerAndroid,
+} from "react-native"
 import dayjs from "dayjs"
 
 import styled from "../../application/theme"
@@ -20,6 +27,21 @@ interface Props {
 const Options: FC<Props> = props => {
   const [modalOpen, setModalOpen] = useState<string>("none")
   const { theme } = useTheme()
+
+  const handleOpenAndroidDate = async () => {
+    try {
+      // @ts-ignore
+      const { action, year, month, day } = await DatePickerAndroid.open({
+        date: dayjs(props.date).toDate(),
+      })
+      if (action !== DatePickerAndroid.dismissedAction) {
+        const androidDate = `${year}-${month + 1}-${day}`
+        props.onChange({ date: dayjs(androidDate).format("YYYY-MM-DD") })
+      }
+    } catch ({ code, message }) {
+      console.warn("Cannot open date picker", message)
+    }
+  }
   return (
     <Fragment>
       <StyledOptions>
@@ -39,7 +61,13 @@ const Options: FC<Props> = props => {
               {dayjs(props.date).format("DD-MM-YYYY")}
             </StyledOptionText>
           </View>
-          <StyledEditButton onPress={() => setModalOpen("Date")}>
+          <StyledEditButton
+            onPress={
+              Platform.OS === "android"
+                ? handleOpenAndroidDate
+                : () => setModalOpen("Date")
+            }
+          >
             <StyledEditButtonText>Change</StyledEditButtonText>
           </StyledEditButton>
         </StyledOption>

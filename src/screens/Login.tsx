@@ -30,6 +30,8 @@ function Login() {
         setRoute({ type: "route", route: "BALANCE" })
       })
       .catch((loginError: GraphQLError) => {
+        console.log(loginError)
+
         setLoading(false)
         setError(loginError.message.split(":")[1])
       })

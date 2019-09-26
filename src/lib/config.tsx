@@ -5,4 +5,4 @@ export const production = env === "production"
 export const apiUrl =
   env === "production"
     ? "https://api.getsplit.co/graphql"
-    : "http://localhost:5000/graphql"
+    : "http://192.168.2.1:5000/graphql"

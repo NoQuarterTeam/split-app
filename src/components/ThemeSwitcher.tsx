@@ -19,6 +19,7 @@ export default ThemeSwitcher
 
 const StyledWrapper = styled.View`
   width: 100%;
+  align-items: flex-start;
 `
 
 const StyledTitle = styled(Header)`

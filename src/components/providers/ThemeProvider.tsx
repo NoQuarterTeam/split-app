@@ -12,14 +12,16 @@ import { StatusBar } from "react-native"
 const ThemeProvider: FC = ({ children }) => {
   const [isDark, setDarkTheme] = useAsyncStorage("darkTheme", false)
   const toggleTheme = () => setDarkTheme(!isDark)
-
   return (
     <SCThemeProvider theme={theme(isDark)}>
       <ThemeContextProvider
         value={{ toggleTheme, isDark, theme: theme(isDark) }}
       >
         <Fragment>
-          <StatusBar barStyle={isDark ? "light-content" : "dark-content"} />
+          <StatusBar
+            translucent={false}
+            barStyle={isDark ? "light-content" : "dark-content"}
+          />
 
           {children}
         </Fragment>

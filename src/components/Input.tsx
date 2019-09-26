@@ -59,7 +59,7 @@ const StyledInput = styled.TextInput<{ hasPrefix?: boolean }>`
   font-size: ${p => p.theme.textM};
   padding: ${p => p.theme.paddingM} ${p => p.theme.paddingL};
   ${p => p.hasPrefix && "padding-left: 16px"};
-  font-family: "Verdana";
+  font-family: ${p => p.theme.fontFamilyText};
 `
 
 const StyledPrefix = styled(Text)`

@@ -85,7 +85,7 @@ const StyledInput = styled.TextInput`
   color: ${p => p.theme.colorText};
   padding: ${p => p.theme.paddingM};
   font-size: ${p => p.theme.textM};
-  font-family: "Verdana";
+  font-family: ${p => p.theme.fontFamilyText};
 `
 
 const StyledCancel = styled.TouchableOpacity`

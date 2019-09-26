@@ -31,7 +31,7 @@ export default Name
 const StyledInput = styled.TextInput`
   text-align: center;
   height: 200px;
-  font-family: "Verdana";
+  font-family: ${p => p.theme.fontFamilyText};
   font-size: ${p => p.theme.textXL};
   color: ${p => p.theme.colorText};
 `

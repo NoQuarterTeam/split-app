@@ -1,20 +1,17 @@
-import React, { ReactNode } from "react"
+import React, { FC } from "react"
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view"
 import styled from "../application/theme"
 import Logo from "./Logo"
 import Spacer from "./styled/Spacer"
+import { Platform } from "react-native"
 
-interface AuthFormProps {
-  children: ReactNode
-}
-function AuthForm({ children }: AuthFormProps) {
+const AuthForm: FC = ({ children }) => {
   return (
     <StyledWrapper>
       <KeyboardAwareScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          flex: 1,
-        }}
+        enableOnAndroid
+        extraHeight={Platform.OS === "android" ? 200 : 0}
       >
         <StyledAuthForm>
           <Logo />

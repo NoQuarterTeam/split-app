@@ -1,11 +1,12 @@
 import React from "react"
 import { BlurView } from "expo-blur"
 import styled from "../application/theme"
-import { Image } from "react-native"
+import { Image, Platform, View } from "react-native"
 import { useRoute, useAppState, useTheme } from "../lib/hooks/useAppContext"
 import Text from "../components/styled/Text"
 import NewCost from "../screens/NewCost"
 import { isIphoneX } from "../lib/helpers"
+import { transparentize } from "polished"
 
 function BottomBar() {
   const { routes, setRoute } = useRoute()
@@ -38,6 +39,7 @@ function BottomBar() {
     <StyledBottomBar
       isIphoneX={isIphoneX()}
       tint={isDark ? "dark" : "default"}
+      isDark={isDark}
       intensity={100}
     >
       <StyledTab
@@ -83,13 +85,19 @@ function BottomBar() {
   )
 }
 
-const StyledBottomBar = styled(BlurView)<{ isIphoneX: boolean }>`
+const StyledBottomBar = styled(Platform.OS === "android" ? View : BlurView)<{
+  isIphoneX: boolean
+  isDark: boolean
+}>`
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   flex-direction: row;
-  background-color: white;
+  background-color: ${p =>
+    Platform.OS === "android"
+      ? transparentize(0.1, p.theme.colorPage)
+      : "white"};
   ${p => p.theme.flexAround};
 
   padding-bottom: ${p => (p.isIphoneX ? p.theme.paddingL : 0)};

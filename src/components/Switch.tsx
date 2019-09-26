@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Switch as RNSwitch } from "react-native"
+import { Switch as RNSwitch, Platform } from "react-native"
 import { useTheme } from "../lib/hooks/useAppContext"
 
 interface Props {
@@ -13,7 +13,8 @@ const Switch: FC<Props> = props => {
   return (
     <RNSwitch
       value={props.value}
-      trackColor={{ true: theme.colorPrimary, false: theme.colorGrey }}
+      trackColor={{ true: theme.colorPrimary, false: theme.colorLabel }}
+      thumbColor={Platform.OS === "android" ? "white" : "default"}
       onValueChange={props.onValueChange}
     />
   )

@@ -23,7 +23,8 @@
       "bundleIdentifier": "co.noquarter.splitapp"
     },
     "android": {
-      "versionCode": 1
+      "versionCode": 1,
+      "package": "co.noquarter.splitapp"
     }
   }
 }

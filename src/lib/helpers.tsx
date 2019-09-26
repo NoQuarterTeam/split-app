@@ -27,7 +27,7 @@ export const sleep = (delay: number) => {
 }
 
 export const decimalCount = (value: number) => {
-  let number = value
+  const number = value
   if (number % 1 !== 0) return number.toString().split(".")[1].length
   return 0
 }

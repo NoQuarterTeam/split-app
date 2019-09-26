@@ -24,6 +24,7 @@
     },
     "android": {
       "versionCode": 1,
+      "permissions": [],
       "package": "co.noquarter.splitapp"
     }
   }

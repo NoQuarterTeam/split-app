@@ -86,7 +86,6 @@ function Register() {
       <Input
         ref={lastNameRef}
         label="Last name"
-        secureTextEntry={true}
         placeholder="Sebe"
         returnKeyLabel="done"
         returnKeyType="done"

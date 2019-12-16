@@ -39,12 +39,12 @@
     "graphql": "14.5.8",
     "graphql-tag": "2.10.1",
     "polished": "3.4.2",
-    "react": "16.8.3",
-    "react-dom": "16.9.0",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
     "react-native-keyboard-aware-scroll-view": "0.9.1",
     "react-native-web": "0.11.7",
-    "scheduler": "0.14.0",
+    "scheduler": "0.18.0",
     "styled-components": "4.4.1"
   },
   "devDependencies": {
@@ -78,7 +78,7 @@
     "lint-staged": "9.5.0",
     "metro-react-native-babel-preset": "0.57.0",
     "prettier": "1.19.1",
-    "react-test-renderer": "16.8.6",
+    "react-test-renderer": "16.12.0",
     "typescript": "3.7.3"
   },
   "private": true

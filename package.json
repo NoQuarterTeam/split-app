@@ -57,7 +57,7 @@
     "@graphql-codegen/typescript-react-apollo": "1.10.0",
     "@types/graphql": "14.2.3",
     "@types/jest": "24.0.25",
-    "@types/node": "12.12.23",
+    "@types/node": "12.12.24",
     "@types/react": "16.9.17",
     "@types/react-native": "0.60.27",
     "@types/react-test-renderer": "16.9.1",

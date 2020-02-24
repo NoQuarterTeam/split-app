@@ -59,7 +59,7 @@
     "@types/jest": "24.9.1",
     "@types/node": "12.12.28",
     "@types/react": "16.9.22",
-    "@types/react-native": "0.61.16",
+    "@types/react-native": "0.61.17",
     "@types/react-test-renderer": "16.9.2",
     "@types/styled-components": "4.4.3",
     "@typescript-eslint/eslint-plugin": "2.20.0",

@@ -54,7 +54,7 @@
     "@graphql-codegen/cli": "1.15.0",
     "@graphql-codegen/typescript": "1.15.0",
     "@graphql-codegen/typescript-operations": "1.15.0",
-    "@graphql-codegen/typescript-react-apollo": "1.14.0",
+    "@graphql-codegen/typescript-react-apollo": "1.15.0",
     "@types/graphql": "14.2.3",
     "@types/jest": "24.9.1",
     "@types/node": "12.12.42",

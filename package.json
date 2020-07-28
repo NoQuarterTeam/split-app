@@ -28,7 +28,7 @@
     ]
   },
   "resolutions": {
-    "graphql": "14.7.0"
+    "graphql": "15.3.0"
   },
   "dependencies": {
     "@apollo/react-hooks": "3.1.5",
@@ -36,7 +36,7 @@
     "dayjs": "1.8.30",
     "expo": "34.0.4",
     "expo-blur": "6.0.0",
-    "graphql": "14.7.0",
+    "graphql": "15.3.0",
     "graphql-tag": "2.11.0",
     "polished": "3.6.5",
     "react": "16.13.1",

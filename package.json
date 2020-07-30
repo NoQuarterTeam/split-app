@@ -48,9 +48,9 @@
     "styled-components": "4.4.1"
   },
   "devDependencies": {
-    "@babel/core": "7.10.5",
+    "@babel/core": "7.11.0",
     "@babel/plugin-proposal-decorators": "7.10.5",
-    "@babel/runtime": "7.10.5",
+    "@babel/runtime": "7.11.0",
     "@graphql-codegen/cli": "1.17.6",
     "@graphql-codegen/typescript": "1.17.6",
     "@graphql-codegen/typescript-operations": "1.17.6",

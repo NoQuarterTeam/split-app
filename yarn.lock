@@ -8917,10 +8917,10 @@ react-native-view-shot@2.6.0:
   resolved "https://registry.yarnpkg.com/react-native-view-shot/-/react-native-view-shot-2.6.0.tgz#3b23675826f67658366352c4b97b59a6aded2f43"
   integrity sha512-yO9vWi/11m2hEJl8FrW1SMeVzFfPtMKh20MUInGqlsL0H8Ya2JGGlFfrBzx1KiFR2hFb5OdsTLYNtcVZtJ6pLQ==
 
-react-native-web@0.13.10:
-  version "0.13.10"
-  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.13.10.tgz#b93c48edaa23abb14810310e29efff17f09890b4"
-  integrity sha512-5bvI6nR0pqayVAE7DoOfKxUm56vlxYjfB+T6GAfk9vjLS6DqTLf4zXFw//OslrX9xwUudMXKQ53OhIhVndoDLg==
+react-native-web@0.13.11:
+  version "0.13.11"
+  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.13.11.tgz#74a1ea0a3ea2c4d758d8d43af68f56ea0ca44595"
+  integrity sha512-d7RKr7KsbDuHPcJTctsiiwPkc1CMUxJ2QMJmvv4i4Z0QTI7Xip1momKq7GF6ibxFJxaUoykX0ZbnvXMl81PD0g==
   dependencies:
     array-find-index "^1.0.2"
     create-react-class "^15.6.2"

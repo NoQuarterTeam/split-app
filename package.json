@@ -45,7 +45,7 @@
     "react-native-keyboard-aware-scroll-view": "0.9.3",
     "react-native-web": "0.14.1",
     "scheduler": "0.19.1",
-    "styled-components": "4.4.1"
+    "styled-components": "5.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.12.1",

@@ -44,7 +44,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
     "react-native-keyboard-aware-scroll-view": "0.9.3",
     "react-native-web": "0.14.3",
-    "scheduler": "0.20.0",
+    "scheduler": "0.20.1",
     "styled-components": "4.4.1"
   },
   "devDependencies": {

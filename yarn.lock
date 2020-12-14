@@ -2527,10 +2527,10 @@
     "@types/prop-types" "*"
     "@types/react" "*"
 
-"@types/react-native@0.63.38":
-  version "0.63.38"
-  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.63.38.tgz#d0da836e8f94d527712229602359b78a3243aec1"
-  integrity sha512-wAp3uwlyDzaHwhJR8/KXJbfyTfY0SvUf4qKaLXuKRq/ztyac++/Ww+RKFv5q34rJXVu1YQU/1ZJY6WE+aKZuzg==
+"@types/react-native@0.63.39":
+  version "0.63.39"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.63.39.tgz#39d820267fc0aa91507783f5a8e22b889965960f"
+  integrity sha512-hK7DBVG7DmcFtvqLT/YE1cgTDBXMSs9IS5Sx3RFi+NV7T3F5s60xo32RkhCQnbvCplCINpwBPzFAE6Uf7/sMZQ==
   dependencies:
     "@types/react" "*"
 

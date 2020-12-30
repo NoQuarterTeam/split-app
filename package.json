@@ -52,7 +52,7 @@
     "@babel/plugin-proposal-decorators": "7.12.12",
     "@babel/runtime": "7.12.5",
     "@graphql-codegen/cli": "1.20.0",
-    "@graphql-codegen/typescript": "1.19.0",
+    "@graphql-codegen/typescript": "1.20.0",
     "@graphql-codegen/typescript-operations": "1.17.13",
     "@graphql-codegen/typescript-react-apollo": "1.17.7",
     "@types/graphql": "14.2.3",

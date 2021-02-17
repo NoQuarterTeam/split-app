@@ -38,7 +38,7 @@
     "expo-blur": "6.0.0",
     "graphql": "14.7.0",
     "graphql-tag": "2.11.0",
-    "polished": "3.7.0",
+    "polished": "3.7.1",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",

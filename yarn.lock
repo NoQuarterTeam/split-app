@@ -1261,10 +1261,10 @@
     pirates "^4.0.0"
     source-map-support "^0.5.9"
 
-"@babel/runtime@7.13.1":
-  version "7.13.1"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.1.tgz#808f9adeff8defffbf763b56de4f235d02307a9f"
-  integrity sha512-VtWX6tACQ/pVAkvDPerMfkkInu1+oea+Y3bmcsXO4g+RkpScDdNKla8NtfwrqdHkBGfmTMEZpVIE2I6umuDPaQ==
+"@babel/runtime@7.13.2":
+  version "7.13.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.2.tgz#9511c87d2808b2cf5fb9e9c5cf0d1ab789d75499"
+  integrity sha512-U9plpxyudmZNYe12YI6cXyeWTWYCTq2u1h+C0XVtC3+BoiuzTh1BHlMJgxMrbKTombYkf7wQGqoxYkptFehuZw==
   dependencies:
     regenerator-runtime "^0.13.4"
 

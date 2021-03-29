@@ -9665,10 +9665,10 @@ react-native-view-shot@2.6.0:
   resolved "https://registry.yarnpkg.com/react-native-view-shot/-/react-native-view-shot-2.6.0.tgz#3b23675826f67658366352c4b97b59a6aded2f43"
   integrity sha512-yO9vWi/11m2hEJl8FrW1SMeVzFfPtMKh20MUInGqlsL0H8Ya2JGGlFfrBzx1KiFR2hFb5OdsTLYNtcVZtJ6pLQ==
 
-react-native-web@0.15.1:
-  version "0.15.1"
-  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.15.1.tgz#25f186a3355055a2d8d43f780de7dca673678a9e"
-  integrity sha512-yUpbohpmNHeeS9fMMAUPFaYPMO2Z/a2sRwpEkAxzr/XqV2W9rFh047jFKe/rOBszAitDTCfUBg6lbyFRdbD3wQ==
+react-native-web@0.15.3:
+  version "0.15.3"
+  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.15.3.tgz#ea70cfebbe077218427ee62f4a13b3eec2e82f9b"
+  integrity sha512-7Hwk/H+fZnxysgCxw3Y0OaPowAo/aP9y0DdWSd9AQvpRzCpbTlOjJJIRhL0jms9OfcOwuFm2BjaBT9XR3/emWQ==
   dependencies:
     array-find-index "^1.0.2"
     create-react-class "^15.7.0"

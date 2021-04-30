@@ -37,7 +37,7 @@
     "expo": "34.0.4",
     "expo-blur": "6.0.0",
     "graphql": "14.7.0",
-    "graphql-tag": "2.11.0",
+    "graphql-tag": "2.12.4",
     "polished": "3.7.1",
     "react": "16.14.0",
     "react-dom": "16.14.0",
